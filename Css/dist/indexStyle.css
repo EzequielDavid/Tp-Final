@@ -1,0 +1,20 @@
+.login-content {
+  width: 20%;
+  border: 1px solid black;
+  display: block;
+  margin-bottom: 20px;
+  float: right;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  z-index: 99px;
+  background-color: rgba(255, 152, 0, 0.5);
+}
+
+.margin-top {
+  margin-top: 5px;
+}
+
+#login-despegable {
+  display: none;
+}
