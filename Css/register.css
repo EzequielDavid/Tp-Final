@@ -1,11 +1,13 @@
 body {
+  background-image: url("../img/register.png");
   background-color: #171717;
 }
 
 .wrap {
   width: 90%;
   margin: auto;
-  margin-top: 6%;
+  margin-top: 2%;
+  opacity: 0.8;
   display: flex;
   justify-content: space-around;
 }
@@ -20,6 +22,15 @@ body {
 
 #img-container img {
   width: 100%;
+}
+
+#home a {
+  text-decoration: none;
+}
+
+.error
+{
+    display: none;
 }
 
 @media (max-width: 1000px) {
@@ -49,10 +60,6 @@ body {
   .register {
     background-color: black !important;
     color: white !important;
-  }
-
-  .label {
-    color: black !important;
   }
 
   .w3-opacity {
