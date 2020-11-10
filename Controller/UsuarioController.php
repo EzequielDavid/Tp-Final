@@ -20,7 +20,7 @@ class UsuarioController
         $name = $_POST["name"];
         $surname  = $_POST["surname"];
         $email  = $_POST["email"];
-        $password = md5($_POST["password"]);
+        $password = $_POST["password"];
         $this->usuarioModel->registrarUsuario($dni,$name,$surname,$email,$password);
         header('Location: index.php?module=inicio&action=execute');
         die();
@@ -44,7 +44,7 @@ class UsuarioController
     }
     public function logout()
     {
-        session_start();
+
         session_destroy();
         echo  $this->render->render("view/partial/header.mustache"),
         $this->render->render("view/inicio.php");

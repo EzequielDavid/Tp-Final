@@ -14,17 +14,20 @@ if(login)
     }
   });
 }
-let sesion=document.getElementById("sesion");
-if(sesion)
-{
-  sesion.addEventListener("click",()=>
+
+function inicioSesion() {
+  var usuario = document.getElementById("name");
+alert(usuario);
+  if (document.getElementById("barra").style.display == "none") {
+    document.getElementById("barra").style.display = "block";
+  }
+  else
   {
-    var  usuario = document.getElementById("usuario");
-
-    if(usuario.innerHTML != null)
-    {
-      document.getElementById("navbar").style.display = "block";
-
-    }
-  });
+    document.getElementById("barra").style.display = "none";
+  }
 }
+
+
+
+
+
