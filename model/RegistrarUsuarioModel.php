@@ -12,7 +12,7 @@ class RegistrarUsuarioModel
     }
     public function registrarUsuario($dni,$name,$surname,$email,$password)
     {
-      
+
         $c=$this->database->prepare("INSERT INTO usuario ( dni, nombre, apellido, email, pasword) VALUES (?,?,?,?,?)");
         $c->bind_param("issss",$dni,$name,$surname,$email,$password);
         $c->execute();
