@@ -3,6 +3,7 @@
 include_once("helper/Configuration.php");
 
 session_start();
+
 $configuration = new Configuration();
 
 $urlHelper = $configuration->getUrlHelper();

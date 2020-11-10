@@ -10,6 +10,10 @@ class inicioController{
 
     public function execute()
     {
-        echo $this->render->render("view/Inicio.php");
+        echo $this->render->render("view/partial/header.mustache",$_SESSION),
+        $this->render->render("view/Inicio.php",$_SESSION);
     }
+
+
+
 }
