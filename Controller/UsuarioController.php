@@ -26,7 +26,7 @@ class UsuarioController
         die();
     }
     public function login(){
-        $name =$_POST["name"];
+        $name = $_POST["name"];
         $pasword=$_POST["pasword"];
         $usuario = $this->usuarioModel->buscarUsuario($name,$pasword);
         if($usuario == null)
