@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<title>Nova Vehiculos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="Css/indexStyle.css">
+<link rel="stylesheet" href="Css/mantenimiento.css">
+<script defer src="Js/login.js"></script>
+<script defer src="Js/registerValidation.js"></script>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+        <a href="index.php?module=inicio&action=execute" class="w3-bar-item w3-button w3-hover-orange"><b>NV</b> Nova</a>
+        <!-- Float links to the right. Hide them on small screens -->
+        <div id="usuario" class="w3-right"><span id="name">{{name}}</span> <button class='submit createAccount w3-round-large margin-top w3-black'><a href='index.php?module=usuario&action=logout'>Logout</a></button></div>
+
+        <div id="barra" class="w3-right w3-show">
+
+            <a href="#projects" class="w3-bar-item w3-button w3-hover-orange w3-hide-small">Flota</a>
+            <a href="index.php?module=usuario&action=listarUsuario" class="w3-bar-item w3-button w3-hover-orange w3-hide-small">Usuarios</a>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

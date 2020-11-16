@@ -11,18 +11,7 @@ if (login) {
     });
 }
 
-function inicioSesion() {
-    var usuario = document.getElementById("name");
 
-    var barra = document.getElementById("barra");
-
-    if (usuario != null) {
-        if (barra.style.display == "block" || barra.style.display == "") {
-            barra.classList.remove("w3-show");
-            barra.classList.add("w3-hide");
-        }
-    }
-}
 
 
 

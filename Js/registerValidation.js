@@ -130,6 +130,21 @@ function validate()
 }
 
 
+document.getElementById("licencia").style.display="none";
+function elegirRol()
+{
+
+    if(document.getElementById("rol").value === "4")
+    {
+        document.getElementById("licencia").style.display="block";
+
+    }
+    if(document.getElementById("rol").value === "2" || document.getElementById("rol").value === "" || document.getElementById("rol").value === "3")
+    {
+
+        document.getElementById("licencia").style.display="none";
+    }
+}
 
 
 
