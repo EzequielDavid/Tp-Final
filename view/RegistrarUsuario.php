@@ -13,15 +13,7 @@
                 <label class="w3-text-orange w3-opacity"><b>DNI:</b></label>
                 <input class="w3-input w3-border w3-sand w3-opacity w3-hide-small" name="dni" type="number" required></p>
 
-            <p>
-                <label class="w3-text-orange w3-opacity"><b>Rol:</b></label>
-                <select class="w3-select w3-border w3-sand w3-opacity w3-hide-small" name="rol" id="rol" onclick="elegirRol();">
-                    <option class=" w3-border w3-sand w3-opacity w3-hide-small" value="" disabled selected>Elige el rol</option>
-                    <option class=" w3-border w3-sand w3-opacity w3-hide-small" value="2">Supervisor</option>
-                    <option class=" w3-border w3-sand w3-opacity w3-hide-small" value="3">Encargado de Taller</option>
-                    <option class=" w3-border w3-sand w3-opacity w3-hide-small" value="4">Chofer</option>
-                </select>
-            </p>
+
             <p id="licencia" style="display: none">
                 <label class="w3-text-orange w3-opacity" ><b>Licencia conducir:</b></label>
                 <input class="w3-input w3-border w3-sand w3-opacity w3-hide-small" name="licencia" type="number" ></p>

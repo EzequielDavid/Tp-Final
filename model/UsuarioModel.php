@@ -34,13 +34,13 @@ class UsuarioModel
         return $usuario->fetch_assoc();
     }
 
-    public function listarUsuarios()
+       public function listarUsuarios()
     {
         $c=$this->database->prepare("SELECT usuario.dni, usuario.nombre, usuario.apellido, usuario.licencia_conduccion , rol.rol from usuario INNER JOIN rol ON usuario.id_rol = rol.id_rol WHERE usuario.id_rol NOT LIKE 1");
       //  $c->bind_param("ss",$name,$pasword);
         $c->execute();
         $usuario = $c->get_result();
-        return $usuario->fetch_assoc();
+        return $usuario->fetch_all();
     }
 
     public function asginarRolUsuario($dni,$rol)

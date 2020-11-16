@@ -3,9 +3,10 @@ include_once("helper/MysqlDatabase.php");
 include_once("helper/Render.php");
 include_once("helper/UrlHelper.php");
 include_once ("model/UsuarioModel.php");
+include_once ("model/VehiculoModel.php");
 include_once("Controller/InicioController.php");
 include_once ("Controller/UsuarioController.php");
-
+include_once ("Controller/VehiculoController.php");
 include_once('third-party/mustache/src/Mustache/Autoloader.php');
 include_once("Router.php");
 
@@ -41,10 +42,17 @@ class Configuration{
         return new UsuarioModel($database);
     }
     public function getUsuarioController(){
-        $registrarUsuarioModel = $this->getUsuarioModel();
-        return new UsuarioController($this->getRender(),$registrarUsuarioModel);
+        $usuarioModel = $this->getUsuarioModel();
+        return new UsuarioController($this->getRender(),$usuarioModel);
     }
-
+    public function getVehiculoModel(){
+        $database = $this->getDatabase();
+        return new VehiculoModel($database);
+    }
+    public function getVehiculoController(){
+        $vehiculoModel = $this->getVehiculoModel();
+        return new VehiculoController($this->getRender(),$vehiculoModel);
+    }
     public function getRouter(){
         return new Router($this);
     }

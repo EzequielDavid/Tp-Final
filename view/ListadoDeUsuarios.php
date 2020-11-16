@@ -18,11 +18,11 @@
         </tr>
             {{#usuarios}}
             <tr>
-                <td>{{dni}}</td>
-                <td>{{nombre}}</td>
-                <td>{{apellido}}</td>
-                <td>{{licencia_conduccion}}</td>
-                <td>{{rol}}  </td>
+                <td>{{0}}</td>
+                <td>{{1}}</td>
+                <td>{{2}}</td>
+                <td>{{3}}</td>
+                <td>{{4}}  </td>
                 <td><form action="index.php?module=usuario&action=asignarRolUsuario" method="post">
                     <select class="w3-select w3-border w3-sand w3-opacity " name="rol" id="rol" onclick="elegirRol();">
                         <option class=" w3-border w3-sand w3-opacity " value="" disabled selected>Elige el rol</option>
@@ -30,7 +30,7 @@
                         <option class=" w3-border w3-sand w3-opacity " value="3">Encargado de Taller</option>
                         <option class=" w3-border w3-sand w3-opacity " value="4">Chofer</option>
                     </select>
-                        <input type="hidden" name="dni" value={{dni}} >
+                        <input type="hidden" name="dni" value={{0}} >
                         <input class="w3-btn w3-orange" type="submit" value="Asginar Rol">
                     </form>
                 </td>

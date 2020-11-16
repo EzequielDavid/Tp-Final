@@ -17,10 +17,13 @@ class UsuarioController
     }
     public function listarUsuario()
     {
-        $usuarios["usuarios"]=$this->usuarioModel->listarUsuarios();
 
+        $usuarios["usuarios"]=$this->usuarioModel->listarUsuarios();
+      //  die($usuarios["usuarios"]);
         echo $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
-        $this->render->render("view/ListadoDeUsuarios.php",$usuarios);
+        $this->render->render("view/ListadoDeUsuarios.php",$usuarios),
+        print_r($usuarios);
+
     }
     public function asignarRolUsuario()
     {
@@ -52,7 +55,7 @@ class UsuarioController
         $email  = $_POST["email"];
         $password = $_POST["password"];
         $rol = $_POST["rol"];
-        $this->usuarioModel->registrarUsuario($dni,$licencia,$name,$surname,$nacimiento,$email,$password,$rol);
+        $this->usuarioModel->registrarUsuario($dni,$licencia,$name,$surname,$nacimiento,$email,$password,0);
         header('Location: index.php?module=inicio&action=execute');
         die();
     }
