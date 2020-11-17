@@ -7,18 +7,17 @@
 <body>
 <div class="w3-container w3-display-container" >
     <div class="w3-container w3-orange w3-opacity w3-hide-small" >
-        <h2>Vehiculos</h2>
+        <h2>Choferes</h2>
         <table class="w3-table-all w3-card-4">
             <tr>
-                <th>Matricula</th>
-                <th>Estado</th>
-                <th>Marca</th>
-                <th>Km Recorridos</th>
-                <th>Año fabricacion</th>
-                <th>modelo</th>
-
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Licencia Conducir</th>
+                <th>Vehiculo asginado</th>
+                <th>Viaje destino</th>
             </tr>
-            {{#vehiculos}}
+            {{#choferes}}
             <tr>
                 <td>{{0}}</td>
                 <td>{{1}}</td>
@@ -26,9 +25,13 @@
                 <td>{{3}}</td>
                 <td>{{4}}  </td>
                 <td>{{5}}</td>
-                <td><a href='../Controlador/ControladorPokemon.php?idBorrar=$v[0]' class='w3-button w3-black'>Borrar</a></td>
+                <td><form action="#" method="post">
+                        <input type="hidden" name="dni" value={{0}} >
+                        <input class="w3-btn w3-black" type="submit" value="Asignar viaje">
+                    </form>
+                </td>
             </tr>
-            {{/vehiculos}}
+            {{/choferes}}
 
         </table>
     </div>

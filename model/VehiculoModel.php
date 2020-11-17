@@ -11,10 +11,10 @@ class VehiculoModel
     }
 
     public function listarVehiculos(){
-        $c=$this->database->prepare("SELECT * FROM vehiculo");
-        //  $c->bind_param("i",1);
+        $c=$this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` != 'ninguna'");
+
         $c->execute();
         $usuario = $c->get_result();
-        return $usuario->fetch_assoc();
+        return $usuario->fetch_all();
     }
 }

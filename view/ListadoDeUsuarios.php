@@ -34,7 +34,11 @@
                         <input class="w3-btn w3-orange" type="submit" value="Asginar Rol">
                     </form>
                 </td>
-                <td><a href='../Controlador/ControladorPokemon.php?idBorrar=$v[0]' class='w3-button w3-black'>Borrar</a></td>
+                <td><form action="index.php?module=usuario&action=borrarUsuario" method="post">
+                        <input type="hidden" name="dni" value={{0}} >
+                        <input class="w3-btn w3-black" type="submit" value="Borrar Usuario">
+                    </form>
+                </td>
             </tr>
             {{/usuarios}}
 

@@ -15,6 +15,15 @@ class UsuarioController
     {
         echo $this->render->render("view/RegistrarUsuario.php");
     }
+
+    public function listarChoferes()
+    {
+        $choferes["choferes"]=$this->usuarioModel->listarChoferes();
+        //  die($usuarios["usuarios"]);
+        echo $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
+        $this->render->render("view/Choferes.php",$choferes);
+
+    }
     public function listarUsuario()
     {
 
@@ -55,9 +64,19 @@ class UsuarioController
         $email  = $_POST["email"];
         $password = $_POST["password"];
         $rol = $_POST["rol"];
-        $this->usuarioModel->registrarUsuario($dni,$licencia,$name,$surname,$nacimiento,$email,$password,0);
+        $this->usuarioModel->registrarUsuario($dni,$licencia,$name,$surname,$nacimiento,$email,$password,0,"ninguna");
         header('Location: index.php?module=inicio&action=execute');
         die();
+    }
+    public function borrarUsuario()
+    {
+        $dni = $_POST["dni"];
+        $this->usuarioModel->borrarUsuario($dni);
+        $usuarios["usuarios"]=$this->usuarioModel->listarUsuarios();
+        echo $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
+        $this->render->render("view/ListadoDeUsuarios.php",$usuarios),
+        print_r($usuarios);
+
     }
     public function login(){
         $name = $_POST["name"];
