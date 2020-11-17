@@ -7,7 +7,7 @@
 <body>
 <div class="w3-container w3-display-container" >
     <div class="w3-container w3-orange w3-opacity w3-hide-small" >
-        <h2>Vehiculos</h2>
+        <h2>Vehiculos</h2> <a href='#' class='w3-button w3-black'>Ingresar vehiculo</a> <br>
         <table class="w3-table-all w3-card-4">
             <tr>
                 <th>Matricula</th>
