@@ -33,7 +33,14 @@ class UsuarioModel
         $usuario = $c->get_result();
         return $usuario->fetch_assoc();
     }
-
+    public function buscarUsuarioPorDni($dni)
+    {
+        $c=$this->database->prepare("SELECT * FROM usuario WHERE dni LIKE ?");
+        $c->bind_param("i",$dni);
+        $c->execute();
+        $usuario = $c->get_result();
+        return $usuario->fetch_assoc();
+    }
        public function listarUsuarios()
     {
         $c=$this->database->prepare("SELECT usuario.dni, usuario.nombre, usuario.apellido, usuario.licencia_conduccion , rol.rol from usuario INNER JOIN rol ON usuario.id_rol = rol.id_rol WHERE usuario.id_rol NOT LIKE 1");
@@ -47,7 +54,7 @@ class UsuarioModel
 INNER JOIN vehiculo on usuario.matricula = vehiculo.matricula
 INNER JOIN viaje on vehiculo.matricula = viaje.matricula
 WHERE id_rol  LIKE 4");
-        //  $c->bind_param("ss",$name,$pasword);
+
         $c->execute();
         $usuario = $c->get_result();
         return $usuario->fetch_all();
@@ -62,6 +69,12 @@ WHERE id_rol  LIKE 4");
     {
         $c=$this->database->prepare("UPDATE usuario SET id_rol = ? WHERE dni = ?");
         $c->bind_param("ii", $rol,$dni);
+        $c->execute();
+    }
+    public function asignarVehiculoAChofer($matricula,$dni)
+    {
+        $c=$this->database->prepare("UPDATE usuario SET matricula = ? WHERE dni = ?");
+        $c->bind_param("si", $matricula,$dni);
         $c->execute();
     }
 }

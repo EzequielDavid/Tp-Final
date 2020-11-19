@@ -18,14 +18,7 @@ class UsuarioController
         echo $this->render->render("view/RegistrarUsuario.php");
     }
 
-    public function listarChoferes()
-    {
-        $choferes["choferes"]=$this->usuarioModel->listarChoferes();
-        //  die($usuarios["usuarios"]);
-        echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
-        $this->render->render("view/Choferes.php",$choferes);
 
-    }
     public function listarUsuario()
     {
 

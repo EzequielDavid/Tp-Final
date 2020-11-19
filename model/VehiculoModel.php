@@ -11,10 +11,17 @@ class VehiculoModel
     }
 
     public function listarVehiculos(){
-        $c=$this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` != 'ninguna'");
+        $c=$this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` NOT LIKE 'ninguna'");
 
         $c->execute();
-        $usuario = $c->get_result();
-        return $usuario->fetch_all();
+        $vehiculo = $c->get_result();
+        return $vehiculo->fetch_all();
+    }
+    public function listarArrastre(){
+        $c=$this->database->prepare("SELECT * FROM `arrastre` ");
+
+        $c->execute();
+        $arrastre = $c->get_result();
+        return $arrastre->fetch_all();
     }
 }
