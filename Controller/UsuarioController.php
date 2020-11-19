@@ -5,10 +5,12 @@ class UsuarioController
 {
     private $render;
     private $usuarioModel;
-    public function __construct($render,$usuarioModel)
+    private $rolModel;
+    public function __construct($render,$usuarioModel,$rolModel)
     {
         $this->render = $render;
         $this->usuarioModel = $usuarioModel;
+        $this->rolModel = $rolModel;
     }
 
     public function registrarUsuario()
@@ -20,7 +22,7 @@ class UsuarioController
     {
         $choferes["choferes"]=$this->usuarioModel->listarChoferes();
         //  die($usuarios["usuarios"]);
-        echo $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
+        echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
         $this->render->render("view/Choferes.php",$choferes);
 
     }
@@ -29,7 +31,7 @@ class UsuarioController
 
         $usuarios["usuarios"]=$this->usuarioModel->listarUsuarios();
       //  die($usuarios["usuarios"]);
-        echo $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
+        echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
         $this->render->render("view/ListadoDeUsuarios.php",$usuarios),
         print_r($usuarios);
 
@@ -40,7 +42,7 @@ class UsuarioController
         $rol = $_POST["rol"];
         $this->usuarioModel->asginarRolUsuario($dni,$rol);
         $data["usuarios"]=$this->usuarioModel->listarUsuarios();
-        echo $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
+        echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
         $this->render->render("view/ListadoDeUsuarios.php",$data);
     }
     public function procesarRegistroUsuario(){
@@ -73,7 +75,7 @@ class UsuarioController
         $dni = $_POST["dni"];
         $this->usuarioModel->borrarUsuario($dni);
         $usuarios["usuarios"]=$this->usuarioModel->listarUsuarios();
-        echo $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
+        echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
         $this->render->render("view/ListadoDeUsuarios.php",$usuarios),
         print_r($usuarios);
 
@@ -87,16 +89,21 @@ class UsuarioController
             die("usuario vacio");
         }
 
-        if($usuario["nombre"] == $name && $usuario["pasword"] == $pasword && $usuario["id_rol"] == 1)
+        if($usuario["nombre"] == $name && $usuario["pasword"] == $pasword && $usuario["id_rol"] != null)
         {
 
             $_SESSION["rol"] = $usuario["id_rol"];
             $_SESSION["name"]=$usuario["nombre"];
             $_SESSION["pasword"]=$usuario["pasword"];
-          //  $this->render->render("view/partial/header.mustache",$_SESSION);
-            echo  $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
-            $this->render->render("view/inicio.php");
+          $this->direccionarSegunRol($usuario["id_rol"],$_SESSION);
         }
+    }
+    public function direccionarSegunRol($idRol,$session)
+    {
+        $rol= $this->rolModel->buscarRolNombre($idRol);
+        $rolNombre = $rol["rol"];
+        echo $this->render->render("view/partial/header".ucfirst($rolNombre).".mustache",$session),
+        $this->render->render("view/Inicio.php",$_SESSION);
     }
     public function logout()
     {

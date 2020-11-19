@@ -4,6 +4,7 @@ include_once("helper/Render.php");
 include_once("helper/UrlHelper.php");
 include_once ("model/UsuarioModel.php");
 include_once ("model/VehiculoModel.php");
+include_once ("model/RolModel.php");
 include_once("Controller/InicioController.php");
 include_once ("Controller/UsuarioController.php");
 include_once ("Controller/VehiculoController.php");
@@ -35,15 +36,21 @@ class Configuration{
 
 
     public function getInicioController(){
-        return new InicioController($this->getRender());
+        $rolModel = $this->getRolModel();
+        return new InicioController($this->getRender(),$rolModel);
     }
     public function getUsuarioModel(){
         $database = $this->getDatabase();
         return new UsuarioModel($database);
     }
+    public function getRolModel(){
+        $database = $this->getDatabase();
+        return new RolModel($database);
+    }
     public function getUsuarioController(){
         $usuarioModel = $this->getUsuarioModel();
-        return new UsuarioController($this->getRender(),$usuarioModel);
+        $rolModel = $this->getRolModel();
+        return new UsuarioController($this->getRender(),$usuarioModel,$rolModel);
     }
     public function getVehiculoModel(){
         $database = $this->getDatabase();

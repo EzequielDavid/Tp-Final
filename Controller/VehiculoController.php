@@ -15,7 +15,7 @@ class VehiculoController
     {
         $vehiculos["vehiculos"]=$this->vehiculoModel->listarVehiculos();
 
-        echo $this->render->render("view/partial/headerAdmin.mustache",$_SESSION),
+        echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
         $this->render->render("view/ListadoDeVehiculos.php",$vehiculos);
     }
 }
