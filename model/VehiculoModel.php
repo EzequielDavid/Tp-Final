@@ -24,4 +24,11 @@ class VehiculoModel
         $arrastre = $c->get_result();
         return $arrastre->fetch_all();
     }
+    public function cambiarEstadoDeVehiculoAOcupado($matricula)
+    {
+        $c=$this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
+        $ocupado = "ocupado";
+        $c->bind_param("ss", $ocupado,$matricula);
+        $c->execute();
+    }
 }

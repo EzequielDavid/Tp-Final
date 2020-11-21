@@ -37,6 +37,7 @@ class SupervisorController
     {
         $this->viajeModel->crearViaje($_POST["cliente"],$_POST["destino"],$_POST["kmviaje"],$_POST["matricula"],$_POST["patente"]);
         $this->usuarioModel->asignarVehiculoAChofer($_POST["matricula"],$_POST["dni"]);
+        $this->vehiculoModel->cambiarEstadoDeVehiculoAOcupado($_POST["matricula"]);
         echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
         $this->render->render("view/Inicio.php");
     }
