@@ -11,6 +11,7 @@ include_once ("Controller/UsuarioController.php");
 include_once ("Controller/VehiculoController.php");
 include_once ("Controller/SupervisorController.php");
 include_once ("Controller/ViajeController.php");
+include_once ("Controller/ChoferController.php");
 include_once('third-party/mustache/src/Mustache/Autoloader.php');
 include_once("Router.php");
 
@@ -66,10 +67,17 @@ class Configuration{
         $viajeModel = $this->getViajeModel();
         return new ViajeController($this->getRender(),$usuarioModel,$viajeModel);
     }
+    public function getChoferController()
+    {
+        $usuarioModel = $this->getUsuarioModel();
+        $viajeModel = $this->getViajeModel();
+        return new ChoferController($this->getRender(),$usuarioModel,$viajeModel);
+    }
     public function getUsuarioController(){
         $usuarioModel = $this->getUsuarioModel();
         $rolModel = $this->getRolModel();
-        return new UsuarioController($this->getRender(),$usuarioModel,$rolModel);
+        $viajeModel = $this->getViajeModel();
+        return new UsuarioController($this->getRender(),$usuarioModel,$rolModel,$viajeModel);
     }
     public function getVehiculoModel(){
         $database = $this->getDatabase();

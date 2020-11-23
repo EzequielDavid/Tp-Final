@@ -6,11 +6,13 @@ class UsuarioController
     private $render;
     private $usuarioModel;
     private $rolModel;
-    public function __construct($render,$usuarioModel,$rolModel)
+    private $viajeModel;
+    public function __construct($render,$usuarioModel,$rolModel,$viajeModel)
     {
         $this->render = $render;
         $this->usuarioModel = $usuarioModel;
         $this->rolModel = $rolModel;
+        $this->viajeModel = $viajeModel;
     }
 
     public function registrarUsuario()
@@ -88,6 +90,7 @@ class UsuarioController
             $_SESSION["rol"] = $usuario["id_rol"];
             $_SESSION["name"]=$usuario["nombre"];
             $_SESSION["pasword"]=$usuario["pasword"];
+            $_SESSION["dni"] = $usuario["dni"];
           $this->direccionarSegunRol($usuario["id_rol"],$_SESSION);
         }
     }
@@ -95,8 +98,17 @@ class UsuarioController
     {
         $rol= $this->rolModel->buscarRolNombre($idRol);
         $rolNombre = $rol["rol"];
-        echo $this->render->render("view/partial/header".ucfirst($rolNombre).".mustache",$session),
-        $this->render->render("view/Inicio.php",$_SESSION);
+        if($rolNombre == "chofer")
+        {
+            $viaje["viaje"]=$this->viajeModel->mostrarViaje( $_SESSION["dni"]);
+            echo $this->render->render("view/partial/header".ucfirst($rolNombre).".mustache",$session),
+            $this->render->render("view/MiViaje.php",$viaje);
+        }
+        else
+        {
+            echo $this->render->render("view/partial/header".ucfirst($rolNombre).".mustache",$session),
+            $this->render->render("view/Inicio.php",$_SESSION);
+        }
     }
     public function logout()
     {
