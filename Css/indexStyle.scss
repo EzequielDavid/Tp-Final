@@ -1,50 +1,43 @@
-@mixin fromPixel($measure,$percentage) 
-{
-    width: $measure / $percentage * 100%;
+@mixin fromPixel($measure,$percentage) {
+  width: $measure / $percentage * 100%;
 }
 
-.login-content
-{
-    @include fromPixel(280px,1366px);
-    border: 1px solid black;
-    display: block;
-    margin-bottom: 20px;
-    float: right;
-    position: absolute;
-    top: 55px;
-    right: 20px;
-    z-index: 99px;
-    background-color: rgba(255,152,0,0.5);
+.login-content {
+  @include fromPixel(280px, 1366px);
+  border: 1px solid black;
+  display: block;
+  margin-bottom: 20px;
+  float: right;
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  z-index: 99px;
+  background-color: rgba(255, 152, 0, 0.5);
 }
 
 .login-content input[type="text"],
-.login-content input[type="password"]
-{
-   @include fromPixel(250px,250px)
-}
-.margin-top
-{
-    margin-top: 5px;
+.login-content input[type="password"] {
+  @include fromPixel(250px, 250px)
 }
 
-#login-despegable
-{
-    display: none;
+.margin-top {
+  margin-top: 5px;
+}
+
+#login-despegable {
+  display: none;
 }
 
 //RESPONSIVE
 
-@mixin responsive($width,$media)
-{
-    @media(max-width:$width)
-{
-    .login-content
-    {
-        @include fromPixel($media,$width);
+@mixin responsive($width,$media) {
+  @media(max-width: $width) {
+    .login-content {
+      @include fromPixel($media, $width);
     }
-}
+  }
 }
 
-@include responsive(830px,280px);
-@include responsive(665px,280px);
-@include responsive(404px,280px);
+@include responsive(830px, 280px);
+@include responsive(665px, 280px);
+@include responsive(404px, 280px);

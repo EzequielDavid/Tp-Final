@@ -21,11 +21,7 @@
                 <td>{{4}}  </td>
                 <td>{{5}}</td>
                 <td>{{6}}</td>
-                <td><form action="index.php?module=supervisor&action=detalleViaje" method="post">
-                        <input type="hidden" name="dni" value={{5}} >
-                        <input class="w3-btn w3-black" type="submit" value="Ver detalle">
-                    </form>
-                </td>
+
             </tr>
             {{/viajes}}
 
