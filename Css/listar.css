@@ -1,0 +1,48 @@
+.container-list{
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-list-sm{
+    width: 100%;
+}
+
+.table-list{
+    margin: 1rem 0;
+}
+
+.td-list{
+    padding: 2rem 1rem !important;
+}
+
+.header-nova {
+    max-width: 1500px;
+    height: 100vh;
+}
+
+.img-nova{
+    max-width:1500px;
+    height:100vh;
+}
+
+
+.btn-wider{
+    width: 90%;
+}
+
+.display-top-right{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -3rem;
+    margin-bottom: 2rem;
+}
+
+
+/*RegistrarVehiculo*/
+.margin-topbottom{
+    margin-top: 8rem;
+    margin-bottom: 5rem;
+}

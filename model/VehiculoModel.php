@@ -31,4 +31,19 @@ class VehiculoModel
         $c->bind_param("ss", $ocupado,$matricula);
         $c->execute();
     }
+
+    public function buscarVehiculo($matricula){
+        $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` LIKE ?");
+        $c->bind_param("i", $matricula);
+        $c->execute();
+        return $c->get_result()->fetch_assoc();
+
+    }
+
+    public function registrarUsuario($matricula, $estado, $anio_fabricacion, $numero_chasis, $numero_motor, $marca, $modelo, $id_mantenimiento)
+    {
+        $c = $this->database->prepare("INSERT INTO `vehiculo`(`matricula`, `estado`, `anio_fabricacion`, `numero_chasis`, `numero_motor`, `marca`, `modelo`, `id_mantenimiento`) VALUES (?,?,?,?,?,?,?,?)");
+        $c->bind_param("ssssissi", $matricula, $estado, $anio_fabricacion, $numero_chasis, $numero_motor, $marca, $modelo, $id_mantenimiento);
+        $c->execute();
+    }
 }
