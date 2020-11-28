@@ -56,8 +56,8 @@
 }
 
 .container-subtitulo{
-    margin-top: 5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 8rem;
+    margin-bottom: 1rem;
 }
 
 .container-titulo h3{
@@ -71,4 +71,15 @@
     justify-content: flex-end;
     width: 100%;
 
+}
+
+.container-botones{
+    width: 100%;
+    display: flex;
+}
+
+.space-between{
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-top: 2rem;
 }
