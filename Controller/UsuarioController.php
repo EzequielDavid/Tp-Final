@@ -60,26 +60,31 @@ class UsuarioController
         $this->redirectLoginUsuario($usuario, $name, $pasword);
     }
 
-    public function direccionarSegunRol($idRol, $session)
+    public function direccionarSegunRol()
     {
-        $rol = $this->rolModel->buscarRolNombre($idRol)["rol"];
 
-        echo $this->render->render("view/partial/header" . ucfirst($rol) . ".mustache", $session),
-        $this->render->render("view/Inicio.php", $_SESSION);
+        if ($_SESSION["rol"] != null) {
 
-       /* $rol= $this->rolModel->buscarRolNombre($idRol);
-        $rolNombre = $rol["rol"];
-        if($rolNombre == "chofer")
-        {
-            $viaje["viaje"]=$this->viajeModel->mostrarViaje( $_SESSION["dni"]);
-            echo $this->render->render("view/partial/header".ucfirst($rolNombre).".mustache",$session),
-            $this->render->render("view/MiViaje.php",$viaje);
+            $rol = $this->rolModel->buscarRolNombre($_SESSION["rol"]);
+            if($rol["rol"] == "chofer")
+            {
+                echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
+                $this->render->render("view/Miviaje.php", $_SESSION);
+            }
+            else{
+                echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
+                $this->render->render("view/Inicio.php", $_SESSION),
+                print_r($rol);
+            }
+
+
+        } else {
+            $_SESSION["rol"] = "";
+            echo $this->render->render("view/partial/header.mustache", $_SESSION["rol"]),
+            $this->render->render("view/Inicio.php", $_SESSION["rol"]);
+
         }
-        else
-        {
-            echo $this->render->render("view/partial/header".ucfirst($rolNombre).".mustache",$session),
-            $this->render->render("view/Inicio.php",$_SESSION);
-        }*/
+
     }
 
     public function bloquearUsuario()
@@ -109,7 +114,7 @@ class UsuarioController
 
             // le saqué que se pase la contraseña, no le encontré una función pero por las dudas lo comento :)
             // $_SESSION["pasword"]=$usuario["pasword"];
-            $this->direccionarSegunRol($usuario["id_rol"], $_SESSION);
+            $this->direccionarSegunRol();
         }
     }
 

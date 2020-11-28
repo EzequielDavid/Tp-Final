@@ -20,18 +20,29 @@ class inicioController
 
     public function direccionarSegunRol()
     {
-        if ($_SESSION["rol"] != null) {
-            $rol = $this->rolModel->buscarRolNombre($_SESSION["rol"]);
 
-            echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
-            $this->render->render("view/Inicio.php", $_SESSION);
-            echo "view/partial/header" . ucfirst($rol["rol"]) . ".mustache";
+        if ($_SESSION["rol"] != null) {
+
+            $rol = $this->rolModel->buscarRolNombre($_SESSION["rol"]);
+            if($rol["rol"] == "chofer")
+            {
+                echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
+                $this->render->render("view/Miviaje.php", $_SESSION);
+            }
+            else{
+                echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
+                $this->render->render("view/Inicio.php", $_SESSION),
+                print_r($rol);
+            }
+
+
         } else {
-            $_SESSION["rol"] ="";
+            $_SESSION["rol"] = "";
             echo $this->render->render("view/partial/header.mustache", $_SESSION["rol"]),
             $this->render->render("view/Inicio.php", $_SESSION["rol"]);
 
         }
+
     }
 
 
