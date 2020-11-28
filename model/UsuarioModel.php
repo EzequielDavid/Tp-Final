@@ -33,7 +33,6 @@ class UsuarioModel
     {
 
         $c = $this->database->prepare("SELECT * FROM usuario WHERE nombre LIKE ? and pasword LIKE ?");
-        // con bind_param le asigna un valor a una sentencia preparada
         $c->bind_param("ss", $name, $pasword);
         $c->execute();
         $usuario = $c->get_result();
