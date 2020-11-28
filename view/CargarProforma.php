@@ -1,3 +1,4 @@
+{{>headerSupervisor}}
 <style>
     .hide {
         display: none;
@@ -316,4 +317,5 @@
         confirmar.classList.toggle("hide");
     }
 </script>
+
 {{>footer}}

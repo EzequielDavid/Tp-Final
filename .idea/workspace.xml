@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7452c302-1d08-477b-9a09-e89777dace8e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/ViajeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ViajeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/UsuarioModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ViajeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ViajeModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/AvisoEsperarRol.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/AvisoEsperarRol.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/AvisoRegistrarse.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/AvisoRegistrarse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/InicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/InicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/CargarProforma.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/CargarProforma.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/Choferes.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/Choferes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/Viajes.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/Viajes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/partial/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/footer.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/partial/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/header.mustache" afterDir="false" />
     </list>
@@ -54,7 +49,7 @@
       <workItem from="1606359457498" duration="635000" />
       <workItem from="1606429036515" duration="248000" />
       <workItem from="1606517287867" duration="1667000" />
-      <workItem from="1606587504116" duration="11697000" />
+      <workItem from="1606587504116" duration="14878000" />
     </task>
     <servers />
   </component>
