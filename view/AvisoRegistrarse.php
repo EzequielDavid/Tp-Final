@@ -9,7 +9,7 @@
     <div class="w3-cell-row w3-section" style="height: 32.339rem;">
 
         <div class="w3-container w3-half" style="height: 100%;">
-            <img class="w3-image" src="img/nova_texto.png" alt="Architecture">
+            <img class="w3-image" src="img/nova.png" alt="Architecture">
         </div>
 
         <div class="w3-container w3-light-grey w3-half w3-center w3-padding-64" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">

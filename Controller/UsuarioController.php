@@ -21,11 +21,10 @@ class UsuarioController
 
     public function listarUsuario()
     {
-        $usuarios["usuarios"]=$this->usuarioModel->listarUsuarios();
+        $usuarios["usuarios"]= $this->usuarioModel->listarUsuarios();
         //  die($usuarios["usuarios"]);
         echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
-        $this->render->render("view/ListadoDeUsuarios.php",$usuarios),
-        print_r($usuarios);
+        $this->render->render("view/ListadoDeUsuarios.php",$usuarios);
 
     }
 
@@ -117,11 +116,14 @@ class UsuarioController
     public function guardarDatosNuevoUsuarioAdm()
     {
         $dni = $_POST["dni"];
+        $licencia= $_POST["licencia"];
         $name = $_POST["name"];
         $surname = $_POST["surname"];
         $email = $_POST["email"];
         $password = $_POST["password"];
-        $this->usuarioModel->registrarUsuario($dni, $name, $surname, $email, $password, 1);
+        $nacimiento = $_POST["nacimiento"];
+        $matricula= $_POST["matricula"];
+        $this->usuarioModel->registrarUsuario($dni, $name, $surname, $email, $password,$licencia,$nacimiento, 1, $matricula);
         header('Location: index.php?module=inicio&action=execute');
         die();
     }
@@ -136,7 +138,7 @@ class UsuarioController
         $email = $_POST["email"];
         $password = $_POST["password"];
         $rol = $_POST["rol"];
-        $this->usuarioModel->registrarUsuario($dni, $licencia, $name, $surname, $nacimiento, $email, $password, 0, "ninguna");
+        $this->usuarioModel->registrarUsuario($dni, $name, $surname,$email, $password,$licencia,$nacimiento, 0, "ninguna");
         header('Location: index.php?module=inicio&action=execute');
         die();
     }
@@ -146,6 +148,7 @@ class UsuarioController
      */
     public function rederHeaderYUsuario($data)
     {
+        $this->usuarioModel->listarUsuarios();
         echo $this->render->render("view/partial/headerAdministrador.mustache", $_SESSION),
         $this->render->render("view/ListadoDeUsuarios.php", $data);
     }
