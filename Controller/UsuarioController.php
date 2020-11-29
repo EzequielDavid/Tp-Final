@@ -111,6 +111,7 @@ class UsuarioController
         else if ($usuario["nombre"] == $name && $usuario["pasword"] == $pasword && $usuario["id_rol"] != null) {
             $_SESSION["rol"] = $usuario["id_rol"];
             $_SESSION["name"] = $usuario["nombre"];
+            $_SESSION["dni"] = $usuario["dni"];
 
             // le saqué que se pase la contraseña, no le encontré una función pero por las dudas lo comento :)
             // $_SESSION["pasword"]=$usuario["pasword"];

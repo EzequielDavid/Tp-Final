@@ -17,8 +17,9 @@ class ChoferController
 
     public function mostrarViaje()
     {
-        $viaje["viaje"]=$this->viajeModel->mostrarViaje( $_SESSION["dni"]);
+        $viaje["viaje"]=$this->viajeModel->mostrarViaje($_SESSION["dni"]);
+
         echo  $this->render->render("view/partial/headerChofer.mustache",$_SESSION),
-        $this->render->render("view/MiViaje.php",$viaje);
+              $this->render->render("view/MiViaje.php",$viaje["viaje"]);
     }
 }
