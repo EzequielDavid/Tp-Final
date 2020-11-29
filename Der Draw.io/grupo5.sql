@@ -26,6 +26,16 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `factura`
 --
+CREATE TABLE `arrastre` (
+  `patente` varchar(30) NOT NULL,
+  `modelo` varchar(350) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `arrastre` (`patente`, `modelo`) VALUES
+('abc-654', 'ford'),
+('hyh-789', 'ford'),
+('yui-999', '');
+
 
 CREATE TABLE `factura` (
   `id_factura` int(11) NOT NULL,
@@ -261,6 +271,10 @@ ALTER TABLE `vehiculo`
 ALTER TABLE `viaje`
   ADD CONSTRAINT `viaje_ibfk_1` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`id_factura`),
   ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`matricula`) REFERENCES `vehiculo` (`matricula`);
+COMMIT;
+
+ALTER TABLE `arrastre`
+  ADD PRIMARY KEY (`patente`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
