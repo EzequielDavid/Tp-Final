@@ -29,7 +29,7 @@ class ViajeModel
     public function mostrarViaje($dni)
     {
         $c=$this->database->prepare("SELECT viaje.id_viaje , viaje.destino , viaje.estado, viaje.kilometro_viaje FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula INNER JOIN usuario on vehiculo.matricula = usuario.matricula
-                            where usuario.dni = ?");
+                                     where usuario.dni = ?");
         $c->bind_param("i",$dni);
         $c->execute();
         $viaje = $c->get_result();
