@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2020 a las 23:01:46
+-- Tiempo de generación: 23-11-2020 a las 21:00:03
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -26,6 +26,16 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `factura`
 --
+CREATE TABLE `arrastre` (
+  `patente` varchar(30) NOT NULL,
+  `modelo` varchar(350) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `arrastre` (`patente`, `modelo`) VALUES
+('abc-654', 'ford'),
+('hyh-789', 'ford'),
+('yui-999', '');
+
 
 CREATE TABLE `factura` (
   `id_factura` int(11) NOT NULL,
@@ -105,7 +115,6 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`dni`, `nombre`, `apellido`, `email`, `pasword`, `licencia_conduccion`, `fecha_nac`, `id_rol`, `matricula`) VALUES
 (123456, 'chicha', 'DP', 'ggg@123.com', '111', 0, '2020-11-08', 2, NULL),
-(777777, 'eee', 'rrr', 'macadopazo@gmail.com', '888', 0, '2020-11-20', 0, 'ninguna'),
 (2255888, 'Flash', 'dp', 'asd@111.com', '333', 0, '2020-11-02', 4, NULL),
 (38286199, 'maca', 'Pazo', 'macadopazo@gmail.com', '456', NULL, NULL, 1, NULL),
 (44444444, 'titan', 'dp', 'asb@789.com', '222', 0, '2020-11-02', 4, 'chau456');
@@ -158,17 +167,16 @@ CREATE TABLE `viaje` (
   `matricula` varchar(30) DEFAULT NULL,
   `cliente` varchar(350) NOT NULL,
   `patente` varchar(30) NOT NULL,
-  `id_combustible` int(11) NOT NULL,
-  `id_gps` int(11) NOT NULL
+  `id_combustible` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `viaje`
 --
 
-INSERT INTO `viaje` (`id_viaje`, `estado`, `origen`, `destino`, `kilometro_viaje`, `tiempo_estimado`, `tiempo_real`, `tipo_carga`, `id_factura`, `matricula`, `cliente`, `patente`, `id_combustible`, `id_gps`) VALUES
-(1, '', NULL, 'ninguno', NULL, NULL, NULL, NULL, NULL, 'ninguna', '', '', 0, 0),
-(5, 'preparando despacho', NULL, 'Bs As', 35, NULL, NULL, NULL, NULL, 'chau456', 'Berta', 'hyh-789', 0, 0);
+INSERT INTO `viaje` (`id_viaje`, `estado`, `origen`, `destino`, `kilometro_viaje`, `tiempo_estimado`, `tiempo_real`, `tipo_carga`, `id_factura`, `matricula`, `cliente`, `patente`, `id_combustible`) VALUES
+(1, '', NULL, 'ninguno', NULL, NULL, NULL, NULL, NULL, 'ninguna', '', '', 0),
+(5, 'preparando despacho', NULL, 'Bs As', 35, NULL, NULL, NULL, NULL, 'chau456', 'Berta', 'hyh-789', 0);
 
 --
 -- Índices para tablas volcadas
@@ -222,8 +230,7 @@ ALTER TABLE `viaje`
   ADD KEY `id_factura` (`id_factura`),
   ADD KEY `matricula` (`matricula`),
   ADD KEY `patente` (`patente`),
-  ADD KEY `id_combustible` (`id_combustible`),
-  ADD KEY `id_gps` (`id_gps`);
+  ADD KEY `id_combustible` (`id_combustible`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -264,6 +271,10 @@ ALTER TABLE `vehiculo`
 ALTER TABLE `viaje`
   ADD CONSTRAINT `viaje_ibfk_1` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`id_factura`),
   ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`matricula`) REFERENCES `vehiculo` (`matricula`);
+COMMIT;
+
+ALTER TABLE `arrastre`
+  ADD PRIMARY KEY (`patente`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

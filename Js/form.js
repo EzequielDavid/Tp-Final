@@ -85,14 +85,14 @@ c_telefono.addEventListener('keyup', function () {
 });
 
 refeer.addEventListener("click", function () {
-    if (refeer.value === "si")
+    if (refeer.value === "Si")
         refeer_container.classList.remove("hide");
     else
         refeer_container.classList.add("hide");
 });
 
 hazard.addEventListener("click", function () {
-    if (hazard.value === "si")
+    if (hazard.value === "Si")
         hazard_container.classList.remove("hide");
     else
         hazard_container.classList.add("hide");
@@ -104,6 +104,7 @@ var campos_vacios_paso4 = document.getElementsByClassName("co_not_empty");
 var co_etd = document.getElementById("co_etd");
 var co_eta = document.getElementById("co_eta");
 var errorPaso4 = document.getElementById("errorPaso4");
+var btn_confirmar = document.getElementById("btn_confirmar");
 
 function verificarPaso4() {
     limpiarErrores(errorPaso4);
@@ -115,6 +116,9 @@ function verificarPaso4() {
 
     if (co_eta.value <= co_etd.value)
         errorPaso4.innerHTML += "<h4 class='w3-section co_mensaje'><b>*</b> La fecha de arribo no puede ser antes que la fecha de partida</h4>";
+
+    if (document.getElementsByClassName("co_mensaje").length === 0)
+        btn_confirmar.onsubmit;
 }
 
 
