@@ -5,11 +5,12 @@ class inicioController
 
     private $render;
     private $rolModel;
-
-    public function __construct($render, $rolModel)
+    private $viajeModel;
+    public function __construct($render, $rolModel,$viajeModel)
     {
         $this->render = $render;
         $this->rolModel = $rolModel;
+        $this->viajeModel = $viajeModel;
     }
 
     public function execute()
@@ -26,8 +27,11 @@ class inicioController
             $rol = $this->rolModel->buscarRolNombre($_SESSION["rol"]);
             if($rol["rol"] == "chofer")
             {
-                echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
-                $this->render->render("view/Miviaje.php", $_SESSION);
+                $viaje["viaje"]=$this->viajeModel->mostrarViaje($_SESSION["dni"]);
+
+                echo  $this->render->render("view/partial/headerChofer.mustache",$_SESSION),
+                $this->render->render("view/MiViaje.php",$viaje),
+                print_r($viaje);
             }
             else{
                 echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
