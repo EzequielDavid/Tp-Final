@@ -1,3 +1,4 @@
+
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
     <img class="w3-image" src="img/nova.png" alt="Architecture" width="1500" height="800">
     <div class="w3-display-middle w3-margin-top w3-center">
@@ -18,10 +19,12 @@
             <b>{{1}} </b><br>
             {{/viaje}}
         </div>
+        <div id="map"></div>
         <div class="w3-col s12 w3-dark-grey w3-opacity w3-center">
             <div class="w3-container w3-orange w3-margin">
                 <button id="caluclo" class="w3-btn w3-padding w3-red" onclick="getLocation()">Calcular posicion</button><br>
                 <p id="enviado"></p>
+
                 <form name="inputform" action="index.php?module=chofer&action=enviarPosicionGps" method="post">
                     <input type="hidden" value="latitud" name="latitud" id="la">
                     <input type="hidden" value="longitud" name="longitud" id="lo">

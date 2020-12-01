@@ -20,8 +20,7 @@ class ViajeModel
     }
     public function listarViajes()
     {
-        $c=$this->database->prepare("SELECT viaje.id_viaje, viaje.estado,viaje.destino, viaje.cliente,viaje.matricula, usuario.dni, usuario.licencia_conduccion FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula
-                                     INNER JOIN usuario on vehiculo.matricula = usuario.matricula;");
+        $c=$this->database->prepare("SELECT viaje.id_viaje, viaje.estado,viaje.destino, viaje.cliente,viaje.matricula, usuario.dni, usuario.licencia_conduccion, gps.longitud , gps.longitud FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula INNER JOIN gps on viaje.id_gps = gps.id_gps INNER JOIN usuario on vehiculo.matricula = usuario.matricula");
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_all();

@@ -31,7 +31,7 @@ class ChoferController
         $la = $_POST["latitud"];
         $lo = $_POST["longitud"];
         echo  $this->render->render("view/partial/headerChofer.mustache",$_SESSION),
-        $this->render->render("view/MiViaje.php",$viaje["viaje"]);
+        $this->render->render("view/MiViaje.php",$viaje);
 
     }
 }
