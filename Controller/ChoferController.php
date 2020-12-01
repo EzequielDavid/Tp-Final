@@ -28,6 +28,7 @@ class ChoferController
     {
         $viaje["viaje"]=$this->viajeModel->mostrarViaje($_SESSION["dni"]);
         $this->gpsModel->guardarPosicionActual($_POST["latitud"],$_POST["longitud"]);
+
         $la = $_POST["latitud"];
         $lo = $_POST["longitud"];
         echo  $this->render->render("view/partial/headerChofer.mustache",$_SESSION),

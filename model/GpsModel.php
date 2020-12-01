@@ -15,5 +15,6 @@ class GpsModel
         $c=$this->database->prepare("INSERT INTO gps ( latitud,longitud ) VALUES (?,?)");
         $c->bind_param("dd",$latitud,$longitud);
         $c->execute();
+
     }
 }
