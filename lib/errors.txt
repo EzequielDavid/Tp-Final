@@ -1290,3 +1290,105 @@
 <b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
 <br />
 <b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_7\mask_41_7.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+2020-12-01 16:09:41: <br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\frame_7.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrspec.php</b> on line <b>568</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_0\mask_45_0.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_1\mask_45_1.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_2\mask_45_2.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_3\mask_45_3.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_4\mask_45_4.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_5\mask_45_5.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_6\mask_45_6.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_7\mask_45_7.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+2020-12-01 16:10:57: <br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\frame_6.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrspec.php</b> on line <b>568</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_0\mask_41_0.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_1\mask_41_1.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_2\mask_41_2.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_3\mask_41_3.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_4\mask_41_4.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_5\mask_41_5.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_6\mask_41_6.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_7\mask_41_7.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+2020-12-01 16:14:21: <br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\frame_7.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrspec.php</b> on line <b>568</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_0\mask_45_0.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_1\mask_45_1.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_2\mask_45_2.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_3\mask_45_3.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_4\mask_45_4.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_5\mask_45_5.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_6\mask_45_6.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />
+<br />
+<b>Warning</b>:  mkdir(): No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  file_put_contents(C:\xampp\htdocs\Tp-Final\lib\cache\mask_7\mask_45_7.dat): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\Tp-Final\lib\qrmask.php</b> on line <b>155</b><br />

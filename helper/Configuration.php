@@ -7,7 +7,6 @@ include_once ("model/VehiculoModel.php");
 include_once ("model/RolModel.php");
 include_once ("model/ViajeModel.php");
 include_once ("model/ClienteModel.php");
-include_once ("model/GpsModel.php");
 include_once ("model/SupervisorModel.php");
 include_once("Controller/InicioController.php");
 include_once ("Controller/UsuarioController.php");
@@ -83,15 +82,11 @@ class Configuration{
     {
         $usuarioModel = $this->getUsuarioModel();
         $viajeModel = $this->getViajeModel();
-        $gpsModel = $this->getGpsModel();
-        return new ChoferController($this->getRender(),$usuarioModel,$viajeModel,$gpsModel);
+
+        return new ChoferController($this->getRender(),$usuarioModel,$viajeModel);
     }
 
-    public function getGpsModel()
-    {
-        $database = $this->getDatabase();
-        return new GpsModel($database);
-    }
+
     public function getUsuarioController(){
         $usuarioModel = $this->getUsuarioModel();
         $rolModel = $this->getRolModel();
