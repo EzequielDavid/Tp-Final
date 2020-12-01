@@ -1,4 +1,3 @@
-{{>headerSupervisor}}
 <style>
     .hide {
         display: none;
@@ -106,7 +105,7 @@
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity w3-section"><b>ETA</b></label>
-                        <input class="w3-input w3-border w3-sand w3-opacity v_not_empty" name="eta" type="date"
+                        <input class="w3-input w3-border w3-sand w3-opacity v_not_empty" name="v_eta" type="date"
                                id="v_eta" required="">
                     </div>
 
@@ -135,7 +134,7 @@
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity"><b>Tipo de carga</b></label>
-                        <select class="w3-select w3-border w3-sand w3-opacity ca_not_empty" name="option">
+                        <select class="w3-select w3-border w3-sand w3-opacity ca_not_empty" name="tipo_carga">
                             <option value="" disabled selected>Tipo</option>
                             <option value="Granel">Granel</option>
                             <option value="CarCarrier">CarCarrier</option>
@@ -156,49 +155,49 @@
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity"><b>Hazard</b></label>
-                        <select class="w3-select w3-border w3-sand w3-opacity ca_not_empty" name="option" id="hazard">
+                        <select class="w3-select w3-border w3-sand w3-opacity ca_not_empty" name="ca_hazard" id="hazard">
                             <option value="" disabled selected>Hazard</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
 
                     <div class="w3-half w3-margin-bottom hide" id="hazard_container">
                         <label class="w3-text-orange w3-opacity"><b>IMO Class</b></label>
-                        <select class="w3-select w3-border w3-sand w3-opacity" name="option">
-                            <option value="" disabled selected>Clase</option>
-                            <option value="Granel">Explosivos</option>
-                            <option value="CarCarrier">Gases</option>
-                            <option value="20"
+                        <select class="w3-select w3-border w3-sand w3-opacity" name="imo_class">
+                            <option value="null" selected>Clase</option>
+                            <option value="Explosivos">Explosivos</option>
+                            <option value="Gases">Gases</option>
+                            <option value="Liquidos inflamables"
                             ">Liquidos inflamables</option>
-                            <option value="40"
+                            <option value="Sólidos o sustancias inflamables"
                             ">Sólidos o sustancias inflamables</option>
-                            <option value="Jaula">Sólidos inflamables</option>
-                            <option value="CarCarrier">Sustancias inflamables</option>
-                            <option value="CarCarrier">Sustancias oxidantes</option>
-                            <option value="CarCarrier">Peróxidos orgánicos</option>
-                            <option value="CarCarrier">Sustancias toxicas</option>
-                            <option value="CarCarrier">Sustancias infecciosas</option>
-                            <option value="CarCarrier">Sustancias radioactivas</option>
-                            <option value="CarCarrier">Sustancias inflamables</option>
-                            <option value="CarCarrier">Corrosivos</option>
-                            <option value="CarCarrier">Sustancias y artículos peligrosos</option>
+                            <option value="Sólidos inflamables">Sólidos inflamables</option>
+                            <option value="Sustancias inflamables">Sustancias inflamables</option>
+                            <option value="Sustancias oxidantes">Sustancias oxidantes</option>
+                            <option value="Peróxidos orgánicos">Peróxidos orgánicos</option>
+                            <option value="Sustancias toxicas">Sustancias toxicas</option>
+                            <option value="Sustancias infecciosas">Sustancias infecciosas</option>
+                            <option value="Sustancias radioactivas">Sustancias radioactivas</option>
+                            <option value="Sustancias inflamables">Sustancias inflamables</option>
+                            <option value="Corrosivos">Corrosivos</option>
+                            <option value="Sustancias y artículos peligrosos">Sustancias y artículos peligrosos</option>
                         </select>
                     </div>
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity"><b>Reefer</b></label>
-                        <select class="w3-select w3-border w3-sand w3-opacity ca_not_empty" id="refeer" name="option">
+                        <select class="w3-select w3-border w3-sand w3-opacity ca_not_empty" id="refeer" name="ca_reefer">
                             <option value="" disabled selected>Reefer</option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
 
                     <div class="w3-half w3-margin-bottom hide" id="refeer_container">
                         <label class="w3-text-orange w3-opacity"><b>Temperatura</b></label>
                         <input class="w3-input w3-border w3-sand w3-opacity" name="temperatura"
-                               type="text" id="temperatura" onkeypress="return solonumerosYPunto(event)" required="">
+                               type="text" id="temperatura" onkeypress="return solonumerosYPunto(event)">
                     </div>
 
                     <div class="c-mensaje w3-half w3-text-red w3-opacity" id="errorPaso3"></div>
@@ -229,38 +228,57 @@
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity"><b>ETD</b></label>
-                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="etd"
+                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="est_etd"
                                type="date" id="co_etd" placeholder="Tiempo estimado de partida"
                                onkeypress="return solonumerosYPunto(event)" required="">
                     </div>
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity w3-section"><b>ETA</b></label>
-                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="eta" type="date"
+                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="est_eta" type="date"
                                id="co_eta"
                                onkeypress="return solonumerosYPunto(event)" required="">
                     </div>
 
 
                     <div class="container-subtitulo">
-                        <h4 class="w3-text-orange w3-opacity"><b>Recorridos</b></h4>
+                        <h4 class="w3-text-orange w3-opacity"><b>Viajes</b></h4>
                     </div>
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity"><b>Kilometros</b></label>
-                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="kilometros"
+                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="est_kilometros"
                                type="text" placeholder="Kilometros a recorrer" id="kilometros"
                                onkeypress="return solonumerosYPunto(event)" required="">
                     </div>
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity"><b>Combustible</b></label>
-                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="combustible"
+                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="est_combustible"
                                type="text" id="combustible" placeholder="Combustible a utilizar"
                                onkeypress="return solonumerosYPunto(event)" required="">
                     </div>
 
-                    <div class="container-subtitulo">
+                    <div class="w3-half w3-margin-bottom">
+                        <label class="w3-text-orange w3-opacity"><b>Hazard</b></label>
+                        <select class="w3-select w3-border w3-sand w3-opacity co_not_empty" name="est_hazard" id="hazard" required="">
+                            <option value="" disabled selected>Incluye</option>
+                            <option value="Granel">Si</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <div class="w3-half w3-margin-bottom">
+                        <label class="w3-text-orange w3-opacity w3-section"><b>Reefer</b></label>
+                        <select class="w3-select w3-border w3-sand w3-opacity co_not_empty" name="est_reefer" id="reefer" required="">
+                            <option value="" disabled selected>Incluye</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+
+                        </select>
+                    </div>
+
+                    <div class="container-subtitulo" style="margin-top: 13rem;">
                         <h4 class="w3-text-orange w3-opacity"><b>Gastos</b></h4>
                     </div>
 
@@ -284,18 +302,6 @@
                     </div>
 
                     <div class="w3-half w3-margin-bottom">
-                        <label class="w3-text-orange w3-opacity"><b>Hazard</b></label>
-                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="hazard" id="hazard"
-                               type="text" onkeypress="return solonumerosYPunto(event)" required="">
-                    </div>
-
-                    <div class="w3-half w3-margin-bottom">
-                        <label class="w3-text-orange w3-opacity w3-section"><b>Reefer</b></label>
-                        <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="reefer"
-                               type="text" id="reefer" onkeypress="return solonumerosYPunto(event)" required="">
-                    </div>
-
-                    <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity w3-section"><b>Fee</b></label>
                         <input class="w3-input w3-border w3-sand w3-opacity co_not_empty" name="fee" type="text"
                                id="fee" onkeypress="return solonumerosYPunto(event)" required="">
@@ -311,7 +317,7 @@
                     <div class="w3-panel w3-section right">
                         <div class="w3-panel w3-section right" id="confirmar">
                             <input class="w3-btn w3-orange w3-opacity" type="submit" onclick="verificarPaso4();"
-                                   value="Confirmar">
+                                   value="Confirmar" id="btn_confirmar">
                         </div>
                     </div>
                 </div>
@@ -319,28 +325,4 @@
         </form>
     </div>
 </div>
-
-<script>
-    var paso1 = document.getElementById("paso1");
-    var paso2 = document.getElementById("paso2");
-    var paso3 = document.getElementById("paso3");
-    var paso4 = document.getElementById("paso4");
-    var confirmar = document.getElementById("confirmar");
-
-    function irPaso2(){
-        paso1.classList.toggle("hide");
-        paso2.classList.toggle("hide");
-    }
-
-    function irPaso3(){
-        paso2.classList.toggle("hide");
-        paso3.classList.toggle("hide");
-    }
-
-    function irPaso4(){
-        paso3.classList.toggle("hide");
-        paso4.classList.toggle("hide");
-        confirmar.classList.toggle("hide");
-    }
-</script>
 {{>footer}}
