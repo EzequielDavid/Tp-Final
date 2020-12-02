@@ -62,7 +62,7 @@ class SupervisorController
 
     public function cargarProforma()
     {
-        echo $this->render->render("view/partial/headerSupervisor.mustache"),
+        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
         $this->render->render("view/CargarProforma.php");
     }
 
@@ -124,5 +124,19 @@ class SupervisorController
         $fee = $_POST["fee"];
         $this->supervisorModel->guardarDatosEstimados($est_etd, $est_eta, $est_kilometros, $est_combustible, $est_hazard, $est_reefer, $viaticos, $peajes_pasajes, $extras, $fee);
         die();
+    }
+
+    public function listarVehiculosSupervisor()
+    {
+        $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosSupervisor();
+        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
+        $this->render->render("view/ListadoDeVehiculosSupervisor.php",$vehiculos),print_r($vehiculos);
+    }
+    public function asignarEstadoVehiculo()
+    {
+        $this->vehiculoModel->asignarEstadoVehiculo($_POST["estado"],$_POST["matricula"]);
+        $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosSupervisor();
+        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
+        $this->render->render("view/ListadoDeVehiculosSupervisor.php",$vehiculos),print_r($vehiculos);
     }
 }

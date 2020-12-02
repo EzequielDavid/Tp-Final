@@ -17,6 +17,18 @@ class VehiculoModel
         $vehiculo = $c->get_result();
         return $vehiculo->fetch_all();
     }
+    public function listarVehiculosSupervisor(){
+        $c=$this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'disponible'");
+
+        $c->execute();
+        $vehiculo = $c->get_result();
+        return $vehiculo->fetch_all();
+    }
+    public function asignarEstadoVehiculo($estado,$matricula){
+        $c=$this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
+        $c->bind_param("ss", $estado,$matricula);
+        $c->execute();
+    }
     public function listarArrastre(){
         $c=$this->database->prepare("SELECT * FROM `arrastre` ");
 
