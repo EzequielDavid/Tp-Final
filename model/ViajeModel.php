@@ -20,7 +20,8 @@ class ViajeModel
     }
     public function listarViajes()
     {
-        $c=$this->database->prepare("SELECT viaje.id_viaje, viaje.estado,viaje.destino, viaje.cliente,viaje.matricula, usuario.dni, usuario.licencia_conduccion, vehiculo.longitud, vehiculo.latitud FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula  INNER JOIN usuario on vehiculo.matricula = usuario.matricula WHERE viaje.destino not like 'ninguno'");
+        $c=$this->database->prepare("SELECT viaje.id_viaje, viaje.estado,viaje.destino, viaje.cliente,viaje.matricula, usuario.dni, usuario.licencia_conduccion FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula
+                                     INNER JOIN usuario on vehiculo.matricula = usuario.matricula;");
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_all();
@@ -32,11 +33,5 @@ class ViajeModel
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_all();
-    }
-    public function actualizarPosicionActual($idViaje,$latitud,$longitud)
-    {
-        $c=$this->database->prepare("UPDATE `vehiculo` SET `latitud` = ? , `longitud` = ? WHERE `vehiculo`.`matricula` = ?");
-        $c->bind_param("dds",$latitud,$longitud,$idViaje);
-        $c->execute();
     }
 }

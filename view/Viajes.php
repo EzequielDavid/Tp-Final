@@ -11,7 +11,6 @@
                 <th>Vehiculo</th>
                 <th>Chofer DNI</th>
                 <th>Chofer licencia</th>
-                <th>qr posicion actual</th>
             </tr>
             {{#viajes}}
             <tr>
@@ -22,7 +21,6 @@
                 <td>{{4}}  </td>
                 <td>{{5}}</td>
                 <td>{{6}}</td>
-                <td><img src="view/qrcode.php?latitud={{7}}&longitud={{8}}"></td>
 
             </tr>
             {{/viajes}}
