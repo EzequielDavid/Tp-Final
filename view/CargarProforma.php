@@ -14,7 +14,7 @@
         </div>
         <form class="w3-container" action="index.php?module=supervisor&action=cargarDatosParaProforma" method="POST">
 
-            <div id="paso1" class="w3-padding-32 hide">
+            <div id="paso1" class="w3-padding-32">
                 <div class="w3-row-padding">
                     <div class="container-titulo">
                         <h3 class="w3-text-orange w3-opacity">Cliente</h3>
@@ -214,7 +214,7 @@
                 </div>
             </div>
 
-            <div id="paso4" class="w3-padding-32">
+            <div id="paso4" class="w3-padding-32 hide">
                 <div class="w3-row-padding">
 
                     <div class="container-titulo">

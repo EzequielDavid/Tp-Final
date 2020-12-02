@@ -27,8 +27,15 @@ class VehiculoController
     public function agregarVehiculo()
     {
         $vehiculoAAgregar = $this->vehiculoModel->buscarVehiculo($_POST["matricula"]);
-        while ($vehiculoAAgregar == null)
+        if ($vehiculoAAgregar == null)
             $this->guardarDatosNuevoVehiculo();
+
+        if($vehiculoAAgregar != null)
+            $this->irPaginaError("Ya existe un vehículo con la misma patente");
+
+        else
+            $this->irPaginaError("Ocurrió un error insperado");
+
     }
 
     /**
@@ -40,6 +47,12 @@ class VehiculoController
         $this->render->render("view/$view", $vehiculos);
     }
 
+    public function irPaginaError($mensajeError)
+    {
+        echo $this->render->render("view/partial/headerAdministrador.mustache", $_SESSION),
+        $this->render->render("view/PaginaError.php", $mensajeError);
+    }
+
     public function guardarDatosNuevoVehiculo()
     {
         $matricula = $_POST["matricula"];
@@ -49,8 +62,8 @@ class VehiculoController
         $numero_motor = $_POST["numero_motor"];
         $marca = $_POST["marca"];
         $modelo = $_POST["modelo"];
-        $id_mantenimiento=null;
-        $this->vehiculoModel->registrarUsuario($matricula, $estado, $anio_fabricacion, $numero_chasis, $numero_motor, $marca, $modelo, $id_mantenimiento);
+        $id_mantenimiento = null;
+        $this->vehiculoModel->registrarVehiculo($matricula, $estado, $anio_fabricacion, $numero_chasis, $numero_motor, $marca, $modelo, $id_mantenimiento);
         $this->listarVehiculos();
         die();
     }
