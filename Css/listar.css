@@ -1,19 +1,19 @@
-.container-list{
-    height:100%;
+.container-list {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.container-list-sm{
+.container-list-sm {
     width: 100%;
 }
 
-.table-list{
+.table-list {
     margin: 1rem 0;
 }
 
-.td-list{
+.td-list {
     padding: 2rem 1rem !important;
 }
 
@@ -22,17 +22,20 @@
     height: 100vh;
 }
 
-.img-nova{
-    max-width:1500px;
-    height:100vh;
+.img-nova {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: left;
+
 }
 
 
-.btn-wider{
+.btn-wider {
     width: 90%;
 }
 
-.display-top-right{
+.display-top-right {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -42,43 +45,143 @@
 
 
 /*RegistrarVehiculo*/
-.margin-topbottom{
+.margin-topbottom {
     margin-top: 8rem;
     margin-bottom: 5rem;
 }
 
 /*RegistrarVehiculo*/
-.container-titulo, .container-subtitulo{
+.container-titulo, .container-subtitulo {
     margin-bottom: 2rem;
     padding-right: 8px;
     padding-left: 8px;
 }
 
-.container-subtitulo{
+.container-subtitulo {
     margin-top: 8rem;
     margin-bottom: 1rem;
 }
 
-.container-titulo h3{
+.container-titulo h3 {
     padding: 0;
     margin-bottom: -0.8rem;
 }
 
 
-.right{
+.right {
     display: flex;
     justify-content: flex-end;
     width: 100%;
 
 }
 
-.container-botones{
+.container-botones {
     width: 100%;
     display: flex;
 }
 
-.space-between{
+.space-between {
     display: flex !important;
     justify-content: space-between !important;
     margin-top: 2rem;
+}
+
+/* TABLAS*/
+.container-datos-full {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.datos-full {
+    background-color: #171717;
+    width: 90%;
+    height: 100%;
+    min-height: 40.114rem !important;
+}
+
+
+@media (max-width: 715px) {
+    .responsive-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 520px) {
+    .display-top-right {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1rem;
+    }
+}
+
+
+/*RESPONSIVE NAV*/
+.topnav {
+    overflow: hidden;
+}
+
+.topnav a, .topnav button, .topnav button a {
+    float: right;
+    display: block;
+    text-align: center;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+.show-on-small, .show-on-small a {
+    visibility: hidden !important;
+    width: 0rem;
+    height: 0rem;
+}
+
+@media screen and (max-width: 680px) {
+    .topnav a:not(:last-child), .topnav button {
+        display: none;
+    }
+
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+
+    .topnav a:first-child {
+        margin-top: 2rem;
+    }
+
+    .show-on-small, .show-on-small a {
+        visibility: visible !important;
+        width: auto;
+        height: auto;
+    }
+
+    .show-on-small a {
+        margin-top: 0rem !important;;
+    }
+
+    .w3-hide-small-nav {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .topnav.responsive {
+        position: relative;
+    }
+
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a, .topnav.responsive button, .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: right;
+    }
 }

@@ -57,7 +57,6 @@ class SupervisorController
         $viaje["viaje"] = $this->viajeModel->mostrarViaje($_POST["dni"]);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
         $this->render->render("view/DetalleViaje.php", $viaje);
-
     }
 
     public function cargarProforma()
