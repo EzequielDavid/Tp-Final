@@ -29,7 +29,10 @@
                 <td>{{4}}</td>
                 <td>{{6}}</td>
                 <td>{{12}}</td>
-                <td><a href='../Controlador/ControladorPokemon.php?idBorrar=$v[0]' class='w3-button w3-black btn-wider'>Iniciar Service</a>
+                <td><form action="index.php?module=encargadoDeTaller&action=mantenimiento" method="post" class="w3-third">
+                        <input type="hidden" name="matricula" value="{{0}}">
+                        <input class="w3-btn w3-orange w3-margin-top" type="submit" value="Iniciar Mantenimiento">
+                    </form>
                 </td>
             </tr>
             {{/vehiculos}}

@@ -10,53 +10,64 @@ class VehiculoModel
         $this->database = $database;
     }
 
-    public function listarVehiculos(){
-        $c=$this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` NOT LIKE 'ninguna'");
-
-        $c->execute();
-        $vehiculo = $c->get_result();
-        return $vehiculo->fetch_all();
-    }
-    public function listarVehiculosSupervisor(){
-        $c=$this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'disponible'");
+    public function listarVehiculos()
+    {
+        $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` NOT LIKE 'ninguna'");
 
         $c->execute();
         $vehiculo = $c->get_result();
         return $vehiculo->fetch_all();
     }
 
-    public function listarVehiculosParaService(){
-        $c=$this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'mantenimiento'");
+    public function listarVehiculosSupervisor()
+    {
+        $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'disponible'");
 
         $c->execute();
         $vehiculo = $c->get_result();
         return $vehiculo->fetch_all();
     }
-    public function asignarEstadoVehiculo($estado,$matricula){
-        $c=$this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
-        $c->bind_param("ss", $estado,$matricula);
+
+    public function listarVehiculosParaService()
+    {
+        $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'mantenimiento'");
+
+        $c->execute();
+        $vehiculo = $c->get_result();
+        return $vehiculo->fetch_all();
+    }
+
+    public function asignarEstadoVehiculo($estado, $matricula)
+    {
+        $c = $this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
+        $c->bind_param("ss", $estado, $matricula);
         $c->execute();
     }
-    public function listarArrastre(){
-        $c=$this->database->prepare("SELECT * FROM `arrastre` ");
+
+    public function listarArrastre()
+    {
+        $c = $this->database->prepare("SELECT * FROM `arrastre` ");
 
         $c->execute();
         $arrastre = $c->get_result();
         return $arrastre->fetch_all();
     }
+
     public function cambiarEstadoDeVehiculoAOcupado($matricula)
     {
-        $c=$this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
+        $c = $this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
         $ocupado = "ocupado";
-        $c->bind_param("ss", $ocupado,$matricula);
+        $c->bind_param("ss", $ocupado, $matricula);
         $c->execute();
     }
 
-    public function buscarVehiculo($matricula){
+    public function buscarVehiculo($matricula)
+    {
         $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` LIKE ?");
-        $c->bind_param("i", $matricula);
+        $c->bind_param("s", $matricula);
         $c->execute();
-        return $c->get_result()->fetch_assoc();
+        $vehiculo = $c->get_result();
+        return $vehiculo->fetch_all();
 
     }
 
@@ -66,4 +77,13 @@ class VehiculoModel
         $c->bind_param("ssssissi", $matricula, $estado, $anio_fabricacion, $numero_chasis, $numero_motor, $marca, $modelo, $id_mantenimiento);
         $c->execute();
     }
+
+    public function actualizarUltimaFechaDeMantenimiento($matricula, $fechaMantenimiento)
+    {
+        $c = $this->database->prepare("UPDATE vehiculo SET ultimo_service = ?, estado = ? WHERE matricula = ?");
+        $disponible = "disponible";
+        $c->bind_param("sss", $fechaMantenimiento, $disponible, $matricula);
+        $c->execute();
+    }
+
 }
