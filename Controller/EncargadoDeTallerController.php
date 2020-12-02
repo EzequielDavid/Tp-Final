@@ -16,6 +16,8 @@ class EncargadoDeTallerController
 
     public function listarVehiculosParaService()
     {
-
+        $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosParaService();
+        echo $this->render->render("view/partial/headerEncargadoDeTaller.mustache",$_SESSION),
+        $this->render->render("view/ListadoDeVehiculosParaService.php",$vehiculos),print_r($vehiculos);
     }
 }
