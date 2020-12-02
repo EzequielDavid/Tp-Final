@@ -21,10 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="7452c302-1d08-477b-9a09-e89777dace8e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/ChoferController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/ChoferController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ViajeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ViajeModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/partial/headerChofer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partial/headerChofer.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/InicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/InicioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/SupervisorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/SupervisorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Der Draw.io/proforma.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Der Draw.io/proforma.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SupervisorModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SupervisorModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/CargarProforma.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/CargarProforma.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +45,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7" />
   <component name="ProjectId" id="1kZe1CsVT6AZi98ZNol9pz3pkrY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -51,10 +53,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ong-team-7" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Tp-Final\view" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -71,7 +78,11 @@
       <workItem from="1606359457498" duration="635000" />
       <workItem from="1606429036515" duration="248000" />
       <workItem from="1606517287867" duration="1667000" />
-      <workItem from="1606587504116" duration="20982000" />
+      <workItem from="1606587504116" duration="21640000" />
+      <workItem from="1606670269685" duration="2472000" />
+      <workItem from="1606787865443" duration="166000" />
+      <workItem from="1606868783632" duration="2873000" />
+      <workItem from="1606926802430" duration="3392000" />
     </task>
     <servers />
   </component>
@@ -88,11 +99,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1606608977431">
+    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1606788029932">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="185" key="FileChooserDialogImpl/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1606608977431" />
+    <state x="580" y="185" key="FileChooserDialogImpl/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1606788029932" />
+    <state x="634" y="353" key="NewPhpFileDialog" timestamp="1606869345795">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="634" y="353" key="NewPhpFileDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1606869345795" />
   </component>
 </project>

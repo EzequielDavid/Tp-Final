@@ -66,7 +66,7 @@ class SupervisorController
         $this->render->render("view/CargarProforma.php");
     }
 
-    public function cargarClienteParaProforma()
+    public function cargarDatosParaProforma()
     {   
         $cliente = $this->clienteModel->buscarCliente($_POST["cuit"]);
         while ($cliente == null)
