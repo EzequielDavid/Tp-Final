@@ -11,15 +11,14 @@ class UsuarioModel
         $this->database = $database;
     }
 
-    public function registrarUsuario($dni, $name, $surname, $email, $password,$licencia=false, $nacimiento, $rol, $matricula=false)
+    public function registrarUsuario($dni, $name, $surname, $email, $password, $licencia = false, $nacimiento, $rol, $matricula = false)
     {
-        if($licencia==false)
-        {
-            $licencia=null;
+        if ($licencia == false) {
+            $licencia = null;
         }
 
         $c = $this->database->prepare("INSERT INTO usuario ( dni, nombre, apellido, email, pasword,licencia_conduccion,fecha_nac, id_rol, matricula) VALUES (?,?,?,?,?,?,?,?,?)");
-        $c->bind_param("issssisis", $dni, $name, $surname, $email, $password,$licencia, $nacimiento, $rol, $matricula);
+        $c->bind_param("issssisis", $dni, $name, $surname, $email, $password, $licencia, $nacimiento, $rol, $matricula);
         $c->execute();
         header("Location: index.php?module=inicio&action=execute");
     }
@@ -67,9 +66,9 @@ class UsuarioModel
                                         INNER JOIN vehiculo on usuario.matricula = vehiculo.matricula
                                         INNER JOIN viaje on vehiculo.matricula = viaje.matricula
                                         WHERE usuario.id_rol  LIKE 4");
-            $c->execute();
-            $usuario = $c->get_result();
-            return $usuario->fetch_all();
+        $c->execute();
+        $usuario = $c->get_result();
+        return $usuario->fetch_all();
 
     }
 
@@ -87,30 +86,18 @@ class UsuarioModel
         $c->execute();
     }
 
+    public function listarBackupUsuario()
+    {
+        $c = $this->database->prepare("SELECT * FROM `usuario_borrado`");
+        $c->execute();
+        $usuario = $c->get_result();
+        return $usuario->fetch_all();
+    }
+
     public function asignarVehiculoAChofer($matricula, $dni)
     {
         $c = $this->database->prepare("UPDATE usuario SET matricula = ? WHERE dni = ?");
         $c->bind_param("si", $matricula, $dni);
         $c->execute();
     }
-
-    /* public function bloquearUsuario($dni)
-     {
-         $c = $this->verificarSiEstaBloqueado();
-
-         $c->bind_param("i", $dni);
-         $c->execute();
-     }
-
-
-     public function verificarSiEstaBloqueado()
-     {
-         $c = $this->database->prepare("SELECT `usuario` WHERE `usuario`.`dni` = ?");
-         if ($c["id_rol"] == 5)
-             $c = $this->database->prepare("UPDATE `usuario` SET `id_rol` = 0 WHERE `usuario`.`dni` = ?");
-
-         else if ($c["id_rol"] == 0)
-             $c = $this->database->prepare("UPDATE `usuario` SET `id_rol` = 5 WHERE `usuario`.`dni` = ?");
-             return $c;
-     }*/
 }

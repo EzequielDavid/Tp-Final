@@ -21,11 +21,18 @@ class UsuarioController
 
     public function listarUsuario()
     {
-        $usuarios["usuarios"]= $this->usuarioModel->listarUsuarios();
+        $usuarios["usuarios"] = $this->usuarioModel->listarUsuarios();
         //  die($usuarios["usuarios"]);
-        echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
-        $this->render->render("view/ListadoDeUsuarios.php",$usuarios);
+        echo $this->render->render("view/partial/headerAdministrador.mustache", $_SESSION),
+        $this->render->render("view/ListadoDeUsuarios.php", $usuarios);
 
+    }
+
+
+    public function listarBackupUsuario()
+    {
+        $usuarios["usuarios"] = $this->usuarioModel->listarBackupUsuario();
+        $this->rederHeaderYUsuario($usuarios);
     }
 
     public function asignarRolUsuario()
@@ -66,17 +73,13 @@ class UsuarioController
         if ($_SESSION["rol"] != null) {
 
             $rol = $this->rolModel->buscarRolNombre($_SESSION["rol"]);
-            if($rol["rol"] == "chofer")
-            {
+            if ($rol["rol"] == "chofer") {
                 echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
                 $this->render->render("view/Miviaje.php", $_SESSION);
-            }
-            else{
+            } else {
                 echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
-                $this->render->render("view/Inicio.php", $_SESSION),
-                print_r($rol);
+                $this->render->render("view/Inicio.php", $_SESSION);
             }
-
 
         } else {
             $_SESSION["rol"] = "";
@@ -122,14 +125,14 @@ class UsuarioController
     public function guardarDatosNuevoUsuarioAdm()
     {
         $dni = $_POST["dni"];
-        $licencia= $_POST["licencia"];
+        $licencia = $_POST["licencia"];
         $name = $_POST["name"];
         $surname = $_POST["surname"];
         $email = $_POST["email"];
         $password = $_POST["password"];
         $nacimiento = $_POST["nacimiento"];
-        $matricula= $_POST["matricula"];
-        $this->usuarioModel->registrarUsuario($dni, $name, $surname, $email, $password,$licencia,$nacimiento, 1, $matricula);
+        $matricula = $_POST["matricula"];
+        $this->usuarioModel->registrarUsuario($dni, $name, $surname, $email, $password, $licencia, $nacimiento, 1, $matricula);
         header('Location: index.php?module=inicio&action=execute');
         die();
     }
@@ -144,7 +147,7 @@ class UsuarioController
         $email = $_POST["email"];
         $password = $_POST["password"];
         $rol = $_POST["rol"];
-        $this->usuarioModel->registrarUsuario($dni, $name, $surname,$email, $password,$licencia,$nacimiento, 0, "ninguna");
+        $this->usuarioModel->registrarUsuario($dni, $name, $surname, $email, $password, $licencia, $nacimiento, 0, "ninguna");
         header('Location: index.php?module=inicio&action=execute');
         die();
     }

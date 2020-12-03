@@ -1,12 +1,14 @@
-<header class="w3-display-container w3-content w3-wide header-nova" id="home">
-    <img class="w3-image img-nova" src="img/nova.png" alt="Architecture">
-    <div class="w3-display-middle w3-margin-top w3-center">
-    </div>
-</header>
 <body>
-<div class="w3-container w3-display-container margin-top w3-padding container-list">
-    <div class="w3-container w3-orange w3-hide-small w3-margin w3-padding container-list-sm">
-        <h2>Usuarios Registrados</h2>
+<div class="w3-container w3-display-container margin-top w3-padding container-list form-container">
+    <div class="w3-container w3-orange w3-margin w3-padding container-list-sm">
+        <h2>Usuarios</h2>
+        <h5>Todos los usuarios que se encuentran registrados</h5>
+        <div class="display-top-right" style="margin-top: -1.5rem;">
+            <a href='index.php?module=usuario&action=listarUsuario' class='w3-button w3-teal'>Listado usuarios</a>
+        </div>
+        <div class="display-top-right" style="margin-top: -1.5rem;">
+            <a href='index.php?module=usuario&action=listarBackupUsuario' class='w3-button w3-teal'>Backup usuarios</a>
+        </div>
         <table class="w3-table-all w3-card-4 table-list">
             <tr>
                 <th>DNI</th>
@@ -39,10 +41,6 @@
                         <input type="hidden" name="dni" value={{0}}>
                         <input class="w3-btn w3-red w3-margin-bottom btn-wider" type="submit" value="Borrar Usuario">
                     </form>
-                    <!--<form action="index.php?module=usuario&action=bloquearUsuario" method="POST">
-                        <input type="hidden" name="dni" value={{0}}>
-                        <input class="w3-btn w3-black w3-margin-right" type="submit" value="Bloquear">
-                    </form>-->
                 </td>
             </tr>
             {{/usuarios}}
