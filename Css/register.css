@@ -1,0 +1,70 @@
+body {
+  background-image: url("../img/register.png");
+  background-color: #171717;
+}
+
+.wrap {
+  width: 90%;
+  margin: auto;
+  margin-top: 2%;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-around;
+}
+
+.register {
+  border-radius: 10px;
+}
+
+#img-container {
+  width: 36.6032210835%;
+}
+
+#img-container img {
+  width: 100%;
+}
+
+#home a {
+  text-decoration: none;
+}
+
+.error
+{
+    display: none;
+}
+
+@media (max-width: 1000px) {
+  #img-container {
+    width: 50%;
+  }
+}
+@media (max-width: 650px) {
+  #img-container {
+    width: 100%;
+  }
+
+  .wrap {
+    margin-top: 25%;
+    display: block;
+    position: relative;
+  }
+
+  .wrap form {
+    display: inline-block;
+    width: 80% !important;
+    top: 80px;
+    position: absolute;
+    margin-left: 7%;
+  }
+
+  .register {
+    background-color: black !important;
+    color: white !important;
+  }
+
+  .w3-opacity {
+    opacity: 0.9 !important;
+  }
+}
+
+/*# sourceMappingURL=register.css.map */

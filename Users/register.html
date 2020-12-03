@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Css/register.css">
+    <script defer src="../Js/registerValidation.js"></script>
+    <title>Register</title>
+</head>
+<body>
+    <div class="wrap">
+        <div id="register" class="w3-container w3-black w3-round-large w3-col s6">
+            <form method="post" onsubmit="return validate()" class="w3-container w3-card-4 w3-text-orange w3-margin">
+                <h2 class="w3-center">Register</h2>
+                 
+                <div class="w3-row w3-section">
+                  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                      <input id="name" class="w3-input" name="first" type="text" placeholder="First Name">
+                    </div>
+                    <div class="w3-center error" id="nameError">Insert a correct name</div>
+                </div>
+                
+                <div class="w3-row w3-section">
+                  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                      <input id="lastName" class="w3-input" name="last" type="text" placeholder="Last Name">
+                    </div>
+                    <div class="w3-center error" id="lastNameError">Insert a correct last name</div>
+                </div>
+                
+                <div class="w3-row w3-section">
+                  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+                    <div class="w3-rest">
+                      <input id="email" class="w3-input" name="email" type="email" placeholder="Email">
+                    </div>
+                    <div class="w3-center error" id="emailError">Insert a correct email</div>
+                </div>
+                
+                <div class="w3-row w3-section">
+                  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-lock"></i></div>
+                    <div class="w3-rest">
+                      <input id="password" class="w3-input" name="password" type="password" placeholder="Password">
+                    </div>
+                    <div class="w3-center error" id="passwordError">insert a password higher than 8 digits</div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-lock"></i></div>
+                      <div class="w3-rest">
+                        <input id="confirmPassword" class="w3-input" name="confirmPassword" type="password" placeholder="Confirm Password">
+                      </div>
+                      <div class="w3-center error" id="confirmPasswordError">The password is not a same</div>
+                  </div>
+
+                  <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-calendar"></i></div>
+                      <div class="w3-rest">
+                        <input id="birth" class="w3-input" name="birth" type="date" placeholder="Year of birth">
+                      </div>
+                      <div class="w3-center error" id="birthError">Must be higher than 18 years old</div>
+                  </div>
+                
+                <div class="w3-row w3-section">
+                  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-id-card"></i></div>
+                    <div class="w3-rest">
+                      <input id="dni" class="w3-input" name="dni" type="number" placeholder="Dni">
+                    </div>
+                    <div class="w3-center error" id="dniError">The ID must contain 8 digits </div>  
+                </div>
+                
+                <input id="register" class="w3-btn w3-section w3-orange w3-hover-blue  w3-padding" type="submit" value="Register">
+                <button id="home" class="w3-btn w3-section w3-orange w3-hover-blue w3-padding"><a href="../index.php">Home</a></button>
+                
+                </form>
+        
+        </div>
+ </div>
+</body>
+</html>

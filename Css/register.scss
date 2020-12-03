@@ -1,0 +1,82 @@
+@mixin fromPixel($measure,$width) 
+{
+    width: $measure / $width * 100%;
+}
+
+body
+{
+    background-image: url("../img/register.png");
+    background-color: rgb(23,23,23);
+}
+.wrap
+{
+    width: 90%;
+    margin: auto;
+    margin-top: 2%;
+    opacity: 0.8;
+    display: flex;
+    justify-content: space-around;
+
+}
+.register
+{
+  border-radius: 10px;
+}
+#img-container
+{
+    @include fromPixel(500px,1366px)
+}
+
+#img-container img
+{
+    width: 100%;
+}
+
+#home a
+{
+    text-decoration: none;
+}
+
+
+
+//RESPONSIVE
+@media(max-width:1000px)
+{
+    #img-container
+{
+    @include fromPixel(500px,1000px)
+}
+}
+
+@media(max-width:650px)
+{
+    #img-container
+{
+    @include fromPixel(500px,500px)
+}
+.wrap
+{
+    margin-top: 25%;
+    display: block;
+    position: relative;
+}
+.wrap form
+{
+    display: inline-block;
+    width: 80% !important;
+    top: 80px;
+    position: absolute;
+    margin-left: 7%;
+}
+
+.register
+{
+    background-color: black !important;
+    color: white !important;
+}
+.w3-opacity
+{
+    opacity: 0.9 !important;
+}
+
+}
