@@ -95,7 +95,7 @@ class SupervisorController
         $destino = $_POST["destino"];
         $fecha_carga = $_POST["fecha_carga"];
         $eta = $_POST["v_eta"];
-        $this->viajeModel->crearviajeProforma($cliente, $origen, $destino, $fecha_carga, $eta);
+        $this->viajeModel->crearViajeProforma($cliente, $origen, $destino, $fecha_carga, $eta);
     }
 
     public function guardarCarga()

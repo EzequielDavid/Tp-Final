@@ -6,28 +6,23 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-    </expand>
-    <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-    </select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="7452c302-1d08-477b-9a09-e89777dace8e" name="Default Changelist" comment=""/>
+    <list default="true" id="7452c302-1d08-477b-9a09-e89777dace8e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/InicioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/InicioController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/SupervisorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/SupervisorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Der Draw.io/proforma.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Der Draw.io/proforma.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/SupervisorModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SupervisorModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/CargarProforma.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/CargarProforma.php" afterDir="false" />
-
-    <list default="true" id="7452c302-1d08-477b-9a09-e89777dace8e" name="Default Changelist" comment="se completó agregarVehículo">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova_texto.png" beforeDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/model/ViajeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ViajeModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,17 +75,14 @@
       <workItem from="1606359457498" duration="635000" />
       <workItem from="1606429036515" duration="248000" />
       <workItem from="1606517287867" duration="1667000" />
-
       <workItem from="1606587504116" duration="21640000" />
       <workItem from="1606670269685" duration="2472000" />
       <workItem from="1606787865443" duration="166000" />
       <workItem from="1606868783632" duration="2873000" />
       <workItem from="1606926802430" duration="3392000" />
-
       <workItem from="1606587504116" duration="20982000" />
       <workItem from="1606948055573" duration="9656000" />
       <workItem from="1606965908747" duration="598000" />
-
     </task>
     <task id="LOCAL-00001" summary="se completó agregarVehículo">
       <created>1606960466469</created>
@@ -122,18 +114,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1606788029932">
-      <screen x="0" y="0" width="1600" height="860" />
-    </state>
-    <state x="580" y="185" key="FileChooserDialogImpl/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1606788029932" />
-    <state x="634" y="353" key="NewPhpFileDialog" timestamp="1606869345795">
-      <screen x="0" y="0" width="1600" height="860" />
-    </state>
-    <state x="634" y="353" key="NewPhpFileDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1606869345795" />
-
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="se completó agregarVehículo" />
@@ -177,6 +157,6 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606966241533" />
->>>>>>> 7709baf217c52dae40f839520a4d5fba207562de
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt; 7709baf217c52dae40f839520a4d5fba207562de
   </component>
 </project>
