@@ -19,6 +19,13 @@ class VehiculoController
         $this->renderTo($vehiculos, "ListadoDeVehiculos.php");
     }
 
+    public function listarBackupVehiculo()
+    {
+        $vehiculos["vehiculos"] = $this->vehiculoModel->listarBackupVehiculo();
+
+        $this->renderTo($vehiculos, "ListadoDeVehiculos.php");
+    }
+
     public function registrarVehiculo()
     {
         $this->renderTo(null, "RegistrarVehiculo.php");
@@ -27,14 +34,13 @@ class VehiculoController
     public function agregarVehiculo()
     {
         $vehiculoAAgregar = $this->vehiculoModel->buscarVehiculo($_POST["matricula"]);
-        if ($vehiculoAAgregar == null)
-            $this->guardarDatosNuevoVehiculo();
 
-        if($vehiculoAAgregar != null)
-            $this->irPaginaError("Ya existe un vehículo con la misma patente");
+        $this->guardarDatosNuevoVehiculo();
+    }
 
-        else
-            $this->irPaginaError("Ocurrió un error insperado");
+    public function borrarVehiculo(){
+        $this->vehiculoModel->borrarVehiculo($_POST["matricula"]);
+        $this->listarVehiculos();
 
     }
 

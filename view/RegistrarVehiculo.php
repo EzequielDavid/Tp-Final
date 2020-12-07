@@ -1,8 +1,3 @@
-<style>
-    .form-flota{
-        margin-left: 1rem !important;
-    }
-</style>
 <body>
 
 <!-- Container - Upload -->
@@ -61,10 +56,12 @@
 
                     <div class="w3-half w3-margin-bottom">
                         <label class="w3-text-orange w3-opacity"><b>Estado del vehículo</b></label>
-                        <select class="w3-select w3-border w3-sand w3-opacity" name="estado" id="vehiculo_estado" required="">
+                        <select class="w3-select w3-border w3-sand w3-opacity" name="estado" id="vehiculo_estado"
+                                required="">
                             <option value="Sin especificar" selected>Estado</option>
                             <option value="Disponible">Disponible</option>
                             <option value="En viaje">En viaje</option>
+                            <option value="En mantenimiento">En mantenimiento</option>
                             <option value="Parado">Parado</option>
                         </select>
                     </div>
@@ -73,7 +70,8 @@
             </div>
 
             <div class="w3-panel w3-section">
-                <input class="w3-btn w3-orange w3-opacity" type="submit" value="Añadir" onclick="validarAgregarVehiculo();"></p>
+                <input class="w3-btn w3-orange w3-opacity" type="submit" value="Añadir"
+                       onclick="validarAgregarVehiculo();"></p>
             </div>
         </form>
     </div>
