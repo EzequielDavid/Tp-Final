@@ -33,14 +33,12 @@ class SupervisorController
 
     public function prepararViaje()
     {
-
         $chofer = $this->usuarioModel->buscarUsuarioPorDni($_POST["dni"]);
         $vehiculo = $this->vehiculoModel->listarVehiculos();
         $arrastre = $this->vehiculoModel->listarArrastre();
         $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
         $this->render->render("view/PrepararViaje.php", $datos), print_r($datos), "<br>", print_r($arrastre);
-
     }
 
     public function asignarViaje()
@@ -48,8 +46,7 @@ class SupervisorController
         $this->viajeModel->crearViaje($_POST["cliente"], $_POST["destino"], $_POST["kmviaje"], $_POST["matricula"], $_POST["patente"]);
         $this->usuarioModel->asignarVehiculoAChofer($_POST["matricula"], $_POST["dni"]);
         $this->vehiculoModel->cambiarEstadoDeVehiculoAOcupado($_POST["matricula"]);
-        echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
-        $this->render->render("view/Inicio.php");
+        $this->volverAInicio();
     }
 
     public function detalleViaje()
@@ -66,14 +63,16 @@ class SupervisorController
     }
 
     public function cargarClienteParaProforma()
-    {   
+    {
         $cliente = $this->clienteModel->buscarCliente($_POST["cuit"]);
-        while ($cliente == null)
+        if ($cliente == null)
             $this->guardarNuevoCliente();
 
-        $this->guardarCarga();
         $this->guardarViaje();
+        $this->guardarCarga();
         $this->guardarDatosEstimados();
+
+        $this->volverAInicio();
     }
 
     public function guardarNuevoCliente()
@@ -90,12 +89,12 @@ class SupervisorController
 
     public function guardarViaje()
     {
-        $cliente = $this->clienteModel->buscarCliente($_POST["cuit"]);
+        $cliente = $_POST["cuit"];
         $origen = $_POST["origen"];
         $destino = $_POST["destino"];
         $fecha_carga = $_POST["fecha_carga"];
         $eta = $_POST["v_eta"];
-        $this->viajeModel->crearviajeProforma($cliente, $origen, $destino, $fecha_carga, $eta);
+        $this->viajeModel->crearViajeProforma($cliente, $origen, $destino, $fecha_carga, $eta);
     }
 
     public function guardarCarga()
@@ -122,6 +121,11 @@ class SupervisorController
         $extras = $_POST["extras"];
         $fee = $_POST["fee"];
         $this->supervisorModel->guardarDatosEstimados($est_etd, $est_eta, $est_kilometros, $est_combustible, $est_hazard, $est_reefer, $viaticos, $peajes_pasajes, $extras, $fee);
-        die();
+    }
+
+    public function volverAInicio()
+    {
+        echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
+        $this->render->render("view/Inicio.php");
     }
 }
