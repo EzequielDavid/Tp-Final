@@ -1,6 +1,5 @@
 <?php
 
-
 class SupervisorController
 {
     private $render;
@@ -9,9 +8,9 @@ class SupervisorController
     private $viajeModel;
     private $clienteModel;
     private $supervisorModel;
+    private $pdfModel;
 
-
-    public function __construct($render, $usuarioModel, $vehiculoModel, $viajeModel, $clienteModel, $supervisorModel)
+    public function __construct($render, $usuarioModel, $vehiculoModel, $viajeModel, $clienteModel, $supervisorModel,$pdfModel)
     {
         $this->render = $render;
         $this->usuarioModel = $usuarioModel;
@@ -19,8 +18,10 @@ class SupervisorController
         $this->viajeModel = $viajeModel;
         $this->clienteModel = $clienteModel;
         $this->supervisorModel = $supervisorModel;
+        $this->pdfModel = $pdfModel;
 
     }
+
 
     public function listarChoferes()
     {
@@ -123,5 +124,15 @@ class SupervisorController
         $fee = $_POST["fee"];
         $this->supervisorModel->guardarDatosEstimados($est_etd, $est_eta, $est_kilometros, $est_combustible, $est_hazard, $est_reefer, $viaticos, $peajes_pasajes, $extras, $fee);
         die();
+    }
+
+    public function cargarProformaPdf()
+    {
+        $datosCarga=
+            [
+               //hacerlo con el boton asi llegan los datos por post
+        ];
+        $pdf = $this->pdfModel->basePdf($datosCarga);
+        echo $this->render->render("view/fpdf.php",['pdf'=>$pdf]);
     }
 }

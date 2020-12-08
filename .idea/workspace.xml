@@ -22,7 +22,9 @@
     <list default="true" id="7452c302-1d08-477b-9a09-e89777dace8e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/SupervisorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/SupervisorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ViajeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ViajeModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SupervisorModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SupervisorModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/CargarProforma.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/CargarProforma.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="loginFix" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,6 +59,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Tp-Final\model" />
       <recent name="C:\xampp\htdocs\Tp-Final\view" />
     </key>
   </component>
@@ -120,6 +123,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="se completó agregarVehículo" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607382819664">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="530" y="177" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1607382819664" />
     <state x="502" y="127" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1606957418871">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -129,6 +136,14 @@
     </state>
     <state x="495" y="157" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606966068388" />
     <state x="580" y="185" key="FileChooserDialogImpl/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1606608977431" />
+    <state x="606" y="153" key="NewPhpClassDialog" timestamp="1607394572638">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="606" y="153" key="NewPhpClassDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1607394572638" />
+    <state x="634" y="353" key="NewPhpFileDialog" timestamp="1607393965051">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="634" y="353" key="NewPhpFileDialog/1600.126.1366.728/0.0.1600.860@0.0.1600.860" timestamp="1607393965051" />
     <state x="498" y="297" key="ReplaceDuplicatesPrompt" timestamp="1606957429303">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -157,6 +172,5 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606966241533" />
-    &gt;&gt;&gt;&gt;&gt;&gt;&gt; 7709baf217c52dae40f839520a4d5fba207562de
   </component>
 </project>
