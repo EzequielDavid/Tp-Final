@@ -25,30 +25,20 @@
         </div>
 
         <div id="myTopnav" class="w3-right w3-show w3-wide topnav">
-            <a href="#" class="w3-bar-item w3-button w3-hover-orange">Viajes</a>
+            <a href="index.php?module=viaje&action=listarViajesAdmin"
+               class="w3-bar-item w3-button w3-hover-orange">Viajes</a>
             <a href="index.php?module=vehiculo&action=listarVehiculos"
                class="w3-bar-item w3-button w3-hover-orange">Flota</a>
             <a href="index.php?module=usuario&action=listarUsuario"
                class="w3-bar-item w3-button w3-hover-orange">Usuarios</a>
-            <button class='submit createAccount w3-round-large margin-top w3-black show-on-small' style="float: right;"><a
-                    href='index.php?module=usuario&action=logout'>Log out</a></button>
+            <button class='submit createAccount w3-round-large margin-top w3-black show-on-small' style="float: right;">
+                <a href="index.php?module=usuario&action=logout">Log out</a></button>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars" style="margin-top: 0.8rem;"></i>
             </a>
         </div>
     </div>
 </div>
-
-<script>
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
-    }
-</script>
 
 </body>
 </html>
