@@ -71,7 +71,7 @@ class VehiculoModel
         $c->bind_param("s", $matricula);
         $c->execute();
         $vehiculo = $c->get_result();
-        return $vehiculo->fetch_all();
+        return $vehiculo->fetch_assoc();
 
     }
 

@@ -1,4 +1,4 @@
-{{>headerSupervisor}}
+
 
 <div class="datos w3-container w3-display-container w3-col s11">
     <div class=" w3-container w3-orange w3-opacity w3-hide-small" >

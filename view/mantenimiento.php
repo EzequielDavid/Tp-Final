@@ -15,30 +15,31 @@
                 <h3>Matriula:</h3>
             </div>
             <div class="w3-rest">
-                <h3>{{0}}</h3>
+                <h3>{{matricula}}</h3>
             </div>
             <div class="w3-quarter">
                 <h3>Modelo:</h3>
             </div>
             <div class="w3-rest">
-                <h3>{{8}}</h3>
+                <h3>{{modelo}}</h3>
             </div>
             <div class="w3-quarter">
                 <h3>Marca:</h3>
             </div>
             <div class="w3-rest">
-                <h3>{{7}}</h3>
+                <h3>{{marca}}</h3>
             </div>
             <div class="w3-quarter">
                 <h3>Ultimo Service:</h3>
             </div>
             <div class="w3-rest">
-                <h3>{{12}} </h3>
+                <h3>{{ultimo_service}} </h3>
             </div>
 
         </div>
 
         </div>
+    <div class="w3-container w3-black">
         <form class="w3-container " action="index.php?module=encargadoDeTaller&action=guardarMantenimiento" method="post">
           <p>
           <label class="w3-text-orange w3-opacity"><b>fecha</b></label>
@@ -55,5 +56,6 @@
         </form>
     {{/vehiculo}}
       </div>
-      </div>
+</div>
+
 </body>

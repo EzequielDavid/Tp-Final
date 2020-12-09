@@ -25,12 +25,25 @@ class SupervisorController
     public function listarChoferes()
     {
         $choferes["choferes"] = $this->usuarioModel->listarChoferesSinViaje();
-        //  die($usuarios["usuarios"]);
+
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
         $this->render->render("view/Choferes.php", $choferes),print_r($choferes);
 
     }
 
+    public function listarVehiculosSupervisor()
+    {
+        $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosSupervisor();
+        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
+        $this->render->render("view/ListadoDeVehiculosSupervisor.php",$vehiculos),print_r($vehiculos);
+    }
+    public function asignarEstadoVehiculo()
+    {
+        $this->vehiculoModel->asignarEstadoVehiculo($_POST["estado"],$_POST["matricula"]);
+        $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosSupervisor();
+        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
+        $this->render->render("view/ListadoDeVehiculosSupervisor.php",$vehiculos),print_r($vehiculos);
+    }
     public function prepararViaje()
     {
         $chofer = $this->usuarioModel->buscarUsuarioPorDni($_POST["dni"]);
