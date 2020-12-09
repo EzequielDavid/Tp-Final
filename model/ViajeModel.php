@@ -18,15 +18,6 @@ class ViajeModel
         $c->bind_param("sssiss",$estado,$cliente,$destino,$kmviaje,$matricula,$patente);
         $c->execute();
     }
-
-    public function crearViajeProforma($cliente, $origen, $destino, $fecha_carga, $eta)
-    {
-        $estado = "A preparar";
-        $c=$this->database->prepare("INSERT INTO viaje ( estado, cliente ,origen, destino, fecha_carga, eta ) VALUES (?,?,?,?,?,?)");
-        $c->bind_param("ssssss",$estado,$cliente, $origen, $destino, $fecha_carga, $eta);
-        $c->execute();
-    }
-
     public function listarViajes()
     {
         $c=$this->database->prepare("SELECT viaje.id_viaje, viaje.estado,viaje.destino, viaje.cliente,viaje.matricula, usuario.dni, usuario.licencia_conduccion FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula
@@ -36,8 +27,9 @@ class ViajeModel
         return $viaje->fetch_all();
     }
 
-    public function listarTodosLosViajes(){
-        $c=$this->database->prepare("SELECT * FROM viaje");
+    public function listarViajesParaAsignarVehiculo()
+    {
+        $c=$this->database->prepare("SELECT * from viaje WHERE estado = 'asignar vehiculo'");
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_all();

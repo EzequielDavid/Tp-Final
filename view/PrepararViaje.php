@@ -8,33 +8,13 @@
         </div>
         <form class="w3-container" action="index.php?module=supervisor&action=asignarViaje" method="post">
 
-            <h3 class="w3-text-orange w3-opacity w3-margin-bottom">Datos</h3>
+            <h3 class="w3-text-orange w3-opacity w3-margin-bottom">Viaje</h3>
 
             <div class="w3-row-padding">
                 <div class="w3-half">
-                    <label class="w3-text-orange w3-opacity"><b>Cliente</b></label>
-                    <input class="w3-input w3-border w3-sand w3-opacity w3-margin-bottom" name="cliente" type="text" required>
+                    <label class="w3-text-orange w3-opacity"><b>Origen - Destino</b></label>
+                    <input class="w3-input w3-border w3-sand w3-opacity w3-margin-bottom" name="viaje" type="text" required>
                 </div>
-
-                <div class="w3-half">
-                    <label class="w3-text-orange w3-opacity"><b>Destino</b></label>
-                    <input class="w3-input w3-border w3-sand w3-opacity w3-margin-bottom" name="destino" type="text" required>
-                </div>
-
-                <div class="w3-half">
-                    <label class="w3-text-orange w3-opacity"><b>Km viaje</b></label>
-                    <input class="w3-input w3-border w3-sand w3-opacity w3-margin-bottom" name="kmviaje" type="number"
-                           required>
-                </div>
-
-                <div class="w3-half w3-margin-bottom">
-                    <label class="w3-text-orange w3-opacity"><b>Tiempo estimado de viaje</b></label>
-                    <input class="w3-input w3-border w3-sand w3-opacity w3-margin-bottom" name="" type="text"
-                           required>
-                </div>
-
-
-                <h3 class="w3-text-orange w3-opacity w3-margin-top">Equipo para realizar entrega</h3>
 
                 <div class="w3-half">
                     <label class="w3-text-orange w3-opacity"><b>Vehiculo</b></label>
@@ -48,18 +28,19 @@
                     </select>
                 </div>
 
-                <div class="w3-half">
-                    <label class="w3-text-orange w3-opacity"><b>Equipo de arrastre</b></label>
-                    <select class="w3-select w3-border w3-sand w3-opacity w3-margin-bottom" name="patente">
-                        <option value="" disabled selected>patente </option>
+                <div class="w3-col">
+                    <label class="w3-text-orange w3-opacity"><b>arrastre - carga - Cliente</b></label>
+                    <select class="w3-select w3-border w3-sand w3-opacity w3-margin-bottom" name="matricula">
+                        <option value="" disabled selected>patente marca</option>
                         {{#datos}}
                         {{#arrastre}}
-                        <option value={{0}}>{{0 }} </option>
+                        <option value={{0}}>{{0}} {{8}}</option>
                         {{/arrastre}}
                         {{/datos}}
                     </select>
                 </div>
-            </div>
+
+
 
 
 

@@ -13,13 +13,10 @@ class VehiculoModel
     public function listarVehiculos()
     {
         $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` NOT LIKE 'ninguna'");
-        return $this->listar($c, $vehiculo = "");
-    }
 
-    public function listarBackupVehiculo()
-    {
-        $c = $this->database->prepare("SELECT * FROM `vehiculo_borrado`");
-        return $this->listar($c, $vehiculo = "");
+        $c->execute();
+        $vehiculo = $c->get_result();
+        return $vehiculo->fetch_all();
     }
 
     public function listarVehiculosSupervisor()
@@ -47,18 +44,19 @@ class VehiculoModel
         $c->execute();
     }
 
-
     public function listarArrastre()
     {
-        $c = $this->database->prepare("SELECT * FROM `arrastre` ");
-        return $this->listar($c, $arrastre = "");
+        $c = $this->database->prepare("select arrastre.patente,carga.tipo,cliente.cuit from arrastre INNER JOIN carga ON arrastre.codigo = carga.codigo INNER JOIN cliente on carga.cuit = cliente.cuit");
 
+        $c->execute();
+        $arrastre = $c->get_result();
+        return $arrastre->fetch_all();
     }
 
     public function cambiarEstadoDeVehiculoAOcupado($matricula)
     {
         $c = $this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
-        $ocupado = "Ocupado";
+        $ocupado = "ocupado";
         $c->bind_param("ss", $ocupado, $matricula);
         $c->execute();
     }
@@ -68,7 +66,9 @@ class VehiculoModel
         $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `matricula` LIKE ?");
         $c->bind_param("s", $matricula);
         $c->execute();
-        return $c->get_result()->fetch_assoc();
+        $vehiculo = $c->get_result();
+        return $vehiculo->fetch_all();
+
     }
 
     public function registrarVehiculo($matricula, $estado, $anio_fabricacion, $numero_chasis, $numero_motor, $marca, $modelo, $id_mantenimiento)
@@ -86,17 +86,4 @@ class VehiculoModel
         $c->execute();
     }
 
-    public function borrarVehiculo($matricula)
-    {
-        $c = $this->database->prepare("DELETE FROM `vehiculo` WHERE `vehiculo`.`matricula` = ?");
-        $c->bind_param("s", $matricula);
-        $c->execute();
-    }
-
-    public function listar($c, $tablaAListar)
-    {
-        $c->execute();
-        $tablaAListar = $c->get_result();
-        return $tablaAListar->fetch_all();
-    }
 }
