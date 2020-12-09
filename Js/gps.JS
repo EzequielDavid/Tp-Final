@@ -15,8 +15,8 @@ function showPosition(position) {
     const lon = position.coords.longitude;
     const latitud = lat.toString();
     const longitud = lon.toString();
-    document.getElementById("lo").value = longitud;
-    document.getElementById("la").value= latitud;
+    document.getElementById("lo").value = position.coords.latitude;
+    document.getElementById("la").value= position.coords.longitude;
     document.getElementById("caluclo").className ="w3-btn w3-padding w3-green";
     document.getElementById("botonGps").className ="w3-btn w3-padding w3-red";
     document.getElementById("enviado").innerHTML="Posicion calculada";
