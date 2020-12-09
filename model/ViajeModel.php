@@ -63,4 +63,11 @@ class ViajeModel
         $c->bind_param("i",$codigo);
         $c->execute();
     }
+
+    public function actualizarPosicionActual($idViaje,$latitud,$longitud)
+    {
+        $c=$this->database->prepare("UPDATE `vehiculo` SET `latitud` = ? , `longitud` = ? WHERE `vehiculo`.`matricula` = ?");
+        $c->bind_param("dds",$latitud,$longitud,$idViaje);
+        $c->execute();
+    }
 }
