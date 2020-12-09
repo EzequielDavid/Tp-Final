@@ -25,32 +25,45 @@ class SupervisorController
 
     public function listarChoferes()
     {
-        $choferes["choferes"] = $this->usuarioModel->listarChoferes();
+        $choferes["choferes"] = $this->usuarioModel->listarChoferesSinViaje();
         //  die($usuarios["usuarios"]);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
-        $this->render->render("view/Choferes.php", $choferes);
+        $this->render->render("view/Choferes.php", $choferes),print_r($choferes);
 
     }
 
     public function prepararViaje()
     {
-
         $chofer = $this->usuarioModel->buscarUsuarioPorDni($_POST["dni"]);
-        $vehiculo = $this->vehiculoModel->listarVehiculos();
+        $viaje = $this->viajeModel->listarViajesParaAsignarVehiculo();
+        $vehiculo = $this->vehiculoModel->listarVehiculosSupervisor();
         $arrastre = $this->vehiculoModel->listarArrastre();
-        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre);
+        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje,"carga" =>null);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
-        $this->render->render("view/PrepararViaje.php", $datos), print_r($datos), "<br>", print_r($arrastre);
+        $this->render->render("view/PrepararViaje.php", $datos), print_r($datos),print_r($arrastre);
+    }
 
+    public function elegirViaje()
+    {
+        $carga = $this->vehiculoModel->buscarCargaConCuit($_POST["cuit"]);
+        $chofer = $this->usuarioModel->buscarUsuarioPorDni($_POST["dni"]);
+        $viaje = $this->viajeModel->listarViajesParaAsignarVehiculo();
+        $vehiculo = $this->vehiculoModel->listarVehiculosSupervisor();
+        $arrastre = $this->vehiculoModel->listarArrastre();
+        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje,"carga" =>$carga);
+        echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
+        $this->render->render("view/PrepararViaje.php", $datos), print_r($carga);
     }
 
     public function asignarViaje()
     {
-        $this->viajeModel->crearViaje($_POST["cliente"], $_POST["destino"], $_POST["kmviaje"], $_POST["matricula"], $_POST["patente"]);
+        $this->vehiculoModel->asignarCargaAarrastre($_POST["codigo"],$_POST["patente"]);
         $this->usuarioModel->asignarVehiculoAChofer($_POST["matricula"], $_POST["dni"]);
-        $this->vehiculoModel->cambiarEstadoDeVehiculoAOcupado($_POST["matricula"]);
-        echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
-        $this->render->render("view/Inicio.php");
+        $this->vehiculoModel->cambiarEstadoDeVehiculoAOcupadoYasignarArrastre($_POST["matricula"],$_POST["patente"]);
+        $carga = $this->vehiculoModel->buscarCargaConCodigo($_POST["codigo"]);
+        $this->viajeModel->asignarVehiculoAViaje($_POST["matricula"],$carga["cuit"]);
+        $this->viajeModel->actualizarEstadoDeViaje($_POST["codigo"]);
+        $this->volverAInicio();
     }
 
     public function detalleViaje()
@@ -67,14 +80,16 @@ class SupervisorController
     }
 
     public function cargarDatosParaProforma()
-    {   
+    {
         $cliente = $this->clienteModel->buscarCliente($_POST["cuit"]);
-        while ($cliente == null)
+        if ($cliente == null)
             $this->guardarNuevoCliente();
 
-        $this->guardarCarga();
         $this->guardarViaje();
+        $this->guardarCarga();
         $this->guardarDatosEstimados();
+
+        $this->volverAInicio();
     }
 
     public function guardarNuevoCliente()
@@ -91,7 +106,7 @@ class SupervisorController
 
     public function guardarViaje()
     {
-        $cliente = $this->clienteModel->buscarCliente($_POST["cuit"]);
+        $cliente = $_POST["cuit"];
         $origen = $_POST["origen"];
         $destino = $_POST["destino"];
         $fecha_carga = $_POST["fecha_carga"];
@@ -123,7 +138,12 @@ class SupervisorController
         $extras = $_POST["extras"];
         $fee = $_POST["fee"];
         $this->supervisorModel->guardarDatosEstimados($est_etd, $est_eta, $est_kilometros, $est_combustible, $est_hazard, $est_reefer, $viaticos, $peajes_pasajes, $extras, $fee);
-        die();
+    }
+
+    public function volverAInicio()
+    {
+        echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
+        $this->render->render("view/Inicio.php");
     }
 
     public function cargarProformaPdf()

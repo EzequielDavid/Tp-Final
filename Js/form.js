@@ -44,7 +44,7 @@ c_telefono.addEventListener('keyup', function () {
 var campos_vacios_paso2 = document.getElementsByClassName("v_not_empty");
 var v_fecha_carga = document.getElementById("v_fecha_carga");
 var v_eta = document.getElementById("v_eta");
-var errorPaso2 = document.getElementById("errorPaso2");
+    var errorPaso2 = document.getElementById("errorPaso2");
 
 
 function verificarPaso2() {
@@ -52,9 +52,6 @@ function verificarPaso2() {
 
     if (camposVacios(campos_vacios_paso2))
         errorPaso2.innerHTML += "<h4 class='w3-section v_mensaje'><b>*</b> Deben completarse todos los campos</h4>";
-
-    if (fechaInvalida(v_fecha_carga) || fechaInvalida(v_eta))
-        errorPaso2.innerHTML += "<h4 class='w3-section v_mensaje'><b>*</b> La fecha debe ser mayor a la actual</h4>";
 
     if (document.getElementsByClassName("v_mensaje").length === 0)
         irAlSiguientePaso(paso3, paso2);
@@ -123,16 +120,7 @@ function verificarPaso4() {
 
 
 //GENERALES
-function fechaInvalida(fechaIngresada) {
-    var hoy = new Date();
-    var dd = hoy.getDate();
-    var mm = hoy.getMonth() + 1;
-    var yyyy = hoy.getFullYear();
 
-    var fechaActual = yyyy + '-' + mm + '-' + dd;
-
-    return fechaIngresada.value <= fechaActual;
-}
 
 function limpiarErrores(errorPaso) {
     return errorPaso.innerHTML = "";

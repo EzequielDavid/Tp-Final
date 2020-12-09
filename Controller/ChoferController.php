@@ -20,6 +20,15 @@ class ChoferController
         $viaje["viaje"]=$this->viajeModel->mostrarViaje($_SESSION["dni"]);
 
         echo  $this->render->render("view/partial/headerChofer.mustache",$_SESSION),
-              $this->render->render("view/MiViaje.php",$viaje["viaje"]);
+              $this->render->render("view/MiViaje.php",$viaje),print_r($viaje);
+    }
+    public function enviarPosicionGps()
+    {
+        $viaje["viaje"] = $this->viajeModel->mostrarViaje($_SESSION["dni"]);
+        $la = $_POST["latitud"];
+        $lo = $_POST["longitud"];
+        $this->viajeModel->actualizarPosicionActual($_POST["idViaje"], $_POST["latitud"], $_POST["longitud"]);
+        echo $this->render->render("view/partial/headerChofer.mustache", $_SESSION),
+        $this->render->render("view/MiViaje.php", $viaje);
     }
 }
