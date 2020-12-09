@@ -1,6 +1,5 @@
 <?php
 
-
 class SupervisorController
 {
     private $render;
@@ -9,9 +8,9 @@ class SupervisorController
     private $viajeModel;
     private $clienteModel;
     private $supervisorModel;
+    private $pdfModel;
 
-
-    public function __construct($render, $usuarioModel, $vehiculoModel, $viajeModel, $clienteModel, $supervisorModel)
+    public function __construct($render, $usuarioModel, $vehiculoModel, $viajeModel, $clienteModel, $supervisorModel,$pdfModel)
     {
         $this->render = $render;
         $this->usuarioModel = $usuarioModel;
@@ -19,8 +18,10 @@ class SupervisorController
         $this->viajeModel = $viajeModel;
         $this->clienteModel = $clienteModel;
         $this->supervisorModel = $supervisorModel;
+        $this->pdfModel = $pdfModel;
 
     }
+
 
     public function listarChoferes()
     {
@@ -78,7 +79,7 @@ class SupervisorController
         $this->render->render("view/CargarProforma.php");
     }
 
-    public function cargarClienteParaProforma()
+    public function cargarDatosParaProforma()
     {
         $cliente = $this->clienteModel->buscarCliente($_POST["cuit"]);
         if ($cliente == null)
@@ -88,7 +89,7 @@ class SupervisorController
         $this->guardarCarga();
         $this->guardarDatosEstimados();
 
-        $this->volverAInicio();
+        $this->cargarProformaPdf();
     }
 
     public function guardarNuevoCliente()
@@ -143,5 +144,42 @@ class SupervisorController
     {
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
         $this->render->render("view/Inicio.php");
+    }
+
+    public function cargarProformaPdf()
+    {
+        $datosViaje=
+            [
+               'cuit'=> $_POST["cuit"],
+               'origen'=> $_POST["origen"],
+               'destino'=> $_POST["destino"],
+               'fecha de carga'=> $_POST["fecha_carga"],
+               'v eta'=> $_POST["v_eta"]
+            ];
+            $datosCarga =
+            [
+                'tipo de carga' => $_POST["tipo_carga"],
+                'peso neto' => $_POST["peso_neto"],
+                'hazard' => $_POST["ca_hazard"],
+                'imo class' => $_POST["imo_class"],
+                'reefer' => $_POST["ca_reefer"],
+                'temperatura' => $_POST["temperatura"]
+            ];
+            $datosEstimados =
+                [
+                    'est_etd' => $_POST["est_etd"],
+                    'est_eta' => $_POST["est_eta"],
+                    'est_kilometros' => $_POST["est_kilometros"],
+                    'est_combustible' => $_POST["est_combustible"],
+                    'est_hazard' => $_POST["est_hazard"],
+                    'est_reefer' => $_POST["est_reefer"],
+                    'viaticos' => $_POST["viaticos"],
+                    'peajes_pasajes' => $_POST["peajes_pasajes"],
+                    'extras' => $_POST["extras"],
+                    'fee' => $_POST["fee"]
+                ];
+
+        $pdf = $this->pdfModel->basePdf($datosViaje,$datosCarga,$datosEstimados);
+        echo $this->render->render("view/fpdf.php",['pdf'=>$pdf]);
     }
 }
