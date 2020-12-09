@@ -24,7 +24,7 @@ class SupervisorController
 
     public function listarChoferes()
     {
-        $choferes["choferes"] = $this->usuarioModel->listarChoferes();
+        $choferes["choferes"] = $this->usuarioModel->listarChoferesSinViaje();
         //  die($usuarios["usuarios"]);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
         $this->render->render("view/Choferes.php", $choferes),print_r($choferes);
@@ -37,16 +37,28 @@ class SupervisorController
         $viaje = $this->viajeModel->listarViajesParaAsignarVehiculo();
         $vehiculo = $this->vehiculoModel->listarVehiculosSupervisor();
         $arrastre = $this->vehiculoModel->listarArrastre();
-        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre);
+        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje,"carga" =>null);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
-        $this->render->render("view/PrepararViaje.php", $datos), print_r($datos), "<br>", print_r($arrastre);
+        $this->render->render("view/PrepararViaje.php", $datos), print_r($datos),print_r($arrastre);
+    }
+
+    public function elegirViaje()
+    {
+        $carga = $this->vehiculoModel->buscarCargaConCuit($_POST["cuit"]);
+        $chofer = $this->usuarioModel->buscarUsuarioPorDni($_POST["dni"]);
+        $viaje = $this->viajeModel->listarViajesParaAsignarVehiculo();
+        $vehiculo = $this->vehiculoModel->listarVehiculosSupervisor();
+        $arrastre = $this->vehiculoModel->listarArrastre();
+        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje,"carga" =>$carga);
+        echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
+        $this->render->render("view/PrepararViaje.php", $datos), print_r($carga);
     }
 
     public function asignarViaje()
     {
-        $this->viajeModel->crearViaje($_POST["cliente"], $_POST["destino"], $_POST["kmviaje"], $_POST["matricula"], $_POST["patente"]);
+        $this->vehiculoModel->asignarCargaAarrastre($_POST["codigo"],$_POST["patente"]);
         $this->usuarioModel->asignarVehiculoAChofer($_POST["matricula"], $_POST["dni"]);
-        $this->vehiculoModel->cambiarEstadoDeVehiculoAOcupado($_POST["matricula"]);
+        $this->vehiculoModel->cambiarEstadoDeVehiculoAOcupadoYasignarArrastre($_POST["matricula"],$_POST["patente"]);
         $this->volverAInicio();
     }
 

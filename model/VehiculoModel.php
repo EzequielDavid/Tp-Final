@@ -46,18 +46,22 @@ class VehiculoModel
 
     public function listarArrastre()
     {
-        $c = $this->database->prepare("select arrastre.patente,carga.tipo,cliente.cuit from arrastre INNER JOIN carga ON arrastre.codigo = carga.codigo INNER JOIN cliente on carga.cuit = cliente.cuit");
-
+        $c = $this->database->prepare("select * from arrastre where estado = ?");
+        $disponible = "disponible";
+        $c->bind_param("s", $disponible);
         $c->execute();
         $arrastre = $c->get_result();
         return $arrastre->fetch_all();
     }
 
-    public function cambiarEstadoDeVehiculoAOcupado($matricula)
+    public function cambiarEstadoDeVehiculoAOcupadoYasignarArrastre($matricula,$patente)
     {
-        $c = $this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
+        $c = $this->database->prepare("UPDATE vehiculo SET estado = ? , patente = ? WHERE matricula = ?");
         $ocupado = "ocupado";
-        $c->bind_param("ss", $ocupado, $matricula);
+        $c->bind_param("sss", $ocupado, $patente, $matricula);
+        $c->execute();
+        $c = $this->database->prepare("UPDATE arrastre SET estado = ? WHERE patente = ?");
+          $c->bind_param("s", $ocupado);
         $c->execute();
     }
 
@@ -83,6 +87,20 @@ class VehiculoModel
         $c = $this->database->prepare("UPDATE vehiculo SET ultimo_service = ?, estado = ? WHERE matricula = ?");
         $disponible = "disponible";
         $c->bind_param("sss", $fechaMantenimiento, $disponible, $matricula);
+        $c->execute();
+    }
+    public function buscarCargaConCuit($cuit)
+{
+    $c = $this->database->prepare("SELECT * FROM `carga` WHERE `cuit` LIKE ?");
+    $c->bind_param("i", $cuit);
+    $c->execute();
+    $vehiculo = $c->get_result();
+    return $vehiculo->fetch_all();
+}
+    public function asignarCargaAarrastre($codigo,$patente)
+    {
+        $c = $this->database->prepare("UPDATE arrastre SET codigo = ? WHERE patente = ?");
+        $c->bind_param("is", $codigo,$patente);
         $c->execute();
     }
 
