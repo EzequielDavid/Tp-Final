@@ -29,7 +29,7 @@ class ViajeModel
 
     public function listarViajesParaAsignarVehiculo()
     {
-        $c=$this->database->prepare("SELECT * from viaje WHERE estado = 'asignar vehiculo'");
+        $c=$this->database->prepare("SELECT * from viaje WHERE estado = 'A preparar'");
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_all();
@@ -41,5 +41,12 @@ class ViajeModel
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_all();
+    }
+    public function crearViajeProforma($cliente, $origen, $destino, $fecha_carga, $eta)
+    {
+        $estado = "A preparar";
+        $c=$this->database->prepare("INSERT INTO viaje ( estado, cliente ,origen, destino, fecha_carga, eta ) VALUES (?,?,?,?,?,?)");
+        $c->bind_param("ssssss",$estado,$cliente, $origen, $destino, $fecha_carga, $eta);
+        $c->execute();
     }
 }
