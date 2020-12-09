@@ -21,7 +21,7 @@ class ViajeModel
     public function listarViajes()
     {
         $c=$this->database->prepare("SELECT viaje.id_viaje, viaje.estado,viaje.destino, viaje.cliente,viaje.matricula, usuario.dni, usuario.licencia_conduccion FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula
-                                     INNER JOIN usuario on vehiculo.matricula = usuario.matricula;");
+                                     INNER JOIN usuario on vehiculo.matricula = usuario.matricula where viaje.estado NOT LIKE 'A preparar' and viaje.id_viaje not LIKE 1;");
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_all();
@@ -47,6 +47,20 @@ class ViajeModel
         $estado = "A preparar";
         $c=$this->database->prepare("INSERT INTO viaje ( estado, cliente ,origen, destino, fecha_carga, eta ) VALUES (?,?,?,?,?,?)");
         $c->bind_param("ssssss",$estado,$cliente, $origen, $destino, $fecha_carga, $eta);
+        $c->execute();
+    }
+
+    public function asignarVehiculoAViaje($matricula,$cliente)
+{
+    $c=$this->database->prepare("UPDATE viaje SET viaje.matricula = ? WHERE viaje.cliente = ?");
+    $c->bind_param("si",$matricula,$cliente);
+    $c->execute();
+
+}
+    public function actualizarEstadoDeViaje($codigo)
+    {
+        $c=$this->database->prepare("UPDATE viaje INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula INNER JOIN arrastre on vehiculo.patente = arrastre.patente INNER JOIN carga on arrastre.codigo = carga.codigo SET viaje.estado = 'preparando despacho' WHERE carga.codigo = ?");
+        $c->bind_param("i",$codigo);
         $c->execute();
     }
 }

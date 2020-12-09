@@ -97,6 +97,14 @@ class VehiculoModel
     $vehiculo = $c->get_result();
     return $vehiculo->fetch_all();
 }
+    public function buscarCargaConCodigo($codigo)
+{
+    $c = $this->database->prepare("SELECT * FROM `carga` WHERE `codigo` LIKE ?");
+    $c->bind_param("i", $codigo);
+    $c->execute();
+    $vehiculo = $c->get_result();
+    return $vehiculo->fetch_assoc();
+}
     public function asignarCargaAarrastre($codigo,$patente)
     {
         $c = $this->database->prepare("UPDATE arrastre SET codigo = ? WHERE patente = ?");

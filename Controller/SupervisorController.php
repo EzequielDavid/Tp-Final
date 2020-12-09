@@ -59,6 +59,9 @@ class SupervisorController
         $this->vehiculoModel->asignarCargaAarrastre($_POST["codigo"],$_POST["patente"]);
         $this->usuarioModel->asignarVehiculoAChofer($_POST["matricula"], $_POST["dni"]);
         $this->vehiculoModel->cambiarEstadoDeVehiculoAOcupadoYasignarArrastre($_POST["matricula"],$_POST["patente"]);
+        $carga = $this->vehiculoModel->buscarCargaConCodigo($_POST["codigo"]);
+        $this->viajeModel->asignarVehiculoAViaje($_POST["matricula"],$carga["cuit"]);
+        $this->viajeModel->actualizarEstadoDeViaje($_POST["codigo"]);
         $this->volverAInicio();
     }
 
