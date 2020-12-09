@@ -89,7 +89,7 @@ class SupervisorController
         $this->guardarCarga();
         $this->guardarDatosEstimados();
 
-        $this->volverAInicio();
+        $this->cargarProformaPdf();
     }
 
     public function guardarNuevoCliente()
@@ -148,11 +148,38 @@ class SupervisorController
 
     public function cargarProformaPdf()
     {
-        $datosCarga=
+        $datosViaje=
             [
-               //hacerlo con el boton asi llegan los datos por post
-        ];
-        $pdf = $this->pdfModel->basePdf($datosCarga);
+               'cuit'=> $_POST["cuit"],
+               'origen'=> $_POST["origen"],
+               'destino'=> $_POST["destino"],
+               'fecha de carga'=> $_POST["fecha_carga"],
+               'v eta'=> $_POST["v_eta"]
+            ];
+            $datosCarga =
+            [
+                'tipo de carga' => $_POST["tipo_carga"],
+                'peso neto' => $_POST["peso_neto"],
+                'hazard' => $_POST["ca_hazard"],
+                'imo class' => $_POST["imo_class"],
+                'reefer' => $_POST["ca_reefer"],
+                'temperatura' => $_POST["temperatura"]
+            ];
+            $datosEstimados =
+                [
+                    'est_etd' => $_POST["est_etd"],
+                    'est_eta' => $_POST["est_eta"],
+                    'est_kilometros' => $_POST["est_kilometros"],
+                    'est_combustible' => $_POST["est_combustible"],
+                    'est_hazard' => $_POST["est_hazard"],
+                    'est_reefer' => $_POST["est_reefer"],
+                    'viaticos' => $_POST["viaticos"],
+                    'peajes_pasajes' => $_POST["peajes_pasajes"],
+                    'extras' => $_POST["extras"],
+                    'fee' => $_POST["fee"]
+                ];
+
+        $pdf = $this->pdfModel->basePdf($datosViaje,$datosCarga,$datosEstimados);
         echo $this->render->render("view/fpdf.php",['pdf'=>$pdf]);
     }
 }

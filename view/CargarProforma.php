@@ -322,11 +322,6 @@
                                    value="Confirmar" id="btn_confirmar">
                         </div>
                     </div>
-                    <div class="w3-panel w3-section left">
-                        <div class="w3-panel w3-section left" >
-                            <button class="w3-btn w3-orange w3-opacity"><a href="index.php?module=supervisor&action=cargarProformaPdf">Entregar Proforma</a></button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </form>

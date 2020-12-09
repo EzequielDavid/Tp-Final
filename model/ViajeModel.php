@@ -51,13 +51,14 @@ class ViajeModel
         $viaje = $c->get_result();
         return $viaje->fetch_all();
     }
-    public function crearViajeProforma($cliente, $origen, $destino, $fecha_carga, $eta)
+
+    /*public function crearViajeProforma($cliente, $origen, $destino, $fecha_carga, $eta)
     {
         $estado = "A preparar";
         $c=$this->database->prepare("INSERT INTO viaje ( estado, cliente ,origen, destino, fecha_carga, eta ) VALUES (?,?,?,?,?,?)");
         $c->bind_param("ssssss",$estado,$cliente, $origen, $destino, $fecha_carga, $eta);
         $c->execute();
-    }
+    }*/
 
     public function asignarVehiculoAViaje($matricula,$cliente)
 {

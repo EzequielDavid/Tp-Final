@@ -1,29 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7452c302-1d08-477b-9a09-e89777dace8e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/SupervisorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/SupervisorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/SupervisorModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SupervisorModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/PdfModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PdfModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ViajeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ViajeModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/CargarProforma.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/CargarProforma.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,12 +38,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Tp-Final\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Tp-Final\model" />
       <recent name="C:\xampp\htdocs\Tp-Final\view" />
