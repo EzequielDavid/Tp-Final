@@ -26,7 +26,7 @@
                     <input type="hidden" value="latitud" name="latitud" id="la">
                     <input type="hidden" value="longitud" name="longitud" id="lo">
                     <input type="hidden" value="{{4}}" name="idViaje">
-                    <button id="botonGps" class="w3-btn w3-padding" >Enviar mi posicion actual en GPS</button><br>
+                    <button id="botonGps" class="w3-btn w3-padding w3-disabled" >Enviar mi posicion actual en GPS</button><br>
             </div>
             <div class="w3-container w3-orange w3-margin">
                 <button class="w3-btn w3-padding">Combustible</button>
