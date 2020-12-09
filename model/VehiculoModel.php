@@ -46,7 +46,7 @@ class VehiculoModel
 
     public function listarArrastre()
     {
-        $c = $this->database->prepare("SELECT * FROM `arrastre` ");
+        $c = $this->database->prepare("select arrastre.patente,carga.tipo,cliente.cuit from arrastre INNER JOIN carga ON arrastre.codigo = carga.codigo INNER JOIN cliente on carga.cuit = cliente.cuit");
 
         $c->execute();
         $arrastre = $c->get_result();

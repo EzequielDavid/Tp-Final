@@ -26,6 +26,14 @@ class ViajeModel
         $viaje = $c->get_result();
         return $viaje->fetch_all();
     }
+
+    public function listarViajesParaAsignarVehiculo()
+    {
+        $c=$this->database->prepare("SELECT * from viaje WHERE estado = 'asignar vehiculo'");
+        $c->execute();
+        $viaje = $c->get_result();
+        return $viaje->fetch_all();
+    }
     public function mostrarViaje($dni)
     {
         $c=$this->database->prepare("SELECT viaje.id_viaje, viaje.estado,viaje.destino, viaje.cliente,viaje.matricula, usuario.dni, usuario.licencia_conduccion FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula INNER JOIN usuario on vehiculo.matricula = usuario.matricula where usuario.dni = ?");
