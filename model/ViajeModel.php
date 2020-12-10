@@ -111,7 +111,12 @@ class ViajeModel
         $viaje = $c->get_result();
         return $viaje->fetch_all();
     }
+ /*public function crearViajeProforma($cliente, $origen, $destino, $fecha_carga, $eta)
 
+    {
+        $c = $this->database->prepare("SELECT * from viaje WHERE estado = 'A preparar'");
+        $c->execute();
+	 }*/	
 
     public function listarTodosLosViajes()
     {

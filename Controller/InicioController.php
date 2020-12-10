@@ -31,15 +31,14 @@ class inicioController
             }
             else{
                 echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
-                $this->render->render("view/Inicio.php", $_SESSION),
-                print_r($rol);
+                $this->render->render("view/Inicio.php", $_SESSION);
             }
 
 
         } else {
             $_SESSION["rol"] = "";
-            echo $this->render->render("view/partial/header.mustache", $_SESSION["rol"]),
-            $this->render->render("view/Inicio.php", $_SESSION["rol"]);
+            echo $this->render->render("view/partial/header.mustache", $_SESSION),
+            $this->render->render("view/Inicio.php", $_SESSION);
 
         }
 

@@ -9,6 +9,7 @@ include_once("model/ViajeModel.php");
 include_once("model/ClienteModel.php");
 include_once("model/SupervisorModel.php");
 include_once ("model/MantenimientoModel.php");
+include_once("model/PdfModel.php");
 include_once("Controller/InicioController.php");
 include_once("Controller/UsuarioController.php");
 include_once("Controller/VehiculoController.php");
@@ -19,6 +20,7 @@ include_once("Controller/ClienteController.php");
 include_once("Controller/SupervisorController.php");
 include_once ("Controller/EncargadoDeTallerController.php");
 include_once('third-party/mustache/src/Mustache/Autoloader.php');
+include_once ('fpdf/fpdf.php');
 include_once("Router.php");
 
 class Configuration
@@ -41,7 +43,6 @@ class Configuration
         return parse_ini_file("config/config.ini");
     }
 
-
     public function getRender()
     {
         return new Render('view/partial');
@@ -59,7 +60,8 @@ class Configuration
         $viajeModel = $this->getViajeModel();
         $clienteModel = $this->getClienteModel();
         $supervisorModel = $this->getSupervisorModel();
-        return new SupervisorController($this->getRender(), $usuarioModel, $vehiculoModel, $viajeModel, $clienteModel, $supervisorModel);
+        $pdfModel = $this->getPdfModel();
+        return new SupervisorController($this->getRender(), $usuarioModel, $vehiculoModel, $viajeModel, $clienteModel, $supervisorModel,$pdfModel);
     }
 
     public function getMantenimientoModel()
@@ -77,6 +79,12 @@ class Configuration
     {
         $database = $this->getDatabase();
         return new UsuarioModel($database);
+    }
+
+    public function getPdfModel()
+    {
+        $database = $this->getDatabase();
+        return new PdfModel($database);
     }
 
     public function getRolModel()
