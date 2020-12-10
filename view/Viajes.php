@@ -3,18 +3,8 @@
     <div class="w3-container w3-orange w3-margin w3-padding container-list-sm">
         <h2>Viajes</h2>
         <h5>Listado de los vehículos y sus choferes</h5>
-        <div class="display-top-right">
-            <a href='index.php?module=vehiculo&action=registrarVehiculo' class='w3-button w3-black'>Ingresar
-                vehiculo</a>
-        </div>
-        <div class="display-top-right" style="margin-top: -1.5rem;">
-            <a href='index.php?module=vehiculo&action=listarVehiculos' class='w3-button w3-teal'>Listado vehículos</a>
-        </div>
-        <div class="display-top-right" style="margin-top: -1.5rem;">
-            <a href='index.php?module=vehiculo&action=listarBackupVehiculo' class='w3-button w3-teal'>Backup
-                vehículos</a>
-        </div>
-        <div class="responsive-table">
+
+        <div class="responsive-table" style="margin-top: 3rem;">
             <table class="w3-table-all w3-card-4 table-list">
                 <tr>
                     <th>N° Viaje</th>

@@ -144,8 +144,6 @@
                             ">40"</option>
                             <option value="Jaula">Jaula</option>
                             <option value="CarCarrier">CarCarrier</option>
-                            <option value="Araña">Araña</option>
-                            <option value="Tanque">Tanque</option>
                         </select>
                     </div>
 

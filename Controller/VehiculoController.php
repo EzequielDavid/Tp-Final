@@ -19,6 +19,15 @@ class VehiculoController
         $this->renderTo($vehiculos, "ListadoDeVehiculos.php");
     }
 
+
+    public function listarArrastres()
+    {
+        $arrastres["arrastres"] = $this->vehiculoModel->listarArrastre();
+
+        $this->renderTo($arrastres, "ListadoDeArrastres.php");
+    }
+
+
     public function listarBackupVehiculo()
     {
         $vehiculos["vehiculos"] = $this->vehiculoModel->listarBackupVehiculo();
@@ -26,10 +35,23 @@ class VehiculoController
         $this->renderTo($vehiculos, "ListadoDeVehiculos.php");
     }
 
+    public function listarBackupArrastres()
+    {
+        $arrastres["arrastres"] = $this->vehiculoModel->listarBackupArrastre();
+
+        $this->renderTo($arrastres, "ListadoDeArrastres.php");
+    }
+
     public function registrarVehiculo()
     {
         $this->renderTo(null, "RegistrarVehiculo.php");
     }
+
+    public function registrarArrastre()
+    {
+        $this->renderTo(null, "RegistrarArrastre.php");
+    }
+
 
     public function agregarVehiculo()
     {
@@ -38,10 +60,20 @@ class VehiculoController
         $this->guardarDatosNuevoVehiculo();
     }
 
+    public function agregarArrastre()
+    {
+        $this->guardarDatosNuevoArrastre();
+    }
+
+
     public function borrarVehiculo(){
         $this->vehiculoModel->borrarVehiculo($_POST["matricula"]);
         $this->listarVehiculos();
+    }
 
+    public function borrarArrastre(){
+        $this->vehiculoModel->borrarArrastre($_POST["chasis"]);
+        $this->listarArrastres();
     }
 
     /**
@@ -53,10 +85,10 @@ class VehiculoController
         $this->render->render("view/$view", $vehiculos);
     }
 
-    public function irPaginaError($mensajeError)
+    public function renderMultipleTo($vehiculos, $arraste, $view)
     {
         echo $this->render->render("view/partial/headerAdministrador.mustache", $_SESSION),
-        $this->render->render("view/PaginaError.php", $mensajeError);
+        $this->render->render("view/$view", $vehiculos, $arraste);
     }
 
     public function guardarDatosNuevoVehiculo()
@@ -71,6 +103,16 @@ class VehiculoController
         $id_mantenimiento = null;
         $this->vehiculoModel->registrarVehiculo($matricula, $estado, $anio_fabricacion, $numero_chasis, $numero_motor, $marca, $modelo, $id_mantenimiento);
         $this->listarVehiculos();
+        die();
+    }
+
+    public function guardarDatosNuevoArrastre()
+    {
+        $tipo = $_POST["tipo"];
+        $patente = $_POST["patente"];
+        $chasis = $_POST["chasis"];
+        $this->vehiculoModel->registrarArrastre($tipo, $patente, $chasis);
+        $this->listarArrastres();
         die();
     }
 }

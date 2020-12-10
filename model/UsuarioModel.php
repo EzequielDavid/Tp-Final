@@ -74,7 +74,16 @@ class UsuarioModel
 
     public function borrarUsuario($dni)
     {
-        $c = $this->database->prepare("DELETE FROM `usuario` WHERE `usuario`.`dni` = ?");
+        if($this->buscarUsuarioPorDni($dni)!=null)
+            $this->borrarUsuarioDeLaTabla("usuario",$dni);
+
+        else
+            $this->borrarUsuarioDeLaTabla("usuario_borrado", $dni);
+    }
+
+    public function borrarUsuarioDeLaTabla($nombreTabla, $dni)
+    {
+        $c = $this->database->prepare("DELETE FROM `$nombreTabla` WHERE `$nombreTabla`.`dni` = ?");
         $c->bind_param("i", $dni);
         $c->execute();
     }

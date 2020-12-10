@@ -1,4 +1,3 @@
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -7,6 +6,7 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+document.getElementById("botonGps").style.display = "none";
 function showPosition(position) {
 
 
@@ -14,25 +14,26 @@ function showPosition(position) {
     const lon = position.coords.longitude;
     const latitud = lat.toString();
     const longitud = lon.toString();
-    document.getElementById("lo").value = longitud;
-    document.getElementById("la").value= latitud;
+    document.getElementById("lo").value = position.coords.latitude;
+    document.getElementById("la").value= position.coords.longitude;
     document.getElementById("caluclo").className ="w3-btn w3-padding w3-green";
     document.getElementById("botonGps").className ="w3-btn w3-padding w3-red";
     document.getElementById("enviado").innerHTML="Posicion calculada";
+    document.getElementById("botonGps").style.display = "block";
     alert(latitud);
- /*   var data = new FormData();
-    data.append("longitud", longitud);
-    data.append("latitud", latitud);
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "index.php?module=chofer&action=enviarPosicionGps", true);
-    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhttp.onload = function () {
-        // do something to response
-        console.log(this.responseText);
-    };
-    alert(latitud);
-   xhttp.send(data);
-   window.location.href = "index.php?module=inicio&action=execute";*/
+    /*   var data = new FormData();
+       data.append("longitud", longitud);
+       data.append("latitud", latitud);
+       let xhttp = new XMLHttpRequest();
+       xhttp.open("POST", "index.php?module=chofer&action=enviarPosicionGps", true);
+       xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+       xhttp.onload = function () {
+           // do something to response
+           console.log(this.responseText);
+       };
+       alert(latitud);
+      xhttp.send(data);
+      window.location.href = "index.php?module=inicio&action=execute";*/
     let map, infoWindow;
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: -34.397, lng: 150.644 },

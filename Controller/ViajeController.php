@@ -24,7 +24,7 @@ class ViajeController
 
     function listarViajesAdmin()
     {
-        $choferes["viajes"]=$this->viajeModel->listarTodosLosViajes();
+        $choferes["viajes"]=$this->viajeModel->listarViajes();
         echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
         $this->render->render("view/Viajes.php",$choferes);
     }
