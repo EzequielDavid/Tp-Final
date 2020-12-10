@@ -66,8 +66,8 @@ class ViajeModel
 
     public function buscarValorPeajePorIdViajes($idViaje)
     {
-        $c = $this->database->prepare("SELECT peaje FROM `viaje` WHERE id_viaje = ?");
-        $c->bind_param("i", $idViaje);
+        $c = $this->database->prepare("SELECT pasajes_peajes FROM `viaje` WHERE id_viaje = ?");
+        $c->bind_param("d", $idViaje);
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_assoc();
@@ -75,7 +75,7 @@ class ViajeModel
 
     public function actualizarDatosDePeaje($peaje, $idViaje)
     {
-        $c = $this->database->prepare("UPDATE viaje  SET viaje.peaje = ? WHERE viaje.id_viaje = ?");
+        $c = $this->database->prepare("UPDATE viaje  SET viaje.pasajes_peajes = ? WHERE viaje.id_viaje = ?");
         $c->bind_param("di", $peaje, $idViaje);
         $c->execute();
     }

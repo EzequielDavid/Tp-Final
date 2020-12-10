@@ -57,7 +57,7 @@ class ChoferController
     {
         $total = 0;
         $peaje = $this->viajeModel->buscarValorPeajePorIdViajes($_POST["idViaje"]);
-        $total = $peaje["peaje"] + $_POST["peaje"];
+        $total = $peaje["pasajes_peajes"] + $_POST["peaje"];
         $this->viajeModel->actualizarDatosDePeaje($total,$_POST["idViaje"]);
         $viaje["viaje"] = $this->viajeModel->mostrarViaje($_SESSION["dni"]);
         echo $this->render->render("view/partial/headerChofer.mustache", $_SESSION),
