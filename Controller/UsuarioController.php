@@ -76,7 +76,7 @@ class UsuarioController
                 echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
                 $this->render->render("view/Miviaje.php", $_SESSION);
             } else {
-                echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
+                echo $this->render->render("view/partial/header" .ucfirst($rol["rol"]) . ".mustache", $_SESSION),
                 $this->render->render("view/Inicio.php", $_SESSION);
             }
 
