@@ -19,8 +19,9 @@ class PdfModel
         $this->fpdf->Image('img/nova.logo.png',-5,-8,65);
         $this->fpdf->SetFont('Arial','B',30);
         $this->fpdf->Cell(70,10,'');
-        $this->fpdf->Cell(85,15,'Proforma','1',0,'C');
-        $this->fpdf->Image("http://localhost/Tp-Final/view/qrcode.php", 10, 10, 20, 20, "png");
+        $this->fpdf->Cell(65,15,'Proforma','1',0,'C');
+        //cambiar ruta según como está guardado el proyecto
+        $this->fpdf->Image("http://localhost/codigos/prog_web/view/qrcode.php", 178, 8, 25, 25, "png");
         $this->darEspaciado(45);
         $this->datosRepresentados('Datos de Viaje');
         $this->cargarDatos($datosviaje);

@@ -2,4 +2,5 @@
 
 include('../lib/qrlib.php');
 
-QRcode::png("http://localhost/Tp-Final/index.php?module=chofer&action=mostrarViaje");
+//cambiar ruta según como está guardado el proyecto
+QRcode::png("http://localhost/codigos/prog_web/index.php?module=chofer&action=mostrarViaje");
