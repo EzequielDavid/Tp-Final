@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-12-2020 a las 22:09:47
+-- Tiempo de generación: 10-12-2020 a las 13:43:12
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -28,21 +28,103 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `arrastre` (
-  `patente` varchar(30) NOT NULL,
-  `modelo` varchar(350) NOT NULL,
-  `tipo` varchar(300) NOT NULL,
-  `codigo` int(11) NOT NULL,
-  `estado` varchar(50) NOT NULL
+  `tipo` varchar(25) NOT NULL,
+  `patente` varchar(25) NOT NULL,
+  `chasis` int(20) NOT NULL,
+  `estado` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `arrastre`
 --
 
-INSERT INTO `arrastre` (`patente`, `modelo`, `tipo`, `codigo`, `estado`) VALUES
-('abc-654', 'ford', 'container', 0, 'disponible'),
-('hyh-789', 'ford', 'jaula', 9, 'disponible'),
-('yui-999', '', 'container', 9, 'disponible');
+INSERT INTO `arrastre` (`tipo`, `patente`, `chasis`, `estado`) VALUES
+('Granel', 'AA712AD', 468708, 'Disponible'),
+('Araña', 'AC909AD', 485098, 'Disponible'),
+('Granel', 'AD690AS', 495851, 'Disponible'),
+('Araña', 'AA274AG', 498515, 'Disponible'),
+('Tanque', 'AC471AG', 510019, 'Disponible'),
+('Jaula', 'AC383AD', 535330, 'Disponible'),
+('Jaula', 'AD340AG', 549916, 'Disponible'),
+('Tanque', 'AC559AS', 554550, 'Disponible'),
+('Granel', 'AD602AG', 555608, 'Disponible'),
+('Tanque', 'AB405AG', 583419, 'Disponible'),
+('Araña', 'AA100AS', 585822, 'Disponible'),
+('Jaula', 'AB318AD', 595287, 'Disponible'),
+('Tanque', 'AB493AS', 595948, 'Disponible'),
+('Araña', 'AC125AD', 605737, 'Disponible'),
+('Granel', 'AB756AS', 616372, 'Disponible'),
+('Araña', 'AC208AG', 642287, 'Disponible'),
+('Granel', 'AC734AG', 661897, 'Disponible'),
+('Araña', 'AB843AD', 670323, 'Disponible'),
+('Araña', 'AB230AS', 678666, 'Disponible'),
+('Tanque', 'AD427AS', 703673, 'Disponible'),
+('Tanque', 'AD515AD', 704640, 'Disponible'),
+('Araña', 'AB135AG', 705687, 'Disponible'),
+('Granel', 'AC646AD', 710797, 'Disponible'),
+('Araña', 'AA975AD', 726457, 'Disponible'),
+('Araña', 'AD953AS', 729910, 'Disponible'),
+('CarCarrier', 'AD100AZ', 730027, 'Disponible'),
+('CarCarrier', 'AD100AQ', 730502, 'Disponible'),
+('Araña', 'AC997AG', 730861, 'Disponible'),
+('CarCarrier', 'AD100ER', 730978, 'Disponible'),
+('Araña', 'AC821AS', 731202, 'Disponible'),
+('CarCarrier', 'AD101EF', 731453, 'Disponible'),
+('CarCarrier', 'AD102HG', 731929, 'Disponible'),
+('CarCarrier', 'AD103LO', 732404, 'Disponible'),
+('CarCarrier', 'AD104WE', 732880, 'Disponible'),
+('CarCarrier', 'AD105ZP', 733355, 'Disponible'),
+('Araña', 'AD865AG', 747642, 'Disponible'),
+('Tanque', 'AA537AG', 752105, 'Disponible'),
+('Araña', 'AD252AD', 758967, 'Disponible'),
+('Granel', 'AB581AD', 761560, 'Disponible'),
+('Araña', 'AA189AD', 775167, 'Disponible'),
+('Araña', 'AA887AS', 777450, 'Disponible'),
+('Araña', 'AB931AG', 806730, 'Disponible'),
+('Granel', 'AB668AG', 815072, 'Disponible'),
+('Araña', 'AD166AS', 815082, 'Disponible'),
+('Granel', 'AA800AG', 820810, 'Disponible'),
+('Jaula', 'AA362AS', 831768, 'Disponible'),
+('Granel', 'AA624AS', 852157, 'Disponible'),
+('Granel', 'AD778AD', 873758, 'Disponible'),
+('Jaula', 'AC296AS', 882174, 'Disponible'),
+('Tanque', 'AA449AD', 884654, 'Disponible');
+
+--
+-- Disparadores `arrastre`
+--
+DELIMITER $$
+CREATE TRIGGER `darBajaArrastre` AFTER DELETE ON `arrastre` FOR EACH ROW INSERT INTO `arrastre_borrado`(`tipo`, `patente`, `chasis`) VALUES (OLD.tipo, OLD.patente, OLD.chasis)
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `arrastre_borrado`
+--
+
+CREATE TABLE `arrastre_borrado` (
+  `tipo` varchar(25) NOT NULL,
+  `patente` varchar(25) NOT NULL,
+  `chasis` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `arrastre_borrado`
+--
+
+INSERT INTO `arrastre_borrado` (`tipo`, `patente`, `chasis`) VALUES
+('Araña', '111', 111),
+('Tanque', 'FS23FSD', 5435326);
+
+--
+-- Disparadores `arrastre_borrado`
+--
+DELIMITER $$
+CREATE TRIGGER `darAltaArrastre` AFTER DELETE ON `arrastre_borrado` FOR EACH ROW INSERT INTO `arrastre`(`tipo`, `patente`, `chasis`) VALUES (OLD.tipo, OLD.patente, OLD.chasis)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -58,7 +140,7 @@ CREATE TABLE `carga` (
   `imo_class` varchar(250) DEFAULT NULL,
   `reefer` varchar(5) NOT NULL,
   `temperatura` int(11) DEFAULT NULL,
-  `cuit` int(11) NOT NULL
+  `cuit` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -66,7 +148,8 @@ CREATE TABLE `carga` (
 --
 
 INSERT INTO `carga` (`codigo`, `tipo`, `peso_neto`, `hazard`, `imo_class`, `reefer`, `temperatura`, `cuit`) VALUES
-(9, 'Granel', 20, 'No', 'null', 'No', 0, 2147483647);
+(4, 'Granel', 13, 'No', 'null', 'No', 0, NULL),
+(5, 'CarCarrier', 423, 'Si', 'Sólidos o sustancias inflamables', 'Si', 423, NULL);
 
 -- --------------------------------------------------------
 
@@ -90,20 +173,8 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`denominacion`, `cuit`, `direccion`, `telefono`, `email`, `contacto1`, `contacto2`, `viaje`) VALUES
-('hhhhh', 2147483647, 'Costa Rica 689', 2147483647, 'macadopazo@gmail.com', '789', '456', 0);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `factura`
---
-
-CREATE TABLE `factura` (
-  `id_factura` int(11) NOT NULL,
-  `kilometro_viaje_total` int(11) DEFAULT NULL,
-  `costo_total` decimal(9,2) DEFAULT NULL,
-  `tipo_carga` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+('denom', 98, 'direc', 123, 'd@gmail.com', '123', '123', 0),
+('La empresa', 111, 'direc', 312, 'laempresa@gmail.com', '31', '312', 0);
 
 -- --------------------------------------------------------
 
@@ -153,11 +224,11 @@ CREATE TABLE `rol` (
 --
 
 INSERT INTO `rol` (`id_rol`, `rol`) VALUES
-(0, 'asginar'),
-(1, 'administrador'),
-(2, 'supervisor'),
-(3, 'encargadoDeTaller'),
-(4, 'chofer');
+(0, 'Asignar'),
+(1, 'Administrador'),
+(2, 'Supervisor'),
+(3, 'EncargadoDeTaller'),
+(4, 'Chofer');
 
 -- --------------------------------------------------------
 
@@ -167,13 +238,13 @@ INSERT INTO `rol` (`id_rol`, `rol`) VALUES
 
 CREATE TABLE `usuario` (
   `dni` int(11) NOT NULL,
-  `nombre` varchar(30) DEFAULT NULL,
-  `apellido` varchar(30) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL,
-  `pasword` varchar(30) DEFAULT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `pasword` varchar(30) NOT NULL,
   `licencia_conduccion` int(11) DEFAULT NULL,
   `fecha_nac` date DEFAULT NULL,
-  `id_rol` int(11) DEFAULT NULL,
+  `id_rol` int(11) NOT NULL,
   `matricula` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -184,13 +255,11 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`dni`, `nombre`, `apellido`, `email`, `pasword`, `licencia_conduccion`, `fecha_nac`, `id_rol`, `matricula`) VALUES
 (111, 'administrador', 'adm', 'administrador@gmail.com', '123', NULL, '1989-03-25', 1, NULL),
 (222, 'supervisor', 'super', 'supervisor@gmail.com', '123', 0, '2020-11-02', 2, NULL),
-(333, 'encargado', 'de taller', 'encargado@gmail.com', '123', NULL, '1984-02-01', 3, NULL),
+(333, 'encargado', 'de taller', 'encargado@gmail.com', '123', NULL, '1984-02-01', 3, 'AA123CD'),
+(444, 'chofer', 'el chofer', 'chofer@gmail.com', '123', 432, '2020-12-01', 4, 'AA123CD'),
 (123456, 'chicha', 'DP', 'ggg@123.com', '111', 0, '2020-11-08', 2, NULL),
-(888888, 'hola', 'dp', 'asb@789.com', '888', NULL, '2020-12-07', 4, 'hola123'),
-(987654, 'chofer', '999', 'ggg@123.com', '1', NULL, '2021-01-05', 4, 'chau456'),
-(2255888, 'Flash', 'dp', 'asd@111.com', '333', 0, '2020-11-02', 4, 'ninguna'),
-(38286199, 'maca', 'Pazo', 'macadopazo@gmail.com', '456', NULL, NULL, 1, NULL),
-(44444444, 'titan', 'dp', 'asb@789.com', '222', 0, '2020-11-02', 4, 'ninguna');
+(2255888, 'Flash', 'dp', 'asd@111.com', '333', 0, '2020-11-02', 4, NULL),
+(38286199, 'maca', 'Pazo', 'macadopazo@gmail.com', '456', NULL, NULL, 1, NULL);
 
 --
 -- Disparadores `usuario`
@@ -223,9 +292,9 @@ CREATE TABLE `usuario_borrado` (
 --
 
 INSERT INTO `usuario_borrado` (`dni`, `nombre`, `apellido`, `email`, `pasword`, `licencia_conduccion`, `fecha_nac`, `id_rol`, `matricula`) VALUES
-(543, 'ter', 'tre', 'tre', 'tr', 432, '2020-12-01', 3, 'AA342QZ'),
 (123456, 'chicha', 'DP', 'ggg@123.com', '111', 0, '2020-11-08', 2, NULL),
-(2255888, 'Flash', 'dp', 'asd@111.com', '333', 0, '2020-11-02', 4, NULL);
+(2255888, 'Flash', 'dp', 'asd@111.com', '333', 0, '2020-11-02', 4, NULL),
+(44444444, 'titan', 'dp', 'asb@789.com', '222', 0, '2020-11-02', 4, 'chau456');
 
 --
 -- Disparadores `usuario_borrado`
@@ -246,15 +315,14 @@ CREATE TABLE `vehiculo` (
   `estado` varchar(20) DEFAULT NULL,
   `posicion_gps` varchar(60) DEFAULT NULL,
   `kilometros_recorridos` int(11) DEFAULT NULL,
-  `aÃ±o_fabricacion` date DEFAULT NULL,
+  `anio_fabricacion` date DEFAULT NULL,
   `numero_chasis` varchar(30) DEFAULT NULL,
   `numero_motor` varchar(30) DEFAULT NULL,
   `alarma` varchar(20) DEFAULT NULL,
   `marca` varchar(20) DEFAULT NULL,
   `modelo` varchar(20) DEFAULT NULL,
   `id_mantenimiento` int(11) DEFAULT NULL,
-  `ultimo_service` date DEFAULT NULL,
-  `patente` varchar(50) NOT NULL,
+  `ultimo_service` date NOT NULL DEFAULT current_timestamp(),
   `latitud` double NOT NULL,
   `longitud` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -263,10 +331,47 @@ CREATE TABLE `vehiculo` (
 -- Volcado de datos para la tabla `vehiculo`
 --
 
-INSERT INTO `vehiculo` (`matricula`, `estado`, `posicion_gps`, `kilometros_recorridos`, `aÃ±o_fabricacion`, `numero_chasis`, `numero_motor`, `alarma`, `marca`, `modelo`, `id_mantenimiento`, `ultimo_service`, `patente`, `latitud`, `longitud`) VALUES
-('chau456', 'ocupado', NULL, NULL, NULL, NULL, NULL, NULL, 'chevrolet', NULL, NULL, NULL, 'hyh-789', 0, 0),
-('hola123', 'ocupado', NULL, 4500, '2020-11-10', NULL, NULL, NULL, 'Ford', NULL, NULL, '2020-12-08', 'yui-999', -34.62360066948015, -58.786024912718204),
-('ninguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', 0, 0);
+INSERT INTO `vehiculo` (`matricula`, `estado`, `posicion_gps`, `kilometros_recorridos`, `anio_fabricacion`, `numero_chasis`, `numero_motor`, `alarma`, `marca`, `modelo`, `id_mantenimiento`, `ultimo_service`, `latitud`, `longitud`) VALUES
+('AA123CD', 'Disponible', NULL, 0, '2016-07-30', 'L53879558', '53879558', NULL, 'IVECO', 'Cursor', NULL, '2020-12-09', 0, 0),
+('AA124DC', 'Disponible', NULL, 0, '2012-03-04', 'R69904367', '69904367', NULL, 'IVECO', 'Cursor', NULL, '2020-12-09', 0, 0),
+('AA150QW', 'Disponible', NULL, 0, '2020-12-19', 'I82039512', '82039512', NULL, 'SCANIA', 'G310', NULL, '2020-12-09', 0, 0),
+('AA211ZX', 'Disponible', NULL, 0, '2020-01-16', 'N82836641', '82836641', NULL, 'IVECO', 'Cursor', NULL, '2020-12-09', 0, 0),
+('AA233SS', 'Disponible', NULL, 0, '2018-03-20', 'K26139668', '26139668', NULL, 'IVECO', 'Cursor', NULL, '2020-12-09', 0, 0),
+('AA342QZ', 'Disponible', NULL, 0, '2017-07-02', 'C72582865', '72582865', NULL, 'SCANIA', 'G410', NULL, '2020-12-09', 0, 0),
+('AA534QD', 'Disponible', NULL, 0, '2013-03-13', 'A21357689', '21357689', NULL, 'SCANIA', 'G460', NULL, '2020-12-09', 0, 0),
+('AA726QW', 'Disponible', NULL, 0, '2017-05-04', 'C54650513', '54650513', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AA918QZ', 'Disponible', NULL, 0, '2018-03-31', 'C31256965', '31256965', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AB198QZ', 'Disponible', NULL, 0, '2019-11-07', 'V18389741', '18389741', NULL, 'SCANIA', 'G410', NULL, '2020-12-09', 0, 0),
+('AB390QD', 'Disponible', NULL, 0, '2016-07-30', 'Z32041290', '32041290', NULL, 'SCANIA', 'G460', NULL, '2020-12-09', 0, 0),
+('AB582QW', 'Disponible', NULL, 0, '2020-08-08', 'V17800122', '17800122', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AB774QZ', 'Disponible', NULL, 0, '2017-04-20', 'J46753468', '46753468', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AB900QW', 'Disponible', NULL, 0, '2017-04-02', 'F44301415', '44301415', NULL, 'IVECO', 'Cursor', NULL, '2020-12-09', 0, 0),
+('AB966QD', 'Disponible', NULL, 0, '2015-10-09', 'B32632699', '32632699', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AC246QD', 'Disponible', NULL, 0, '2018-10-17', 'O62500687', '62500687', NULL, 'SCANIA', 'G460', NULL, '2020-12-09', 0, 0),
+('AC342WW', 'Disponible', NULL, 0, '2016-05-28', 'D44260023', '44260023', NULL, 'IVECO', 'Cursor', NULL, '2020-12-09', 0, 0),
+('AC438QW', 'Disponible', NULL, 0, '2015-06-22', 'W54712451', '54712451', NULL, 'SCANIA', 'G310', NULL, '2020-12-09', 0, 0),
+('AC452WE', 'Disponible', NULL, 0, '2019-02-06', 'R28204636', '28204636', NULL, 'IVECO', 'Cursor', NULL, '2020-12-09', 0, 0),
+('AC630QZ', 'Disponible', NULL, 0, '2019-07-12', 'G88648319', '88648319', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AC822QD', 'Disponible', NULL, 0, '2016-02-18', 'J60916748', '60916748', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AC989QW', 'Disponible', NULL, 0, '2015-03-04', 'F64092078', '64092078', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AD200XS', 'Disponible', NULL, 0, '2015-01-19', 'R57193968', '57193968', NULL, 'IVECO', 'Cursor', NULL, '2020-12-09', 0, 0),
+('AD294QW', 'Disponible', NULL, 0, '2020-09-24', 'T27510702', '27510702', NULL, 'SCANIA', 'G310', NULL, '2020-12-09', 0, 0),
+('AD486QZ', 'Disponible', NULL, 0, '2014-05-05', 'L56284263', '56284263', NULL, 'SCANIA', 'G410', NULL, '2020-12-09', 0, 0),
+('AD678QD', 'Disponible', NULL, 0, '2018-06-02', 'C23849041', '23849041', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('AD870QW', 'Disponible', NULL, 0, '2019-11-06', 'M30207594', '30207594', NULL, 'M.BENZ', 'Actros 1846', NULL, '2020-12-09', 0, 0),
+('chau456', 'ocupado', NULL, 0, '0000-00-00', '', '', NULL, 'chevrolet', '', NULL, '2020-12-09', 0, 0),
+('FDSDS', 'FDA', 'FDA', 2, '2020-12-01', '432EW', 'FDS', NULL, 'FDS', 'FDS', NULL, '2020-12-09', 0, 0),
+('hola123', 'disponible', NULL, 4500, '2020-11-10', '', '', NULL, 'Ford', '', NULL, '2020-12-09', 0, 0),
+('hola1231', 'disponible', NULL, 4500, '2020-11-10', NULL, NULL, NULL, 'Ford', NULL, NULL, '2020-12-09', 0, 0),
+('ninguna', '', NULL, 0, '0000-00-00', '', '', NULL, '', '', NULL, '2020-12-09', 0, 0);
+
+--
+-- Disparadores `vehiculo`
+--
+DELIMITER $$
+CREATE TRIGGER `darBajaVehiculo` AFTER DELETE ON `vehiculo` FOR EACH ROW INSERT INTO `vehiculo_borrado` (`matricula`, `estado`, `posicion_gps`, `kilometros_recorridos`, `anio_fabricacion`, `numero_chasis`, `numero_motor`, `alarma`, `marca`, `modelo`, `id_mantenimiento`) VALUES (OLD.matricula, OLD.estado, OLD.posicion_gps, OLD.kilometros_recorridos, OLD.anio_fabricacion, OLD.numero_chasis, OLD.numero_motor, OLD.alarma, OLD.marca, OLD.modelo, OLD.id_mantenimiento)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -276,27 +381,26 @@ INSERT INTO `vehiculo` (`matricula`, `estado`, `posicion_gps`, `kilometros_recor
 
 CREATE TABLE `vehiculo_borrado` (
   `matricula` varchar(30) NOT NULL,
-  `estado` varchar(20) NOT NULL,
+  `estado` varchar(20) DEFAULT NULL,
   `posicion_gps` varchar(60) DEFAULT NULL,
-  `kilometros_recorridos` int(11) NOT NULL,
-  `anio_fabricacion` date NOT NULL,
-  `numero_chasis` varchar(30) NOT NULL,
-  `numero_motor` varchar(30) NOT NULL,
+  `kilometros_recorridos` int(11) DEFAULT NULL,
+  `anio_fabricacion` date DEFAULT NULL,
+  `numero_chasis` varchar(30) DEFAULT NULL,
+  `numero_motor` varchar(30) DEFAULT NULL,
   `alarma` varchar(20) DEFAULT NULL,
-  `marca` varchar(20) NOT NULL,
-  `modelo` varchar(20) NOT NULL,
-  `id_mantenimiento` int(11) DEFAULT NULL
+  `marca` varchar(20) DEFAULT NULL,
+  `modelo` varchar(20) DEFAULT NULL,
+  `id_mantenimiento` int(11) DEFAULT NULL,
+  `ultimo_service` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `vehiculo_borrado`
 --
 
-INSERT INTO `vehiculo_borrado` (`matricula`, `estado`, `posicion_gps`, `kilometros_recorridos`, `anio_fabricacion`, `numero_chasis`, `numero_motor`, `alarma`, `marca`, `modelo`, `id_mantenimiento`) VALUES
-('chau456', 'ocupado', NULL, 0, '0000-00-00', '', '', NULL, 'chevrolet', '', NULL),
-('FDSDS', 'FDA', 'FDA', 2, '2020-12-01', '432EW', 'FDS', NULL, 'FDS', 'FDS', NULL),
-('hola123', 'disponible', NULL, 4500, '2020-11-10', '', '', NULL, 'Ford', '', NULL),
-('ninguna', '', NULL, 0, '0000-00-00', '', '', NULL, '', '', NULL);
+INSERT INTO `vehiculo_borrado` (`matricula`, `estado`, `posicion_gps`, `kilometros_recorridos`, `anio_fabricacion`, `numero_chasis`, `numero_motor`, `alarma`, `marca`, `modelo`, `id_mantenimiento`, `ultimo_service`) VALUES
+('chau4561', 'ocupado', NULL, NULL, NULL, NULL, NULL, NULL, 'chevrolet', NULL, NULL, '2020-12-09'),
+('ninguna1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-09');
 
 --
 -- Disparadores `vehiculo_borrado`
@@ -318,24 +422,27 @@ CREATE TABLE `viaje` (
   `origen` varchar(60) DEFAULT NULL,
   `destino` varchar(60) DEFAULT NULL,
   `kilometro_viaje` int(11) DEFAULT NULL,
-  `tiempo_estimado` int(11) DEFAULT NULL,
-  `tiempo_real` int(11) DEFAULT NULL,
-  `tipo_carga` varchar(30) DEFAULT NULL,
-  `id_factura` int(11) DEFAULT NULL,
-  `matricula` varchar(30) DEFAULT NULL,
-  `cliente` int(11) NOT NULL,
-  `id_combustible` int(11) NOT NULL,
+  `tiempo_estimado` int(11) NOT NULL,
+  `tiempo_real` int(11) NOT NULL,
   `fecha_carga` date DEFAULT NULL,
-  `eta` date DEFAULT NULL
+  `eta` date DEFAULT NULL,
+  `tipo_carga` int(11) DEFAULT NULL,
+  `matricula` varchar(30) DEFAULT NULL,
+  `cliente` int(11) DEFAULT NULL,
+  `arrastre` int(11) DEFAULT NULL,
+  `combustible` double NOT NULL,
+  `pasajes_peajes` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `viaje`
 --
 
-INSERT INTO `viaje` (`id_viaje`, `estado`, `origen`, `destino`, `kilometro_viaje`, `tiempo_estimado`, `tiempo_real`, `tipo_carga`, `id_factura`, `matricula`, `cliente`, `id_combustible`, `fecha_carga`, `eta`) VALUES
-(1, '', NULL, 'ninguno', NULL, NULL, NULL, NULL, NULL, 'ninguna', 0, 0, NULL, NULL),
-(60, 'preparando despacho', 'bs AS', 'Chubut', NULL, NULL, NULL, NULL, NULL, 'hola123', 2147483647, 0, '2021-01-01', '2021-01-02');
+INSERT INTO `viaje` (`id_viaje`, `estado`, `origen`, `destino`, `kilometro_viaje`, `tiempo_estimado`, `tiempo_real`, `fecha_carga`, `eta`, `tipo_carga`, `matricula`, `cliente`, `arrastre`, `combustible`, `pasajes_peajes`) VALUES
+(52, '', '111', '111', NULL, 0, 0, '2020-11-30', '2020-12-06', NULL, NULL, NULL, NULL, 0, 0),
+(53, 'preparando despacho', '111', '111', NULL, 0, 0, '2020-11-30', '2020-12-06', NULL, 'AA123CD', 111, NULL, 242, 33),
+(54, '', '111', '111', NULL, 0, 0, '2020-11-30', '2020-12-06', NULL, NULL, NULL, NULL, 0, 0),
+(55, '', '11', '11111111111111', NULL, 0, 0, '2020-11-30', '2020-12-06', NULL, NULL, NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -366,11 +473,7 @@ INSERT INTO `viaje_estimado` (`etd`, `eta`, `kilometros`, `combustible`, `viatic
 ('2020-11-30', '2020-12-06', 1111, 1111111, 11111, 1111, 1111, 'Granel', 'No', 111, 15, 1),
 ('2020-11-30', '2020-12-06', 1111, 1111111, 11111, 1111, 1111, 'Granel', 'No', 111, 16, 1),
 ('2020-11-30', '2020-12-06', 1111, 1111111, 11111, 1111, 1111, 'Granel', 'No', 111, 17, 1),
-('2021-01-01', '2021-01-02', 50000, 20000, 3000, 4000, 4000, 'No', 'No', 4444, 18, 1),
-('2021-01-01', '2021-01-02', 50000, 20000, 3000, 4000, 4000, 'No', 'No', 4444, 19, 1),
-('2021-01-01', '2021-01-02', 50000, 20000, 3000, 4000, 4000, 'No', 'No', 4444, 20, 1),
-('2021-01-01', '2021-01-02', 50000, 20000, 3000, 4000, 4000, 'No', 'No', 4444, 21, 1),
-('2021-01-01', '2021-01-02', 50000, 20000, 3000, 4000, 4000, 'No', 'No', 4444, 22, 1);
+('2020-12-22', '2020-12-26', 43242, 423423, 43224, 24242, 42342, 'Granel', 'Si', 4232, 18, 1);
 
 --
 -- Índices para tablas volcadas
@@ -380,15 +483,20 @@ INSERT INTO `viaje_estimado` (`etd`, `eta`, `kilometros`, `combustible`, `viatic
 -- Indices de la tabla `arrastre`
 --
 ALTER TABLE `arrastre`
-  ADD PRIMARY KEY (`patente`),
-  ADD KEY `codigo` (`codigo`);
+  ADD PRIMARY KEY (`chasis`);
+
+--
+-- Indices de la tabla `arrastre_borrado`
+--
+ALTER TABLE `arrastre_borrado`
+  ADD PRIMARY KEY (`chasis`);
 
 --
 -- Indices de la tabla `carga`
 --
 ALTER TABLE `carga`
   ADD PRIMARY KEY (`codigo`),
-  ADD KEY `cuit` (`cuit`);
+  ADD KEY `fk_carga_cliente` (`cuit`);
 
 --
 -- Indices de la tabla `cliente`
@@ -396,12 +504,6 @@ ALTER TABLE `carga`
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`cuit`),
   ADD KEY `viaje` (`viaje`);
-
---
--- Indices de la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD PRIMARY KEY (`id_factura`);
 
 --
 -- Indices de la tabla `mantenimiento`
@@ -443,8 +545,7 @@ ALTER TABLE `usuario_borrado`
 --
 ALTER TABLE `vehiculo`
   ADD PRIMARY KEY (`matricula`),
-  ADD KEY `id_mantenimiento` (`id_mantenimiento`),
-  ADD KEY `patente` (`patente`);
+  ADD KEY `id_mantenimiento` (`id_mantenimiento`);
 
 --
 -- Indices de la tabla `vehiculo_borrado`
@@ -458,9 +559,10 @@ ALTER TABLE `vehiculo_borrado`
 --
 ALTER TABLE `viaje`
   ADD PRIMARY KEY (`id_viaje`),
-  ADD KEY `id_factura` (`id_factura`),
   ADD KEY `matricula` (`matricula`),
-  ADD KEY `id_combustible` (`id_combustible`);
+  ADD KEY `fk_viaje_cliente` (`cliente`),
+  ADD KEY `fk_viaje_arrastre` (`arrastre`),
+  ADD KEY `fk_viaje_carga` (`tipo_carga`);
 
 --
 -- Indices de la tabla `viaje_estimado`
@@ -476,23 +578,29 @@ ALTER TABLE `viaje_estimado`
 -- AUTO_INCREMENT de la tabla `carga`
 --
 ALTER TABLE `carga`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `viaje_estimado`
 --
 ALTER TABLE `viaje_estimado`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `carga`
+--
+ALTER TABLE `carga`
+  ADD CONSTRAINT `fk_carga_cliente` FOREIGN KEY (`cuit`) REFERENCES `cliente` (`cuit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `mantenimiento`
@@ -504,8 +612,8 @@ ALTER TABLE `mantenimiento`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`),
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`matricula`) REFERENCES `vehiculo` (`matricula`);
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`matricula`) REFERENCES `vehiculo` (`matricula`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `vehiculo`
@@ -517,8 +625,10 @@ ALTER TABLE `vehiculo`
 -- Filtros para la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  ADD CONSTRAINT `viaje_ibfk_1` FOREIGN KEY (`id_factura`) REFERENCES `factura` (`id_factura`),
-  ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`matricula`) REFERENCES `vehiculo` (`matricula`);
+  ADD CONSTRAINT `fk_viaje_arrastre` FOREIGN KEY (`arrastre`) REFERENCES `arrastre` (`chasis`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_viaje_carga` FOREIGN KEY (`tipo_carga`) REFERENCES `carga` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_viaje_cliente` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`cuit`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`matricula`) REFERENCES `vehiculo` (`matricula`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
