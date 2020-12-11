@@ -9,17 +9,17 @@ class PdfModel
     public function __construct($database)
     {
         $this->database = $database;
-        $this->fpdf= new FPDF();
+        $this->fpdf = new FPDF();
 
     }
 
-    public function basePdf($datosviaje,$datosCarga,$datosEstimados)
+    public function basePdf($datosviaje, $datosCarga, $datosEstimados)
     {
         $this->fpdf->AddPage();
-        $this->fpdf->Image('img/nova.logo.png',-5,-8,65);
-        $this->fpdf->SetFont('Arial','B',30);
-        $this->fpdf->Cell(70,10,'');
-        $this->fpdf->Cell(65,15,'Proforma','1',0,'C');
+        $this->fpdf->Image('img/nova.logo.png', -5, -8, 65);
+        $this->fpdf->SetFont('Arial', 'B', 30);
+        $this->fpdf->Cell(70, 10, '');
+        $this->fpdf->Cell(65, 15, 'Proforma', '1', 0, 'C');
         //cambiar ruta según como está guardado el proyecto
         $this->fpdf->Image("http://localhost/codigos/prog_web/view/qrcode.php", 178, 8, 25, 25, "png");
         $this->darEspaciado(45);
@@ -36,20 +36,19 @@ class PdfModel
 
     public function cargarDatos($datos)
     {
-        foreach($datos as $key => $dato)
-        {
+        foreach ($datos as $key => $dato) {
             $this->fpdf->Ln(15);
-            $this->fpdf->Cell(70,10,"$key",'1',0,'L');
-            $this->fpdf->Cell(120,10,"$dato",'1',0,'C');
+            $this->fpdf->Cell(70, 10, "$key", '1', 0, 'L');
+            $this->fpdf->Cell(120, 10, "$dato", '1', 0, 'C');
         }
     }
 
     public function datosRepresentados($datoRepresentado)
     {
-        $this->fpdf->SetFont('Arial','',25);
-        $this->fpdf->Cell(70,12,"$datoRepresentado",'1',0,'C');
+        $this->fpdf->SetFont('Arial', '', 25);
+        $this->fpdf->Cell(70, 12, "$datoRepresentado", '1', 0, 'C');
         $this->fpdf->Ln(5);
-        $this->fpdf->SetFont('Arial','',20);
+        $this->fpdf->SetFont('Arial', '', 20);
     }
 
     public function darEspaciado($espaciado)

@@ -8,7 +8,7 @@ function getLocation() {
 }
 document.getElementById("botonGps").style.display = "none";
 function showPosition(position) {
-
+    limpiarCambios();
 
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
@@ -16,11 +16,16 @@ function showPosition(position) {
     const longitud = lon.toString();
     document.getElementById("lo").value = position.coords.latitude;
     document.getElementById("la").value= position.coords.longitude;
-    document.getElementById("caluclo").className ="w3-btn w3-padding w3-green";
-    document.getElementById("botonGps").className ="w3-btn w3-padding w3-red";
-    document.getElementById("enviado").innerHTML="Posicion calculada";
+    document.getElementById("caluclo").className ="w3-btn w3-margin w3-green";
+    document.getElementById("botonGps").className ="w3-btn w3-margin w3-red";
+    document.getElementById("enviado").innerHTML+="<p><b>Posicion calculada</b></p>";
     document.getElementById("botonGps").style.display = "block";
-    alert(latitud);
+    document.getElementById("enviado").innerHTML+="<p><b>Latitud: </b>"+latitud+"</p>";
+    document.getElementById("enviado").innerHTML+="<p><b>Longitud: </b>"+longitud+"</p>";
+
+    function limpiarCambios(){
+        document.getElementById("enviado").innerHTML="";
+    }
     /*   var data = new FormData();
        data.append("longitud", longitud);
        data.append("latitud", latitud);

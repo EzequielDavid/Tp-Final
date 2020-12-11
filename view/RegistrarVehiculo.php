@@ -62,7 +62,6 @@
                             <option value="Disponible">Disponible</option>
                             <option value="En viaje">En viaje</option>
                             <option value="En mantenimiento">En mantenimiento</option>
-                            <option value="Parado">Parado</option>
                         </select>
                     </div>
                 </div>

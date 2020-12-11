@@ -10,7 +10,7 @@
     <div class="datos-full w3-card-4 margin-topbottom">
         <div class="w3-container w3-orange w3-opacity w3-display-container form-top-title">
             <h2>Cargar proforma</h2>
-            <h5 class="w3-display-topright w3-section w3-margin-right trip">Proforma #<b>32</b></h5>
+            <h5 class="w3-display-topright w3-section w3-margin-right trip">Proforma</h5>
         </div>
         <form class="w3-container" action="index.php?module=supervisor&action=cargarDatosParaProforma" method="POST">
 

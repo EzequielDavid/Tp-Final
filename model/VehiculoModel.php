@@ -175,4 +175,24 @@ class VehiculoModel
         $tablaAListar = $c->get_result();
         return $tablaAListar->fetch_all();
     }
+
+
+
+    public function actualizarDatosDe($datoAModificar, $valor)
+    {
+        $matricula=$_POST["matricula"];
+        $c = $this->database->prepare("UPDATE vehiculo SET vehiculo.$datoAModificar = ? WHERE vehiculo.matricula = ?");
+        $c->bind_param("ds", $valor, $matricula);
+        $c->execute();
+    }
+
+    public function buscarValorDe($valor)
+    {
+        $matricula=$_POST["matricula"];
+        $c = $this->database->prepare("SELECT $valor FROM `vehiculo` WHERE matricula LIKE ?");
+        $c->bind_param("s", $matricula);
+        $c->execute();
+        $vehiculo = $c->get_result();
+        return $vehiculo->fetch_assoc();
+    }
 }

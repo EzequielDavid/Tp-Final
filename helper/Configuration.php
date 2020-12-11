@@ -110,7 +110,8 @@ class Configuration
     {
         $usuarioModel = $this->getUsuarioModel();
         $viajeModel = $this->getViajeModel();
-        return new ChoferController($this->getRender(), $usuarioModel, $viajeModel);
+        $vehiculoModel = $this->getVehiculoModel();
+        return new ChoferController($this->getRender(), $usuarioModel, $viajeModel, $vehiculoModel);
     }
 
     public function getUsuarioController()
