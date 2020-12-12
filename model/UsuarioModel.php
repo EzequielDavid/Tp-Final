@@ -71,6 +71,17 @@ class UsuarioModel
         return $usuario->fetch_all();
 
     }
+
+    public function listarChoferesDisponibles()
+    {
+        $c = $this->database->prepare("SELECT usuario.dni,usuario.nombre, usuario.apellido, usuario.licencia_conduccion, usuario.matricula from usuario  
+                                        WHERE usuario.id_rol  LIKE 4 AND usuario.matricula IS NULL;");
+        $c->execute();
+        $usuario = $c->get_result();
+        return $usuario->fetch_all();
+
+    }
+
     public function listarChoferesSinViaje()
     {
         $c = $this->database->prepare("SELECT usuario.dni,usuario.nombre, usuario.apellido, usuario.licencia_conduccion, usuario.matricula from usuario WHERE usuario.id_rol LIKE 4 and usuario.matricula LIKE 'ninguna'");

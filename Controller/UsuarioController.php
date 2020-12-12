@@ -101,12 +101,12 @@ class UsuarioController
         if ($usuario == null){
             $datos = $this->datosError("¡Espera!", "Para ingresar primero debes registrarte");
             echo $this->render->render("view/partial/header.mustache"),
-            $this->render->render("view/AvisoEsperarRol.php", $datos);
+            $this->render->render("view/AvisoEsperar.php", $datos);
         }
         else if ($usuario["id_rol"] == 0) {
             $datos = $this->datosError("Solo queda esperar", "Cuando te asignen un rol podrás ingresar a la página");
             echo $this->render->render("view/partial/header.mustache"),
-            $this->render->render("view/AvisoEsperarRol.php", $datos);
+            $this->render->render("view/AvisoEsperar.php", $datos);
         } else if ($usuario["nombre"] == $name && $usuario["pasword"] == $pasword && $usuario["id_rol"] != null) {
             $_SESSION["rol"] = $usuario["id_rol"];
             $_SESSION["name"] = $usuario["nombre"];

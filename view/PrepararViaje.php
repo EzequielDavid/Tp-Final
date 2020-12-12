@@ -1,5 +1,4 @@
 <div class="w3-container w3-display-container">
-    <img src="img/.jpg" class="responsive w3-circle" id="motor">
     <div class="datos w3-card-4">
         <div class="w3-container w3-orange w3-opacity w3-display-container form-top-title">
             <h2>Preparar viaje</h2>
@@ -10,14 +9,16 @@
             <div class="w3-row-padding">
                 <div class="w3-half">
                     <label class="w3-text-orange w3-opacity"><b>Origen - Destino - CUIT cliente</b></label>
+
                     <select class="w3-select w3-border w3-sand w3-opacity w3-margin-bottom" name="cuit">
                         <option value="" disabled selected>origen - destino</option>
                         {{#datos}}
                         {{#viaje}}
-                        <option value={{10}}>{{2}} - {{3}} - {{10}}</option>
+                        <option value={{9}}>{{2}} - {{3}} - {{9}}</option>
                         {{/viaje}}
                         {{/datos}}
                     </select>
+
                 </div>
             </div>
             <div class="w3-panel">
@@ -38,20 +39,20 @@
                 </select>
             </div>
             <div class="w3-half w3-padding">
-                <label class="w3-text-orange w3-opacity"><b>arrastre</b></label>
-                <select class="w3-select w3-border w3-sand w3-opacity w3-margin-bottom" name="patente">
+                <label class="w3-text-orange w3-opacity"><b>Arrastre</b></label>
+                <select class="w3-select w3-border w3-sand w3-opacity w3-margin-bottom" name="chasis">
                     <option value="" disabled selected>patente - marca - tipo</option>
                     {{#datos}}
                     {{#arrastre}}
-                    <option value={{0}}>{{0}} {{1}} {{2}}</option>
+                    <option value={{2}}>{{0}} {{1}} {{2}}</option>
                     {{/arrastre}}
                     {{/datos}}
                 </select>
             </div>
             <div class="w3-col w3-padding">
-                <label class="w3-text-orange w3-opacity"><b>carga - Cliente</b></label>
+                <label class="w3-text-orange w3-opacity"><b>Carga - Cliente</b></label>
                 <select class="w3-select w3-border w3-sand w3-opacity w3-margin-bottom" name="codigo">
-                    <option value="" disabled selected>Cuit - Detalle Carga - peso</option>
+                    <option value="" disabled selected>Cuit - Detalle Carga - Peso</option>
                     {{#datos}}
                     {{#carga}}
                     <option value={{0}}>{{7}} - {{1}} - {{2}}</option>

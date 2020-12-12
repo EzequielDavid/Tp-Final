@@ -17,7 +17,6 @@ class ViajeController
     function listarViajes()
     {
         $choferes["viajes"]=$this->viajeModel->listarViajes();
-        //  die($usuarios["usuarios"]);
         echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
         $this->render->render("view/Viajes.php",$choferes);
     }

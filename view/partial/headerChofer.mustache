@@ -5,44 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://kit.fontawesome.com/222a3ac483.js" crossorigin="anonymous"></script>
+<link href="img/nv.png" type="image/x-icon" rel="shortcut icon"/>
 <link rel="stylesheet" href="Css/indexStyle.css">
 <link rel="stylesheet" href="Css/mantenimiento.css">
 <link rel="stylesheet" href="Css/listar.css">
 <script defer src="Js/login.js"></script>
 <script defer src="Js/gps.JS"></script>
 <script defer src="Js/registerValidation.js"></script>
+//API KEY
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=ESCRIBE_AQUI_TU_API_KEY&callback=initMap">
+</script>
 <body>
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
     <div class="w3-bar w3-amber w3-padding w3-card">
-        <a href="index.php?module=inicio&action=execute" class="w3-bar-item w3-button w3-hover-orange"><b>NV</b> Nova</a>
+        <a href="index.php?module=inicio&action=execute" class="w3-bar-item w3-button w3-hover-orange"><b>NV</b>
+            Nova</a>
         <!-- Float links to the right. Hide them on small screens -->
         <div id="usuario" class="w3-right w3-hide-small-nav"><b id="name">{{name}}</b>
             <button class='submit createAccount w3-round-large margin-top w3-black'><a
                     href='index.php?module=usuario&action=logout'>Log out</a></button>
         </div>
 
-    <div id="myTopnav" class="w3-right w3-show w3-wide topnav">
-        <a href="index.php?module=chofer&action=mostrarViaje"
-           class="w3-bar-item w3-button w3-hover-orange">Mi viaje</a>
-        <a href="#"
-           class="w3-bar-item w3-button w3-hover-orange">Notificaciones</a>
-        <button class='submit createAccount w3-round-large margin-top w3-black show-on-small' style="float: right;">
-            <a href="index.php?module=usuario&action=logout">Log out</a></button>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars" style="margin-top: 0.8rem;"></i>
-        </a>
+        <div id="myTopnav" class="w3-right w3-show w3-wide topnav">
+            <a href="index.php?module=chofer&action=mostrarViaje"
+               class="w3-bar-item w3-button w3-hover-orange">Mi viaje</a>
+            <button class='submit createAccount w3-round-large margin-top w3-black show-on-small' style="float: right;">
+                <a href="index.php?module=usuario&action=logout">Log out</a></button>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars" style="margin-top: 0.8rem;"></i>
+            </a>
+        </div>
     </div>
 </div>
-</div>
-
-
-
-
-
-
-
 
 
 </body>

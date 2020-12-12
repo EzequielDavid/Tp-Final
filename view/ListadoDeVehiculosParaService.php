@@ -1,7 +1,6 @@
-<header class="w3-display-container w3-content w3-wide header-nova" id="home">
-    <img class="w3-image img-nova" src="img/nova.png" alt="Architecture">
-    <div class="w3-display-middle w3-margin-top w3-center">
-    </div>
+<header class="w3-display-container w3-wide header-nova" style="width: 100% !important;" id="home">
+    <img class="w3-image img-nova" src="img/nova.png" style="width: 100% !important;" alt="Architecture"
+         width="100%" height="100%">
 </header>
 <body>
 <div class="w3-container w3-display-container margin-top w3-padding container-list">
@@ -16,8 +15,8 @@
                 <th>Km Recorridos</th>
                 <th>Motor</th>
                 <th>Chasis</th>
-                <th>alarma</th>
-                <td>Ultimo service</td>
+                <th>Alarma</th>
+                <th>Último service</th>
             </tr>
             {{#vehiculos}}
             <tr>
@@ -28,7 +27,7 @@
                 <td>{{5}}</td>
                 <td>{{4}}</td>
                 <td>{{6}}</td>
-                <td>{{12}}</td>
+                <td>{{10}}</td>
                 <td><form action="index.php?module=encargadoDeTaller&action=mantenimiento" method="post" class="w3-third">
                         <input type="hidden" name="matricula" value="{{0}}">
                         <input class="w3-btn w3-orange w3-margin-top" type="submit" value="Iniciar Mantenimiento">
