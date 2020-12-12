@@ -1,39 +1,43 @@
 <body>
     <div class="w3-container w3-display-container margin-top w3-padding container-list form-container">
         <div class="w3-container w3-orange w3-margin w3-padding container-list-sm">
-
-            <div class="responsive-table">
-                <h1>Detalle de Vehiculo '{{#vehiculo}}{{matricula}}{{/vehiculo}}'</h1>
-                <table class="w3-table-all w3-card-4 table-list">
-                    <tr>
-                        <th>Matricula</th>
-                        <th>Estado</th>
-                        <th>Km Recorridos</th>
-                        <th>Año de Fabricacion</th>
-                        <th>Numero de Chasis</th>
-                        <th>Numero de Motor</th>
-                        <th>Alarma</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Ultimo Service</th>
-                    </tr>
-                    {{#vehiculo}}
-                    <tr>
-                        <td>{{matricula}}</td>
-                        <td>{{estado}}</td>
-                        <td>{{kilometros_recorridos}}</td>
-                        <td>{{anio_fabricacion}}</td>
-                        <td>{{numero_chasis}}</td>
-                        <td>{{numero_motor}}</td>
-                        <td>{{alarma}}</td>
-                        <td>{{marca}}</td>
-                        <td>{{modelo}}</td>
-                        <td>{{ultimo_service}}</td>
-                    </tr>
-                    {{/vehiculo}}
-
-                </table>
+            <div class="w3-container">
+                {{#vehiculo}}
+                <div class="w3-col ">
+                    <h1>Detalle de vehiculo: '{{#vehiculo}}{{matricula}}{{/vehiculo}}'</h1>
+                </div>
+                <div class="w3-quarter">
+                    <h3>Matricula:</h3>
+                </div>
+                <div class="w3-rest w3-white w3-opacity">
+                    <h3 class="w3-margin-left">{{matricula}}</h3>
+                </div>
+                <div class="w3-quarter">
+                    <h3>Modelo:</h3>
+                </div>
+                <div class="w3-rest w3-white w3-opacity">
+                    <h3 class="w3-margin-left">{{modelo}} </h3>
+                </div>
+                <div class="w3-quarter">
+                    <h3>Marca:</h3>
+                </div>
+                <div class="w3-rest w3-white w3-opacity">
+                    <h3 class="w3-margin-left">{{marca}} </h3>
+                </div>
+                <div class="w3-quarter">
+                    <h3>Año de fabriacion:</h3>
+                </div>
+                <div class="w3-rest w3-white w3-opacity">
+                    <h3 class="w3-margin-left">{{anio_fabricacion}} </h3>
+                </div>
+                <div class="w3-quarter">
+                    <h3>Ultimo service:</h3>
+                </div>
+                <div class="w3-rest w3-white w3-opacity">
+                    <h3 class="w3-margin-left">{{ultimo_service}} </h3>
+                </div>
             </div>
+            {{/vehiculo}}
 
         </div>
     </div>
