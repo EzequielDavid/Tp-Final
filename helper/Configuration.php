@@ -10,6 +10,11 @@ include_once("model/ClienteModel.php");
 include_once("model/SupervisorModel.php");
 include_once ("model/MantenimientoModel.php");
 include_once("model/PdfModel.php");
+///////////////////////////////////////
+include_once("model/EstadisticasModel.php");
+include_once("Controller/EstadisticasController.php");
+//////////////////////////////////////////////
+
 include_once("Controller/InicioController.php");
 include_once("Controller/UsuarioController.php");
 include_once("Controller/VehiculoController.php");
@@ -47,6 +52,19 @@ class Configuration
     {
         return new Render('view/partial');
     }
+
+    ///////////////////////////////////////////////////
+    public function getEstadisticasController(){
+        $estadisticasModel = $this->getEstadisticasModel();
+        return new EstadisticasController($this->getRender(),$estadisticasModel);
+    } 
+
+    public function getEstadisticasModel()
+    {
+        $database = $this->getDatabase();
+        return new EstadisticasModel($database);
+    }   
+    //////////////////////////////////////////////////////
 
     public function getEncargadoDeTallerController(){
         $vehiculoModel = $this->getVehiculoModel();
