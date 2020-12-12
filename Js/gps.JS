@@ -1,4 +1,3 @@
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -7,34 +6,38 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+
 document.getElementById("botonGps").style.display = "none";
 function showPosition(position) {
-
+    limpiarCambios();
 
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
     const latitud = lat.toString();
     const longitud = lon.toString();
-    document.getElementById("lo").value = longitud;
-    document.getElementById("la").value= latitud;
-    document.getElementById("caluclo").className ="w3-btn w3-padding w3-green";
-    document.getElementById("botonGps").className ="w3-btn w3-padding w3-red";
-    document.getElementById("enviado").innerHTML="Posicion calculada";
+    document.getElementById("lo").value = position.coords.latitude;
+    document.getElementById("la").value= position.coords.longitude;
+    document.getElementById("caluclo").className ="w3-btn w3-margin w3-green";
+    document.getElementById("botonGps").className ="w3-btn w3-red";
+    document.getElementById("enviado").innerHTML+="<p class='posicion'><b>Posicion calculada</b></p>";
     document.getElementById("botonGps").style.display = "block";
-    alert(latitud);
- /*   var data = new FormData();
-    data.append("longitud", longitud);
-    data.append("latitud", latitud);
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "index.php?module=chofer&action=enviarPosicionGps", true);
-    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhttp.onload = function () {
-        // do something to response
-        console.log(this.responseText);
-    };
-    alert(latitud);
-   xhttp.send(data);
-   window.location.href = "index.php?module=inicio&action=execute";*/
+    document.getElementById("enviado").innerHTML+="<p class='posicion'><b>Latitud: </b>"+latitud+"</p>";
+    document.getElementById("enviado").innerHTML+="<p class='posicion'><b>Longitud: </b>"+longitud+"</p>";
+
+
+    /*   var data = new FormData();
+       data.append("longitud", longitud);
+       data.append("latitud", latitud);
+       let xhttp = new XMLHttpRequest();
+       xhttp.open("POST", "index.php?module=chofer&action=enviarPosicionGps", true);
+       xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+       xhttp.onload = function () {
+           // do something to response
+           console.log(this.responseText);
+       };
+       alert(latitud);
+      xhttp.send(data);
+      window.location.href = "index.php?module=inicio&action=execute";*/
     let map, infoWindow;
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: -34.397, lng: 150.644 },
@@ -69,6 +72,11 @@ function showPosition(position) {
         }
     });
 }
+
+function limpiarCambios(){
+    document.getElementById("enviado").innerHTML="";
+}
+
 let map, infoWindow;
 
 function initMap() {

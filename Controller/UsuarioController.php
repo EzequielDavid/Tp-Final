@@ -28,7 +28,6 @@ class UsuarioController
 
     }
 
-
     public function listarBackupUsuario()
     {
         $usuarios["usuarios"] = $this->usuarioModel->listarBackupUsuario();
@@ -77,7 +76,7 @@ class UsuarioController
                 echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
                 $this->render->render("view/Miviaje.php", $_SESSION);
             } else {
-                echo $this->render->render("view/partial/header" . ucfirst($rol["rol"]) . ".mustache", $_SESSION),
+                echo $this->render->render("view/partial/header" .ucfirst($rol["rol"]) . ".mustache", $_SESSION),
                 $this->render->render("view/Inicio.php", $_SESSION);
             }
 
@@ -90,12 +89,6 @@ class UsuarioController
 
     }
 
-    public function bloquearUsuario()
-    {
-        $this->usuarioModel->bloquearUsuario($_POST["dni"]);
-        $this->listarUsuario();
-    }
-
     public function logout()
     {
         session_destroy();
@@ -105,19 +98,20 @@ class UsuarioController
 
     public function redirectLoginUsuario($usuario, $name, $pasword)
     {
-        if ($usuario == null)
-            die($this->render->render("view/AvisoRegistrarse.php", $name));
-
-        else if ($usuario["id_rol"] == 0)
-            die($this->render->render("view/AvisoEsperarRol.php", $name));
-
-        else if ($usuario["nombre"] == $name && $usuario["pasword"] == $pasword && $usuario["id_rol"] != null) {
+        if ($usuario == null){
+            $datos = $this->datosError("¡Espera!", "Para ingresar primero debes registrarte");
+            echo $this->render->render("view/partial/header.mustache"),
+            $this->render->render("view/AvisoEsperar.php", $datos);
+        }
+        else if ($usuario["id_rol"] == 0) {
+            $datos = $this->datosError("Solo queda esperar", "Cuando te asignen un rol podrás ingresar a la página");
+            echo $this->render->render("view/partial/header.mustache"),
+            $this->render->render("view/AvisoEsperar.php", $datos);
+        } else if ($usuario["nombre"] == $name && $usuario["pasword"] == $pasword && $usuario["id_rol"] != null) {
             $_SESSION["rol"] = $usuario["id_rol"];
             $_SESSION["name"] = $usuario["nombre"];
             $_SESSION["dni"] = $usuario["dni"];
 
-            // le saqué que se pase la contraseña, no le encontré una función pero por las dudas lo comento :)
-            // $_SESSION["pasword"]=$usuario["pasword"];
             $this->direccionarSegunRol();
         }
     }
@@ -160,5 +154,17 @@ class UsuarioController
         $this->usuarioModel->listarUsuarios();
         echo $this->render->render("view/partial/headerAdministrador.mustache", $_SESSION),
         $this->render->render("view/ListadoDeUsuarios.php", $data);
+    }
+
+    /**
+     * @param $usuarios
+     * @return mixed
+     */
+    public function datosError($cabecera, $mensaje)
+    {
+        $datos["datos"] = array(
+            array($cabecera, $mensaje)
+        );
+        return $datos;
     }
 }

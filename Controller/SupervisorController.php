@@ -25,12 +25,28 @@ class SupervisorController
 
     public function listarChoferes()
     {
-        $choferes["choferes"] = $this->usuarioModel->listarChoferesSinViaje();
-        //  die($usuarios["usuarios"]);
+        $choferes["choferes"] = $this->usuarioModel->listarChoferesDisponibles();
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
-        $this->render->render("view/Choferes.php", $choferes),print_r($choferes);
+        $this->render->render("view/Choferes.php", $choferes);
 
     }
+
+    public function listarVehiculosSupervisor()
+    {
+        $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosSupervisor();
+        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
+        $this->render->render("view/ListadoDeVehiculosSupervisor.php",$vehiculos);
+    }
+
+    public function asignarEstadoVehiculo()
+    {
+        $this->vehiculoModel->asignarEstadoVehiculo($_POST["estado"],$_POST["matricula"]);
+        $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosSupervisor();
+        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
+        $this->render->render("view/ListadoDeVehiculosSupervisor.php",$vehiculos);
+    }
+
+
 
     public function prepararViaje()
     {
@@ -38,9 +54,10 @@ class SupervisorController
         $viaje = $this->viajeModel->listarViajesParaAsignarVehiculo();
         $vehiculo = $this->vehiculoModel->listarVehiculosSupervisor();
         $arrastre = $this->vehiculoModel->listarArrastre();
-        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje,"carga" =>null);
+        $carga = $this->viajeModel->listarCarga();
+        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje, "carga" => $carga);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
-        $this->render->render("view/PrepararViaje.php", $datos), print_r($datos),print_r($arrastre);
+        $this->render->render("view/PrepararViaje.php", $datos);
     }
 
     public function elegirViaje()
@@ -52,17 +69,18 @@ class SupervisorController
         $arrastre = $this->vehiculoModel->listarArrastre();
         $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje,"carga" =>$carga);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
-        $this->render->render("view/PrepararViaje.php", $datos), print_r($carga);
+        $this->render->render("view/PrepararViaje.php", $datos);
     }
 
     public function asignarViaje()
     {
-        $this->vehiculoModel->asignarCargaAarrastre($_POST["codigo"],$_POST["patente"]);
+       //$this->vehiculoModel->asignarCargaAarrastre($_POST["codigo"],$_POST["patente"]);
         $this->usuarioModel->asignarVehiculoAChofer($_POST["matricula"], $_POST["dni"]);
-        $this->vehiculoModel->cambiarEstadoDeVehiculoAOcupadoYasignarArrastre($_POST["matricula"],$_POST["patente"]);
+        $this->vehiculoModel->cambiarEstadoVehiculo("Ocupado",$_POST["matricula"]);
+        $this->vehiculoModel->cambiarEstadoArrastre("Ocupado",$_POST["chasis"]);
         $carga = $this->vehiculoModel->buscarCargaConCodigo($_POST["codigo"]);
         $this->viajeModel->asignarVehiculoAViaje($_POST["matricula"],$carga["cuit"]);
-        $this->viajeModel->actualizarEstadoDeViaje($_POST["codigo"]);
+        $this->viajeModel->actualizarEstadoDeViaje($_POST["id_viaje"]);
         $this->volverAInicio();
     }
 
