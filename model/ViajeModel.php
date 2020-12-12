@@ -115,10 +115,19 @@ class ViajeModel
     public function listarViajes()
     {
         $c = $this->database->prepare("SELECT viaje.id_viaje, viaje.estado,viaje.destino, viaje.cliente,viaje.matricula, usuario.dni, usuario.licencia_conduccion FROM `viaje` INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula
-                                     INNER JOIN usuario on vehiculo.matricula = usuario.matricula where viaje.estado NOT LIKE 'A preparar' and viaje.id_viaje not LIKE 1");
+                                     INNER JOIN usuario on vehiculo.matricula = usuario.matricula where viaje.estado NOT LIKE 'A preparar'");
         $c->execute();
         $viaje = $c->get_result();
         return $viaje->fetch_all();
+    }
+
+    public function listarCarga(){
+        $c = $this->database->prepare("select * from carga where estado = ?");
+        $disponible = "Disponible";
+        $c->bind_param("s", $disponible);
+        $c->execute();
+        $arrastre = $c->get_result();
+        return $arrastre->fetch_all();
     }
 
     public function listarViajesParaAsignarVehiculo()
@@ -128,12 +137,6 @@ class ViajeModel
         $viaje = $c->get_result();
         return $viaje->fetch_all();
     }
- /*public function crearViajeProforma($cliente, $origen, $destino, $fecha_carga, $eta)
-
-    {
-        $c = $this->database->prepare("SELECT * from viaje WHERE estado = 'A preparar'");
-        $c->execute();
-	 }*/
 
     public function listarTodosLosViajes()
     {

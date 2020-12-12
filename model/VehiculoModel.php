@@ -49,7 +49,7 @@ class VehiculoModel
 
     public function listarVehiculosParaService()
     {
-        $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'mantenimiento'");
+        $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'Mantenimiento'");
         $c->execute();
         $vehiculo = $c->get_result();
         return $vehiculo->fetch_all();
@@ -62,14 +62,19 @@ class VehiculoModel
         $c->execute();
     }
 
-    public function cambiarEstadoDeVehiculoAOcupadoYasignarArrastre($matricula, $patente)
+    //
+    public function cambiarEstadoVehiculo($estado,$matricula)
     {
-        $c = $this->database->prepare("UPDATE vehiculo SET estado = ? , patente = ? WHERE matricula = ?");
-        $ocupado = "ocupado";
-        $c->bind_param("sss", $ocupado, $patente, $matricula);
+        $c = $this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
+        $ocupado = "Ocupado";
+        $c->bind_param("ss", $ocupado, $matricula);
         $c->execute();
-        $c = $this->database->prepare("UPDATE arrastre SET estado = ? WHERE patente = ?");
-        $c->bind_param("s", $ocupado);
+    }
+
+    //
+    public function cambiarEstadoArrastre($estado, $chasis){
+        $c = $this->database->prepare("UPDATE arrastre SET estado = ? WHERE chasis = ?");
+        $c->bind_param("ss", $estado, $chasis);
         $c->execute();
     }
 

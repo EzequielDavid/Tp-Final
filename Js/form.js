@@ -22,18 +22,6 @@ function verificarPaso1() {
         irAlSiguientePaso(paso2, paso1);
 }
 
-c_cuit.addEventListener('keyup', function () {
-    if (c_cuit.value.length >= 2 && c_cuit.value.length <= 3)
-        c_cuit.value = c_cuit.value + ".";
-
-    else if (c_cuit.value.length >= 11 && c_cuit.value.length <= 12)
-        c_cuit.value = c_cuit.value + ".";
-
-    else if (c_cuit.value.length > 14)
-        c_cuit.value = c_cuit.value.substring(0, c_cuit.value.length - 1);
-
-});
-
 c_telefono.addEventListener('keyup', function () {
     if (c_telefono.value.length > 10)
         c_telefono.value = c_telefono.value.substring(0, c_telefono.value.length - 1);

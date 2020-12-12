@@ -19,7 +19,7 @@ class EncargadoDeTallerController
     {
         $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosParaService();
         echo $this->render->render("view/partial/headerEncargadoDeTaller.mustache",$_SESSION),
-        $this->render->render("view/ListadoDeVehiculosParaService.php",$vehiculos),print_r($vehiculos);
+        $this->render->render("view/ListadoDeVehiculosParaService.php",$vehiculos);
     }
     public function mantenimiento()
     {
@@ -33,6 +33,6 @@ class EncargadoDeTallerController
         $this->vehiculoModel->actualizarUltimaFechaDeMantenimiento($_POST["matricula"],$_POST["fechaMantenimiento"]);
         $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosParaService();
         echo $this->render->render("view/partial/headerEncargadoDeTaller.mustache",$_SESSION),
-        $this->render->render("view/ListadoDeVehiculosParaService.php",$vehiculos),print_r($vehiculos);
+        $this->render->render("view/ListadoDeVehiculosParaService.php",$vehiculos);
     }
 }

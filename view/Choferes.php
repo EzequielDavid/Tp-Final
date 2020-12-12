@@ -1,5 +1,5 @@
 <div class="datos w3-container w3-display-container w3-col s11">
-    <div class=" w3-container w3-orange w3-opacity w3-hide-small" >
+    <div class=" w3-container w3-orange w3-hide-small" >
         <h2>Choferes</h2>
         <table class="w3-table-all w3-card-4">
             <tr>
