@@ -16,15 +16,8 @@
             <b>{{destino}} </b><br>
             <b>{{estado}} </b><br>
         </div>
-        <div id="map"></div>z
+        <div id="map"></div>
         <div class="w3-col s12 w3-dark-grey w3-opacity w3-center">
-            <div class="w3-container w3-orange w3-margin">
-                <h5 class=" w3-opacity"><b>Descargar archivo con datos sobre el viaje</b></h5>
-
-                <form action="index.php?module=chofer&action=enviarPosicionGps" method="post">
-                <button class="w3-btn w3-black w3-margin">Descargar PDF</button>
-                </form>
-            </div>
 
             <div class="w3-container w3-orange w3-margin">
                 <button id="caluclo" class="w3-btn w3-margin w3-red" onclick="getLocation()">Calcular posición</button>

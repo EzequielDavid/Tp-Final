@@ -19,13 +19,12 @@ class ChoferController
     public function mostrarViaje()
     {
         $viaje["viaje"] = $this->mostrarViajesDeChofer();
-        $this->renderTo("ActualizarViaje.php", $viaje);
+        $this->renderTo("MiViaje.php", $viaje);
     }
 
     public function enviarPosicionGps()
     {
         $viaje["viaje"] = $this->mostrarViajesDeChofer();
-
         $this->viajeModel->actualizarPosicionActual($_POST["matricula"], $_POST["lati"], $_POST["longi"]);
 
         if ($viaje["viaje"]["latitud"] == 0 && $viaje["viaje"]["longitud"] == 0) {
@@ -58,6 +57,8 @@ class ChoferController
     {
         $viaje["viaje"] = $this->mostrarViajesDeChofer();
         $this->viajeModel->actualizarEstadoViajeAFinalizado($viaje["viaje"]["id_viaje"]);
+        $this->vehiculoModel->asignarEstadoVehiculo("Disponible", $_POST["matricula"]);
+
         $this->mostrarViaje();
     }
 
@@ -66,8 +67,9 @@ class ChoferController
         $valoresAEditar = ["km_recorridos", "desviacion", "combustible", "pasajes_peajes"];
         $this->actualizarDatosDe($valoresAEditar);
         $this->actualizarPosicion();
+        $this->enviarPosicionGps();
 
-        //$this->renderTo("Inicio.php", "");
+        $this->renderTo("Inicio.php", "");
     }
 
     public function renderTo($view, $viaje)
@@ -109,15 +111,11 @@ class ChoferController
         $viaje["viaje"] = $this->mostrarViajesDeChofer();
 
         $this->viajeModel->actualizarPosicionActual($_POST["matricula"], $_POST["lati"], $_POST["longi"]);
-        echo "fsdfsd";
-        echo $_POST["matricula"];
-        echo $_POST["lati"];
-        echo $_POST["longi"];
         if ($viaje["viaje"]["latitud"] == 0 && $viaje["viaje"]["longitud"] == 0)
             $this->viajeModel->actualizarEstadoAEnViaje($viaje["viaje"]["id_viaje"]);
     }
 
-    public function mostrarPrueba()
+    public function mostrarFormulario()
     {
         $viaje["viaje"] = $this->mostrarViajesDeChofer();
         $this->renderTo("ActualizarViaje.php", $viaje);

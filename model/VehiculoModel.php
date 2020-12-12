@@ -50,7 +50,6 @@ class VehiculoModel
     public function listarVehiculosParaService()
     {
         $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'mantenimiento'");
-
         $c->execute();
         $vehiculo = $c->get_result();
         return $vehiculo->fetch_all();
@@ -175,8 +174,6 @@ class VehiculoModel
         $tablaAListar = $c->get_result();
         return $tablaAListar->fetch_all();
     }
-
-
 
     public function actualizarDatosDe($datoAModificar, $valor)
     {
