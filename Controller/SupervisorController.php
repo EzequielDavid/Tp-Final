@@ -80,7 +80,6 @@ class SupervisorController
         $this->vehiculoModel->cambiarEstadoArrastre("Ocupado",$_POST["chasis"]);
         $carga = $this->vehiculoModel->buscarCargaConCodigo($_POST["codigo"]);
         $this->viajeModel->asignarVehiculoAViaje($_POST["matricula"],$carga["cuit"]);
-        $this->viajeModel->actualizarEstadoDeViaje($_POST["id_viaje"]);
         $this->volverAInicio();
     }
 

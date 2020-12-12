@@ -15,6 +15,19 @@ class EncargadoDeTallerController
 
     }
 
+    public function listarServicesHechos()
+    {
+        $service["service"] = $this->mantenimientoModel->listarServicesHechos();
+        echo $this->render->render("view/partial/headerEncargadoDeTaller.mustache",$_SESSION),
+        $this->render->render("view/mantenimientoHechos.php",$service);
+
+    }
+    public function detalleMantenimiento()
+    {
+        $service["service"] = $this->mantenimientoModel->buscarServiceDelVehiculo($_POST["idMantenimiento"]);
+        echo $this->render->render("view/partial/headerEncargadoDeTaller.mustache",$_SESSION),
+        $this->render->render("view/DetalleMantenimiento.php",$service);
+    }
     public function listarVehiculosParaService()
     {
         $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosParaService();

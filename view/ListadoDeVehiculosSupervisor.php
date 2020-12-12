@@ -32,7 +32,7 @@
                     </form>
                 </td>
                 <td>{{2}}</td>
-                <td>{{12}}</td>
+                <td>{{10}}</td>
 
             </tr>
             {{/vehiculos}}
