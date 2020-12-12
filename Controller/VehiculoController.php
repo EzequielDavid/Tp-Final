@@ -66,6 +66,13 @@ class VehiculoController
     }
 
 
+    public function consultarVehiculo()
+    {
+        $vehiculo['vehiculo']= $this->vehiculoModel->buscarVehiculo($_POST["matricula"]);
+        $this->renderTo($vehiculo, "DetalleVehiculo.php");
+
+    }
+
     public function borrarVehiculo(){
         $this->vehiculoModel->borrarVehiculo($_POST["matricula"]);
         $this->listarVehiculos();
