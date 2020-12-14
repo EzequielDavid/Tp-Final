@@ -5,7 +5,6 @@ class EstadisticasController
 {
     private $render;
     private $estadisticasModel;
-
     
     public function __construct($render,$estadisticasModel)
     {
@@ -17,20 +16,31 @@ class EstadisticasController
 
     function mostrarEstadisticas()
     {
+        ///// vehiculos/////////////7
+        $fueraDeServicio["fueraDeServicio"]=$this->estadisticasModel->vehiculosFueraDeServicio();
+        $costos['costos']=$this->estadisticasModel->gastoTotalMantenimiento();
+        $vehiculos['vehiculos']=$this->estadisticasModel->totalDeVehiculos();   
+        $vehiculosDisponibles['vehiculosDisponibles']=$this->estadisticasModel->totalVehiculosDisponibles();
+        $vehiculosOcupados['vehiculosOcupados']=$this->estadisticasModel->totalVehiculosOcupados();
+         //// viajes/////////////////   
+        $viajesEnCurso['viajesEnCurso']=$this->estadisticasModel->totalViajesEnCurso();
+        $viajes["viajes"]=$this->estadisticasModel->totalViajesRealizados();
+        $kilometros['kilometros']=$this->estadisticasModel->totalKilometrosRecorridos();
+        $viajesPendientes['viajesPendientes']=$this->estadisticasModel->totalViajesPendientes();
+        ///////// arrastres///////////////////
+        $arrastres['arrastres']=$this->estadisticasModel->totalDeArrastres();
+        $arrastresDisponibles['arrastresDisponibles']=$this->estadisticasModel->totalArrastresDisponibles();
+        $arrastresOcupados['arrastresOcupados']=$this->estadisticasModel->totalArrastresOcupados();
         
-        
-        $estadisticas["estadisticas"]=$this->estadisticasModel->vehiculosFueraDeServicio();
-        $viajes['viajes']=$this->estadisticasModel->totalViajesRealizados();
-        $kilometros['kilometros']=$this->estadisticasModel->kilometrosTotalViajes();
-        echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
-             $this->render->render("view/mostrarEstadisticas.php",$estadisticas),
-             $this->render->render("view/ViajesRealizados.php",$viajes),
-             $this->render->render("view/KilometrosTotalViaje.php",$kilometros); 
 
-        // $viajes['viajes']=$this->estadisticasModel->totalViajesRealizados();
-        //echo $this->render->render("view/ViajesRealizados.php",$viajes);
+
+        $datosEstadisticos['datos'] = array('fueraDeServicio' =>$fueraDeServicio['fueraDeServicio']['total'] ,'viajes' =>$viajes['viajes']['total'],'kilometros' =>$kilometros['kilometros']['total'],'costos' => $costos['costos']['total'],'vehiculos' => $vehiculos['vehiculos']['total'],'arrastres' => $arrastres['arrastres']['total'],'arrastresOcupados'=>$arrastresOcupados['arrastresOcupados']['total'],'arrastresDisponibles'=>$arrastresDisponibles['arrastresDisponibles']['total'],'vehiculosOcupados'=>$vehiculosOcupados['vehiculosOcupados']['total'],'vehiculosDisponibles'=>$vehiculosDisponibles['vehiculosDisponibles']['total'],'viajesEnCurso'=>$viajesEnCurso['viajesEnCurso']['total'],'viajesPendientes'=>$viajesPendientes['viajesPendientes']['total']);
+
         
-        //var_dump($viajes);
-        
+         echo $this->render->render("view/partial/headerAdministrador.mustache",$_SESSION),
+              $this->render->render("view/mostrarEstadisticas.php",$datosEstadisticos);
+
+            var_dump($datosEstadisticos);  
+
     }
 }
