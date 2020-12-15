@@ -25,4 +25,4 @@
         </table>
     </div>
 </div>
-<div class="w3-display-bottommiddle w3-col s12" style="">{{>footer}}</div>
+{{>footer}}

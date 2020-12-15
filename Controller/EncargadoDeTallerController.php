@@ -44,8 +44,8 @@ class EncargadoDeTallerController
     {
         $this->mantenimientoModel->guardarMantenimiento($_POST["fechaMantenimiento"],$_POST["detalleService"],$_POST["costo"]);
         $this->vehiculoModel->actualizarUltimaFechaDeMantenimiento($_POST["matricula"],$_POST["fechaMantenimiento"]);
+        $this->vehiculoModel->guardarMantenimientoVehiculo($_POST["matricula"]);
         $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosParaService();
-        echo $this->render->render("view/partial/headerEncargadoDeTaller.mustache",$_SESSION),
-        $this->render->render("view/ListadoDeVehiculosParaService.php",$vehiculos);
+
     }
 }

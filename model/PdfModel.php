@@ -21,7 +21,7 @@ class PdfModel
         $this->fpdf->Cell(70, 10, '');
         $this->fpdf->Cell(65, 15, 'Proforma', '1', 0, 'C');
         //cambiar ruta según como está guardado el proyecto
-        $this->fpdf->Image("http://localhost/Tp-Final/view/qrcode.php", 178, 8, 25, 25, "png");
+        $this->fpdf->Image("http://localhost/codigos/prueba/view/qrcode.php", 178, 8, 25, 25, "png");
         $this->darEspaciado(45);
         $this->datosRepresentados('Datos de Viaje');
         $this->cargarDatos($datosviaje);

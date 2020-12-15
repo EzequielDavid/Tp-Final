@@ -1,7 +1,6 @@
-<header class="w3-display-container w3-content w3-wide header-nova" id="home">
-    <img class="w3-image img-nova" src="img/nova.png" alt="Architecture">
-    <div class="w3-display-middle w3-margin-top w3-center">
-    </div>
+<header class="w3-display-container w3-wide header-nova" style="width: 100% !important;" id="home">
+    <img class="w3-image img-nova" src="img/slide_encargado.png" style="width: 100% !important;" alt="Architecture"
+         width="100%" height="100%">
 </header>
 <body>
 <div class="w3-container w3-display-container margin-top w3-padding container-list">
@@ -38,14 +37,14 @@
     <div class="w3-container w3-black">
         <form class="w3-container " action="index.php?module=encargadoDeTaller&action=guardarMantenimiento" method="post">
             <p>
-                <label class="w3-text-orange w3-opacity"><b>fecha</b></label>
-                <input class="w3-input w3-border w3-sand w3-opacity w3-hide-small" name="fechaMantenimiento" type="date" required></p>
+                <label class="w3-text-orange w3-opacity"><b>Fecha</b></label>
+                <input class="w3-input w3-border w3-sand w3-opacity" name="fechaMantenimiento" type="date" required=""></p>
             <p>
                 <label class="w3-text-orange w3-opacity"><b>Detalle Service</b></label>
-                <textarea class="w3-input w3-border w3-sand w3-opacity w3-hide-small" name="detalleService" required></textarea></p>
+                <textarea class="w3-input w3-border w3-sand w3-opacity" name="detalleService" placeholder="Descripción del service" required=""></textarea></p>
             <p>
                 <label class="w3-text-orange w3-opacity"><b>Costo Total:</b></label>
-                <input class="w3-input w3-border w3-sand w3-opacity w3-hide-small" placeholder="last" type="number" name="costo" required></p>
+                <input class="w3-input w3-border w3-sand w3-opacity" type="number" name="costo" required=""></p>
             <p>
                 <input type="hidden" name="matricula" value="{{0}}">
                 <button class="w3-btn w3-orange w3-opacity">Guardar</button></p>

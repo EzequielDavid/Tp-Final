@@ -11,6 +11,12 @@ class MantenimientoModel
     }
 
     public function guardarMantenimiento($fechaMantenimiento,$detalleService,$costo){
+
+        echo "fecha $fechaMantenimiento <br>";
+        echo "detalle $detalleService <br>";
+        echo "service $costo <br>";
+        echo "INSERT INTO `mantenimiento`(`fecha_mantenimiento`, `detalle_service`, `costo`) VALUES (?,?,?)";
+
         $c = $this->database->prepare("INSERT INTO `mantenimiento`(`fecha_mantenimiento`, `detalle_service`, `costo`) VALUES (?,?,?)");
         $c->bind_param("ssd", $fechaMantenimiento,$detalleService,$costo);
         $c->execute();

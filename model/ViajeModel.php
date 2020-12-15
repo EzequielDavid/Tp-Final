@@ -23,7 +23,7 @@ class ViajeModel
     {
         $estado = "A preparar";
         $c = $this->database->prepare("INSERT INTO viaje ( estado, cliente ,origen, destino, fecha_carga, eta ) VALUES (?,?,?,?,?,?)");
-        $c->bind_param("ssssss", $estado, $cliente, $origen, $destino, $fecha_carga, $eta);
+        $c->bind_param("sissss", $estado, $cliente, $origen, $destino, $fecha_carga, $eta);
         $c->execute();
     }
 
