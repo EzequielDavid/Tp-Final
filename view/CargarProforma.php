@@ -1,11 +1,3 @@
-<style>
-    .hide {
-        display: none;
-    }
-</style>
-
-
-<!-- Container - Upload -->
 <div class="w3-container w3-display-container container-datos-full">
     <div class="datos-full w3-card-4 margin-topbottom">
         <div class="w3-container w3-orange w3-opacity w3-display-container form-top-title">
@@ -165,7 +157,7 @@
                     <div class="w3-half w3-margin-bottom hide" id="hazard_container">
                         <label class="w3-text-orange w3-opacity"><b>IMO Class</b></label>
                         <select class="w3-select w3-border w3-sand w3-opacity" name="imo_class">
-                            <option value="null" selected>Clase</option>
+                            <option value="No" selected>Clase</option>
                             <option value="Explosivos">Explosivos</option>
                             <option value="Gases">Gases</option>
                             <option value="Liquidos inflamables"

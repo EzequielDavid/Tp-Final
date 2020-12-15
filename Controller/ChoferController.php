@@ -19,7 +19,7 @@ class ChoferController
     public function mostrarViaje()
     {
         $viaje["viaje"] = $this->mostrarViajesDeChofer();
-        $this->renderTo("MiViaje.php", $viaje);
+        $this->renderTo("ActualizarViaje.php", $viaje);
     }
 
     public function enviarPosicionGps()

@@ -10,7 +10,7 @@ class SupervisorController
     private $supervisorModel;
     private $pdfModel;
 
-    public function __construct($render, $usuarioModel, $vehiculoModel, $viajeModel, $clienteModel, $supervisorModel,$pdfModel)
+    public function __construct($render, $usuarioModel, $vehiculoModel, $viajeModel, $clienteModel, $supervisorModel, $pdfModel)
     {
         $this->render = $render;
         $this->usuarioModel = $usuarioModel;
@@ -34,18 +34,17 @@ class SupervisorController
     public function listarVehiculosSupervisor()
     {
         $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosSupervisor();
-        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
-        $this->render->render("view/ListadoDeVehiculosSupervisor.php",$vehiculos);
+        echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
+        $this->render->render("view/ListadoDeVehiculosSupervisor.php", $vehiculos);
     }
 
     public function asignarEstadoVehiculo()
     {
-        $this->vehiculoModel->asignarEstadoVehiculo($_POST["estado"],$_POST["matricula"]);
+        $this->vehiculoModel->asignarEstadoVehiculo($_POST["estado"], $_POST["matricula"]);
         $vehiculos["vehiculos"] = $this->vehiculoModel->listarVehiculosSupervisor();
-        echo $this->render->render("view/partial/headerSupervisor.mustache",$_SESSION),
-        $this->render->render("view/ListadoDeVehiculosSupervisor.php",$vehiculos);
+        echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
+        $this->render->render("view/ListadoDeVehiculosSupervisor.php", $vehiculos);
     }
-
 
 
     public function prepararViaje()
@@ -55,7 +54,7 @@ class SupervisorController
         $vehiculo = $this->vehiculoModel->listarVehiculosSupervisor();
         $arrastre = $this->vehiculoModel->listarArrastre();
         $carga = $this->viajeModel->listarCarga();
-        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje, "carga" => $carga);
+        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre, "viaje" => $viaje, "carga" => $carga);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
         $this->render->render("view/PrepararViaje.php", $datos);
     }
@@ -67,20 +66,26 @@ class SupervisorController
         $viaje = $this->viajeModel->listarViajesParaAsignarVehiculo();
         $vehiculo = $this->vehiculoModel->listarVehiculosSupervisor();
         $arrastre = $this->vehiculoModel->listarArrastre();
-        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre,"viaje" => $viaje,"carga" =>$carga);
+        $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre, "viaje" => $viaje, "carga" => $carga);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
         $this->render->render("view/PrepararViaje.php", $datos);
     }
 
     public function asignarViaje()
     {
-       //$this->vehiculoModel->asignarCargaAarrastre($_POST["codigo"],$_POST["patente"]);
         $this->usuarioModel->asignarVehiculoAChofer($_POST["matricula"], $_POST["dni"]);
-        $this->vehiculoModel->cambiarEstadoVehiculo("Ocupado",$_POST["matricula"]);
+        $this->vehiculoModel->cambiarEstadoVehiculo("Ocupado", $_POST["matricula"]);
+
+        $this->vehiculoModel->asignarCargaAarrastre($_POST["codigo"],$_POST["chasis"],$_POST["matricula"]);
         $this->vehiculoModel->cambiarEstadoArrastre("Ocupado",$_POST["chasis"]);
+        $this->vehiculoModel->cambiarEstadoCarga("Ocupado",$_POST["codigo"]);
+
         $carga = $this->vehiculoModel->buscarCargaConCodigo($_POST["codigo"]);
         $this->viajeModel->asignarVehiculoAViaje($_POST["matricula"],$carga["cuit"]);
-        $this->volverAInicio();
+
+        $this->viajeModel->cambiarEstadoAPreparado( $_POST["matricula"]);
+        
+       $this->volverAInicio();
     }
 
     public function detalleViaje()
@@ -139,7 +144,8 @@ class SupervisorController
         $imo_class = $_POST["imo_class"];
         $reefer = $_POST["ca_reefer"];
         $temperatura = $_POST["temperatura"];
-        $this->supervisorModel->guardarCarga($tipo_carga, $peso_neto, $hazard, $imo_class, $reefer, $temperatura);
+        $cuit = $_POST["cuit"];
+        $this->supervisorModel->guardarCarga($tipo_carga, $peso_neto, $hazard, $imo_class, $reefer, $temperatura, $cuit);
     }
 
     public function guardarDatosEstimados()
@@ -165,15 +171,15 @@ class SupervisorController
 
        public function cargarProformaPdf()
     {
-        $datosViaje=
+        $datosViaje =
             [
-               'cuit'=> $_POST["cuit"],
-               'origen'=> $_POST["origen"],
-               'destino'=> $_POST["destino"],
-               'fecha de carga'=> $_POST["fecha_carga"],
-               'v eta'=> $_POST["v_eta"]
+                'cuit' => $_POST["cuit"],
+                'origen' => $_POST["origen"],
+                'destino' => $_POST["destino"],
+                'fecha de carga' => $_POST["fecha_carga"],
+                'v eta' => $_POST["v_eta"]
             ];
-            $datosCarga =
+        $datosCarga =
             [
                 'tipo de carga' => $_POST["tipo_carga"],
                 'peso neto' => $_POST["peso_neto"],
@@ -182,21 +188,21 @@ class SupervisorController
                 'reefer' => $_POST["ca_reefer"],
                 'temperatura' => $_POST["temperatura"]
             ];
-            $datosEstimados =
-                [
-                    'est_etd' => $_POST["est_etd"],
-                    'est_eta' => $_POST["est_eta"],
-                    'est_kilometros' => $_POST["est_kilometros"],
-                    'est_combustible' => $_POST["est_combustible"],
-                    'est_hazard' => $_POST["est_hazard"],
-                    'est_reefer' => $_POST["est_reefer"],
-                    'viaticos' => $_POST["viaticos"],
-                    'peajes_pasajes' => $_POST["peajes_pasajes"],
-                    'extras' => $_POST["extras"],
-                    'fee' => $_POST["fee"]
-                ];
+        $datosEstimados =
+            [
+                'est_etd' => $_POST["est_etd"],
+                'est_eta' => $_POST["est_eta"],
+                'est_kilometros' => $_POST["est_kilometros"],
+                'est_combustible' => $_POST["est_combustible"],
+                'est_hazard' => $_POST["est_hazard"],
+                'est_reefer' => $_POST["est_reefer"],
+                'viaticos' => $_POST["viaticos"],
+                'peajes_pasajes' => $_POST["peajes_pasajes"],
+                'extras' => $_POST["extras"],
+                'fee' => $_POST["fee"]
+            ];
 
-        $pdf = $this->pdfModel->basePdf($datosViaje,$datosCarga,$datosEstimados);
-        echo $this->render->render("view/fpdf.php",['pdf'=>$pdf]);
+        $pdf = $this->pdfModel->basePdf($datosViaje, $datosCarga, $datosEstimados);
+        echo $this->render->render("view/fpdf.php", ['pdf' => $pdf]);
     }
 }

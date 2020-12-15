@@ -1,31 +1,8 @@
+<header class="w3-display-container w3-wide header-nova" style="width: 100% !important;" id="home">
+    <img class="w3-image img-nova" src="img/slide_chofer.png" style="width: 100% !important;" alt="Architecture"
+         width="100%" height="100%">
+</header>
 <body>
-<style>
-    .posicion {
-        visibility: hidden;
-        display: none;
-    }
-
-    .btn-red {
-        background-color: #f44336 !important;
-    }
-
-    .btn-green {
-        background-color: #4CAF50 !important;
-
-    }
-
-    .hide-content {
-        display: none;
-        visibility: hidden;
-    }
-
-    .display-right {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
-</style>
-<!-- Container - Upload -->
 <div class="w3-container w3-display-container container-datos-full form-flota" style="width: 90% !important;">
     <div class="w3-card-4 margin-topbottom datos-full">
         <div class="w3-container w3-orange w3-opacity w3-display-container form-top-title">
@@ -70,7 +47,7 @@
                     </div>
 
                     <p class="w3-half w3-text-red w3-opacity w3-section"><b>Aclaración:</b> la ubicación se guardará automáticamente al
-                        finalizar la opeación</p>
+                        finalizar la operación</p>
                 </div>
 
             </div>
