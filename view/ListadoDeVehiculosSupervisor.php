@@ -1,9 +1,9 @@
 <header class="w3-display-container w3-wide header-nova" style="width: 100% !important;" id="home">
     <img class="w3-image img-nova" src="img/slide_supervisor.png" style="width: 100% !important;" alt="Architecture"
-         width="100%" height="100%">
+         width="100%"">
 </header>
 <body>
-<div class="w3-container w3-display-container margin-top w3-padding container-list">
+<div class="w3-container w3-display-container margin-top w3-padding container-list" style="">
     <div class="w3-container w3-orange w3-hide-small w3-margin w3-padding container-list-sm">
         <h2>Vehículos</h2>
 

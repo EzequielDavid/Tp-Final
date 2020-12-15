@@ -1,4 +1,4 @@
-<div class="datos w3-container w3-display-container w3-col s11">
+<div class="datos w3-container w3-display-container w3-col s12" style="margin-top: 7%">
     <div class=" w3-container w3-orange w3-hide-small">
         <h2>Choferes</h2>
         <table class="w3-table-all w3-card-4">
@@ -29,3 +29,4 @@
         </table>
     </div>
 </div>
+<div class="w3-display-bottommiddle w3-col s12" style="">{{>footer}}</div>
