@@ -11,10 +11,10 @@ class SupervisorModel
     }
 
 
-    public function guardarCarga($tipo_carga, $peso_neto, $hazard, $imo_class, $reefer, $temperatura)
+    public function guardarCarga($tipo_carga, $peso_neto, $hazard, $imo_class, $reefer, $temperatura, $cuit)
     {
-        $c=$this->database->prepare("INSERT INTO `carga`(`tipo`, `peso_neto`, `hazard`, `imo_class`, `reefer`, `temperatura`) VALUES (?,?,?,?,?,?)");
-        $c->bind_param("sissss",$tipo_carga, $peso_neto, $hazard, $imo_class, $reefer, $temperatura);
+        $c=$this->database->prepare("INSERT INTO `carga`(`tipo`, `peso_neto`, `hazard`, `imo_class`, `reefer`, `temperatura`, `cuit`) VALUES (?,?,?,?,?,?,?)");
+        $c->bind_param("sissssi",$tipo_carga, $peso_neto, $hazard, $imo_class, $reefer, $temperatura, $cuit);
         $c->execute();
     }
 

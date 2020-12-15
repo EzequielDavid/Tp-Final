@@ -40,7 +40,7 @@ class VehiculoModel
 
     public function listarVehiculosSupervisor()
     {
-        $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'disponible'");
+        $c = $this->database->prepare("SELECT * FROM `vehiculo` WHERE `estado` LIKE 'Disponible'");
 
         $c->execute();
         $vehiculo = $c->get_result();
@@ -63,7 +63,7 @@ class VehiculoModel
     }
 
     //
-    public function cambiarEstadoVehiculo($estado,$matricula)
+    public function cambiarEstadoVehiculo($estado, $matricula)
     {
         $c = $this->database->prepare("UPDATE vehiculo SET estado = ? WHERE matricula = ?");
         $ocupado = "Ocupado";
@@ -72,9 +72,17 @@ class VehiculoModel
     }
 
     //
-    public function cambiarEstadoArrastre($estado, $chasis){
+    public function cambiarEstadoArrastre($estado, $chasis)
+    {
         $c = $this->database->prepare("UPDATE arrastre SET estado = ? WHERE chasis = ?");
         $c->bind_param("ss", $estado, $chasis);
+        $c->execute();
+    }
+
+    public function cambiarEstadoCarga($estado, $codigo)
+    {
+        $c = $this->database->prepare("UPDATE carga SET estado = ? WHERE codigo = ?");
+        $c->bind_param("si", $estado, $codigo);
         $c->execute();
     }
 
@@ -134,12 +142,13 @@ class VehiculoModel
         return $vehiculo->fetch_assoc();
     }
 
-    public function asignarCargaAarrastre($codigo, $patente)
+    public function asignarCargaAarrastre($codigo, $arrastre, $patente)
     {
-        $c = $this->database->prepare("UPDATE arrastre SET codigo = ? WHERE patente = ?");
-        $c->bind_param("is", $codigo, $patente);
+        $c = $this->database->prepare("UPDATE viaje SET tipo_carga = ? , arrastre=? WHERE matricula = ?");
+        $c->bind_param("iis", $codigo, $arrastre, $patente);
         $c->execute();
     }
+
 
     public function borrarVehiculo($matricula)
     {
@@ -182,7 +191,7 @@ class VehiculoModel
 
     public function actualizarDatosDe($datoAModificar, $valor)
     {
-        $matricula=$_POST["matricula"];
+        $matricula = $_POST["matricula"];
         $c = $this->database->prepare("UPDATE vehiculo SET vehiculo.$datoAModificar = ? WHERE vehiculo.matricula = ?");
         $c->bind_param("ds", $valor, $matricula);
         $c->execute();
@@ -190,7 +199,7 @@ class VehiculoModel
 
     public function buscarValorDe($valor)
     {
-        $matricula=$_POST["matricula"];
+        $matricula = $_POST["matricula"];
         $c = $this->database->prepare("SELECT $valor FROM `vehiculo` WHERE matricula LIKE ?");
         $c->bind_param("s", $matricula);
         $c->execute();

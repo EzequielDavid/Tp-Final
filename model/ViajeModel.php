@@ -29,8 +29,15 @@ class ViajeModel
 
     public function actualizarEstadoDeViaje($codigo)
     {
-        $c = $this->database->prepare("UPDATE viaje INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula INNER JOIN arrastre on vehiculo.patente = arrastre.patente INNER JOIN carga on arrastre.codigo = carga.codigo SET viaje.estado = 'preparando despacho' WHERE carga.codigo = ?");
+        $c = $this->database->prepare("UPDATE viaje INNER JOIN vehiculo on viaje.matricula = vehiculo.matricula INNER JOIN arrastre on vehiculo.patente = arrastre.patente INNER JOIN carga on arrastre.codigo = carga.codigo SET viaje.estado = 'Preparando despacho' WHERE carga.codigo = ?");
         $c->bind_param("i", $codigo);
+        $c->execute();
+    }
+
+    public function cambiarEstadoAPreparado($matricula)
+    {
+        $c = $this->database->prepare("UPDATE viaje SET viaje.estado = 'Preparando despacho' WHERE viaje.matricula = ?");
+        $c->bind_param("s", $matricula);
         $c->execute();
     }
 

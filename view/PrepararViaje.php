@@ -2,7 +2,7 @@
     <div class="datos w3-card-4">
         <div class="w3-container w3-orange w3-opacity w3-display-container form-top-title">
             <h2>Preparar viaje</h2>
-            <h5 class="w3-display-topright w3-section w3-margin-right trip">Chofer DNI:<b>{{#datos}}{{#chofer}}{{dni}}{{/chofer}}{{/datos}}</b></h5>
+            <h5 class="w3-display-topright w3-section w3-margin-right trip">Chofer DNI: <b> {{#datos}}{{#chofer}}{{dni}}{{/chofer}}{{/datos}}</b></h5>
         </div>
         <form class="w3-col" action="index.php?module=supervisor&action=elegirViaje" method="post">
             <h3 class="w3-text-orange w3-opacity w3-margin-bottom w3-margin-left">Viaje</h3>
@@ -60,6 +60,7 @@
                     {{/datos}}
                 </select>
             </div>
+
             <div class="w3-panel">
                 <input type="hidden" name="dni" value={{#datos}}{{#chofer}}{{dni}}{{/chofer}}{{/datos}}>
                 <input class="w3-btn w3-orange w3-opacity w3-margin-top w3-margin-bottom" type="submit" value="Asignar">
