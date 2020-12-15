@@ -12,7 +12,7 @@
             <h2>Cargar proforma</h2>
             <h5 class="w3-display-topright w3-section w3-margin-right trip">Proforma</h5>
         </div>
-        <form class="w3-container" action="index.php?module=supervisor&action=cargarDatosParaProforma" method="POST">
+        <form class="w3-container" action="index.php?module=supervisor&action=cargarProformaPdf" method="POST">
 
             <div id="paso1" class="w3-padding-32">
                 <div class="w3-row-padding">
