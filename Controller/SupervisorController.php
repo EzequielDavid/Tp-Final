@@ -169,7 +169,7 @@ class SupervisorController
         $this->render->render("view/Inicio.php");
     }
 
-    public function cargarProformaPdf()
+       public function cargarProformaPdf()
     {
         $datosViaje =
             [
