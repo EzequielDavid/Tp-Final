@@ -36,4 +36,4 @@
 
 </div>
 </body>
-{{>footer}}
+<div class="w3-display-bottommiddle w3-col s12">{{>footer}}</div>
