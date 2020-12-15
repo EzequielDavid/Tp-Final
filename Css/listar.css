@@ -235,7 +235,7 @@ textarea {
         display: none;
     }
 
-    .card-contenedor{
+    .card-contenedor {
         margin-top: 3.6rem;
     }
 
@@ -246,7 +246,7 @@ textarea {
 
 
 /*UPDATE DRIVER*/
-body.background{
+body.background {
     background-image: url(../img/chofer.jpg);
     background-size: cover;
 }
@@ -260,7 +260,7 @@ body.background{
     margin-bottom: 6rem;
 }
 
-.container-datos-full{
+.container-datos-full {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -279,19 +279,52 @@ body.background{
     height: auto;
 }
 
+.hide{
+    display:none;
+}
+
 @media (max-width: 786px) {
     .datos {
         width: 100%;
         margin-left: 0;
     }
 }
+
 @media (max-width: 530px) {
     .form-top-title {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     .form-top-title .trip {
         position: relative;
     }
+}
+
+
+/*ACTUALIZACIÓN VIAJE*/
+.posicion {
+    visibility: hidden;
+    display: none;
+}
+
+.btn-red {
+    background-color: #f44336 !important;
+}
+
+.btn-green {
+    background-color: #4CAF50 !important;
+
+}
+
+.hide-content {
+    display: none;
+    visibility: hidden;
+}
+
+.display-right {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }

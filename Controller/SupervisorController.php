@@ -61,19 +61,10 @@ class SupervisorController
 
     public function elegirViaje()
     {
-        //busca la carga
         $carga = $this->vehiculoModel->buscarCargaConCuit($_POST["cuit"]);
-
-        //busca el chofer
         $chofer = $this->usuarioModel->buscarUsuarioPorDni($_POST["dni"]);
-
-        //busca viajes a preparar
         $viaje = $this->viajeModel->listarViajesParaAsignarVehiculo();
-
-        //busca vehiculos disponibles
         $vehiculo = $this->vehiculoModel->listarVehiculosSupervisor();
-
-        //busca arrastres disponibles
         $arrastre = $this->vehiculoModel->listarArrastre();
         $datos["datos"] = array("chofer" => $chofer, "vehiculo" => $vehiculo, "arrastre" => $arrastre, "viaje" => $viaje, "carga" => $carga);
         echo $this->render->render("view/partial/headerSupervisor.mustache", $_SESSION),
