@@ -7,8 +7,6 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Licencia Conducir</th>
-                <th>Vehiculo asginado</th>
-                <th>Viaje destino</th>
             </tr>
             {{#choferes}}
             <tr>
@@ -16,8 +14,6 @@
                 <td>{{1}}</td>
                 <td>{{2}}</td>
                 <td>{{3}}</td>
-                <td>{{4}}</td>
-                <td>{{5}}</td>
                 <td>
                     <form action="index.php?module=supervisor&action=prepararViaje" method="post">
                         <input type="hidden" name="dni" value={{0}}>
